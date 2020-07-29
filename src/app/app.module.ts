@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { RouterModule, RouterState, Routes } from '@angular/router';
+import { NewUserComponent } from './components/new-user/new-user.component';
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 //import {MenuItem} from 'primeng/api';
@@ -20,6 +21,7 @@ import { RouterModule, RouterState, Routes } from '@angular/router';
     NewEvent2Component,
     ConfirmParticipationComponent,
     RemindersComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,49 @@
+<div class="container mt-4" dir="rtl">
+  <h1>משתמש חדש</h1>
+  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
+    <br />
+    <label>שם פרטי</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="User.firstName"
+      name="TableType"
+      #firstName="ngModel"
+      minlength="5"
+      required
+    />
+    <br />
+    <label>שם משפחה</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="User.lastName"
+      name="TableType"
+      #lastName="ngModel"
+      minlength="5"
+      required
+    />
+    <br />
+    <label>כתובת מייל</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="User.email"
+      name="AmountOfPlaces"
+      #email="ngModel"
+      value="10"
+      required
+    />
+    <br />
+    <label>מספר טלפון לא חובה</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="User.phoneNumber"
+      name="AmountOfPlaces"
+      #phoneNumber="ngModel"
+      value="10"
+    />
+    <br />
+  </form>
+</div>
