@@ -1,0 +1,30 @@
+<div class="container mt-4" dir="rtl">
+  <h1>שולחנות</h1>
+  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
+    <br />
+    <label>מאפינים</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="Table.TableType"
+      name="TableType"
+      #TableType="ngModel"
+      minlength="5"
+      required
+    />
+    <br />
+    <label>מושבים סביב שולחן</label>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="Table.AmountOfPlaces"
+      name="AmountOfPlaces"
+      #AmountOfPlaces="ngModel"
+      value="10"
+      required
+    />
+    <br />
+    <a>אמור להיות כתוב {{ Table.TableType }}, {{ Table.AmountOfPlaces }}</a>
+    <a routerLink="/reminders">תזכירים</a>
+  </form>
+</div>

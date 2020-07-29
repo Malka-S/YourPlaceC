@@ -1,0 +1,37 @@
+<div class="container mt-4" dir="rtl">
+  <h1>אישור השתתפות</h1>
+  <br />
+  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
+    <button (click)="seeInvitation()">צפיה בהזמנה</button><br />
+    <button (click)="confirm()">אישור</button><br />
+    <button (click)="navigateToPlace()">צפיה במקום</button><br />
+    <br />
+    <div>אני שמחה לאשר השתתפות ורוצה או לא לשבת ליד</div>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="TableMember.FriendId"
+      name="FriendId"
+      #FriendId="ngModel"
+    />
+    <br />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="TableMember.FriendId"
+      name="FriendId"
+      #FriendId="ngModel"
+    />
+    <br />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="TableMember.FriendId"
+      name="FriendId"
+      #FriendId="ngModel"
+    />
+    <br />
+    <a>החברים שלך הם</a>
+    <a>החברים שלך הם: {{ TableMember.FriendId }},</a>
+  </form>
+</div>
