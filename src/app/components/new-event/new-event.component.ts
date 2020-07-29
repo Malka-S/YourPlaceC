@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Event } from '../../model/event.model';
-import { MyserverService } from '../../service/EventService';
+import { EventService } from '../../service/EventService';
 import { Router } from '@angular/router';
 //import * as XLSX from 'xlsx';
 // import * as XLSX from 'ts-xlsx';
@@ -61,7 +61,7 @@ export class NewEventComponent {
 
   uploadedFiles: any[] = [];
 
-  constructor(private myserver: MyserverService, private router: Router) {}
+  constructor(private myserver:EventService, private router: Router) {}
 
   new() {}
   // onUpload(event) {

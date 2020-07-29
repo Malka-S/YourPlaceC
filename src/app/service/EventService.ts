@@ -7,7 +7,7 @@ import { BaseCode } from '../model/baseCode';
 @Injectable({
   providedIn: 'root',
 })
-export class MyserverService {
+export class EventService {
   Event: Event[] = [
     new Event(
       3546,

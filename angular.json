@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "YourPlace"
+  "defaultProject": "YourPlace",
+  "cli": {
+    "analytics": false
+  }
 }
