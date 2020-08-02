@@ -11,9 +11,12 @@ import { ConfirmParticipationComponent } from './components/confirm-participatio
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { RouterModule, RouterState, Routes } from '@angular/router';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { LoginComponent } from './components/login/login.component';
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 //import {MenuItem} from 'primeng/api';
+//import '~bootstrap/dist/css/bootstrap.min.css';
+//import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +25,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     ConfirmParticipationComponent,
     RemindersComponent,
     NewUserComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

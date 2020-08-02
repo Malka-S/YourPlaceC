@@ -7,33 +7,62 @@
       type="text"
       class="form-control"
       [(ngModel)]="User.firstName"
-      name="TableType"
-      #firstName="ngModel"
+      name="firstName"
+      #userFirstName="ngModel"
       minlength="5"
       required
     />
     <br />
+    <div
+      *ngIf="
+        userFirstName.errors?.required &&
+        (userFirstName.touched || userFirstName.dirty)
+      "
+      class="alert alert-danger"
+    >
+      שם פרטי אינו תקין
+    </div>
     <label>שם משפחה</label>
     <input
       type="text"
       class="form-control"
       [(ngModel)]="User.lastName"
-      name="TableType"
-      #lastName="ngModel"
+      name="lastName"
+      #userLastName="ngModel"
       minlength="5"
       required
     />
     <br />
-    <label>כתובת מייל</label>
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="User.email"
-      name="AmountOfPlaces"
-      #email="ngModel"
-      value="10"
-      required
-    />
+    <div
+      *ngIf="
+        userLastName.errors?.required &&
+        (userLastName.touched || userLastName.dirty)
+      "
+      class="alert alert-danger"
+    >
+      שם משפחה אינו תקין
+    </div>
+    <div class="form-group">
+      <label>כתובת מייל</label>
+      <input
+        type="text"
+        class="form-control"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        id="email"
+        name="email"
+        [(ngModel)]="User.email"
+        #userEmail="ngModel"
+      />
+      <div
+        *ngIf="userEmail.errors && (userEmail.touched || userEmail.dirty)"
+        class="alert alert-danger"
+      >
+        <div [hidden]="!userEmail.errors?.pattern">
+          Invalid email
+        </div>
+      </div>
+    </div>
+
     <br />
     <label>מספר טלפון לא חובה</label>
     <input

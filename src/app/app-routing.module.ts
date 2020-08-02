@@ -5,6 +5,7 @@ import { NewEvent2Component } from './components/new-event-two/new-event2.compon
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: 'new-event', component: NewEventComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'reminders', component: RemindersComponent },
   { path: 'confirm-participation', component: ConfirmParticipationComponent },
   { path: 'new-user', component: NewUserComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
