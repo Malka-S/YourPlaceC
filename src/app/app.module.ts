@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { RouterModule, RouterState, Routes } from '@angular/router';
+import { MatSliderModule } from '@angular/material/slider';
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 //import {MenuItem} from 'primeng/api';
@@ -28,6 +29,7 @@ import { RouterModule, RouterState, Routes } from '@angular/router';
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
+    MatSliderModule
   ],
   providers: [
     // myServer

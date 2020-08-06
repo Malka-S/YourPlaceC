@@ -5,11 +5,16 @@
     <div class="form-group">
       <label>סוג ארוע</label>
       <h5>Basic mat-select</h5>
+      <!-- <div> {{messageService}}</div> -->
+     <select>
+       <option [value]="messageService" *ngFor="let mes of messageService"> {{messageService}}</option>
+     </select>
+      <h5>{{messageService}}</h5>
       <label>שם ארוע</label>
       <input
         type="text"
         class="form-control"
-        [(ngModel)]="event.EventName"
+       ngModel="event.EventName" 
         name="EventName"
         #EventName="ngModel"
         minlength="5"
@@ -30,7 +35,7 @@
       <input
         type="text"
         class="form-control"
-        [(ngModel)]="event.Invitation"
+       ngModel="event.Invitation"
         name="Invitation"
         #Invitation="ngModel"
         value="לעשות תיבה להעלות מהמחשב"
@@ -41,7 +46,7 @@
       <input
         type="text"
         class="form-control"
-        [(ngModel)]="event.EventDueDate"
+       ngModel="event.EventDueDate"
         name="EventDueDate"
         #EventDueDate="ngModel"
         minlength="10"
