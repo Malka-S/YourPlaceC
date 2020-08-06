@@ -10,8 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { RouterModule, RouterState, Routes } from '@angular/router';
+// <<<<<<< HEAD
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { LoginComponent } from './components/login/login.component';
+// =======
+// import { MatSliderModule } from '@angular/material/slider';
+// >>>>>>> 81e4a4623650f58d72380908dad0002ee247ba03
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 //import {MenuItem} from 'primeng/api';
@@ -34,6 +38,7 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
+    // MatSliderModule
   ],
   providers: [
     // myServer

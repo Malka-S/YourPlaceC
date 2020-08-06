@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Event } from '../model/event.model';
 import { BaseCode } from '../model/baseCode';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class MyserverService {
+export class EventService {
   Event: Event[] = [
     new Event(
       3546,
@@ -44,7 +44,7 @@ export class MyserverService {
     ),
   ];
   constructor(private http: HttpClient) {
-    this.GetEventFromServer();
+    this.getEventType();
   }
   GetEventFromServer(): Observable<any[]> {
     return this.http.get<any[]>('https://localhost:44390/api/Event/Get');

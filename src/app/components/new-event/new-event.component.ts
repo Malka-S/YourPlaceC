@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Event } from '../../model/event.model';
-import { MyserverService } from '../../service/EventService';
+import { BaseCode } from '../../model/baseCode';
+import { EventService } from '../../service/EventService';
 import { Router } from '@angular/router';
+
 //import * as XLSX from 'xlsx';
 // import * as XLSX from 'ts-xlsx';
 // const { read, write, utils } = XLSX;
@@ -10,29 +12,25 @@ import { Router } from '@angular/router';
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css'],
+  providers:[EventService]
 })
-export class NewEventComponent {
+export class NewEventComponent implements OnInit{
+ 
   @Input()
   event: Event;
-  // event: Event = {
-  //   EventCode: 0,
-  //   EventType: '',
-  //   EventName: '',
-  //   EventDate: '',
-  //   EventDueDate: '',
-  //   ManagerCode: 0,
-  //   SeatingArrangementCode: 0,
-  //   GuestCode: 0,
-  //   Invitation: '',
-  // };
-  messageService: any;
+  messageService: BaseCode[];
+ 
   date3: Date;
   arrayBuffer: any;
   file: File;
   incomingfile(event) {
     this.file = event.target.files[0];
   }
-
+  constructor(private eventService: EventService, private router: Router) {}
+ 
+  ngOnInit(){
+    this.eventService.getEventType().toPromise().then(data=> this.messageService=data);
+  }
   Upload() {
     //   let fileReader = new FileReader();
     //   fileReader.onload = (e) => {
@@ -61,8 +59,7 @@ export class NewEventComponent {
 
   uploadedFiles: any[] = [];
 
-  constructor(private myserver: MyserverService, private router: Router) {}
-
+ 
   new() {}
   // onUpload(event) {
   //   for (let file of event.files) {
