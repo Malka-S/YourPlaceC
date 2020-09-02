@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Event } from '../model/event.model';
 import { BaseCode } from '../model/baseCode';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
@@ -62,4 +63,6 @@ export class EventService {
     let url = 'https://localhost:44390/api/Event/GetEventType';
     return this.http.get<BaseCode[]>(url);
   }
+ 
+  
 }

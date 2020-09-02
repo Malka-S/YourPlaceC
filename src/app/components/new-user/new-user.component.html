@@ -6,7 +6,7 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="User.firstName"
+      [(ngModel)]="user.user_first_name"
       name="firstName"
       #userFirstName="ngModel"
       minlength="5"
@@ -26,7 +26,7 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="User.lastName"
+      [(ngModel)]="user.user_last_name"
       name="lastName"
       #userLastName="ngModel"
       minlength="5"
@@ -50,7 +50,7 @@
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         id="email"
         name="email"
-        [(ngModel)]="User.email"
+        [(ngModel)]="user.user_email"
         #userEmail="ngModel"
       />
       <div
@@ -68,11 +68,25 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="User.phoneNumber"
+      [(ngModel)]="user.user_phone_number"
       name="AmountOfPlaces"
       #phoneNumber="ngModel"
       value="10"
     />
     <br />
+    <label>סיסמה: </label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="user.user_password"
+      name="AmountOfPlaces"
+      #phoneNumber="ngModel"
+      value="10"
+    />
+    <br />
+     <button (click)="add(user.user_first_name.value , user.user_last_name.value ,user.user_email.value,user.user_phone_number.value,user.user_password.value); user_first_name.value='',user_last_name.value='',user_email.value='',user_phone_number.value='',user_password.value=''"> 
+       add
+    </button> 
+    <button (click)="save()">save</button>
   </form>
 </div>

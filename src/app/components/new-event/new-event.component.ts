@@ -4,7 +4,7 @@ import { BaseCode } from '../../model/baseCode';
 import { EventService } from '../../service/EventService';
 import { Router } from '@angular/router';
 
-//import * as XLSX from 'xlsx';
+//import * as XLSX from 'xlsx'
 // import * as XLSX from 'ts-xlsx';
 // const { read, write, utils } = XLSX;
 
