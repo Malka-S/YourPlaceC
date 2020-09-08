@@ -1,13 +1,13 @@
 export class Event {
-  EventCode: number;
-  EventType: string;
-  EventName: string;
-  EventDate: Date;
-  EventDueDate: Date;
-  ManagerCode: number;
-  SeatingArrangementCode: number;
-  GuestCode: number;
-  Invitation: string;
+  public EventCode: number;
+  public EventType: string;
+  public EventName: string;
+  public EventDate: Date;
+  public EventDueDate: Date;
+  public ManagerCode: number;
+  public SeatingArrangementCode: number;
+  public GuestCode: number;
+  public Invitation: string;
   constructor(
     code,
     type,
