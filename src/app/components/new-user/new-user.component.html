@@ -1,39 +1,39 @@
 <div class="container mt-4" dir="rtl">
   <h1>משתמש חדש</h1>
-  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
+  <form (ngSubmit)="add()" [formGroup]="form">
     <br />
     <label>שם פרטי</label>
-    <input
+    <mat-form-field>
+      <input
       type="text"
       class="form-control"
-      [(ngModel)]="user.user_first_name"
       name="firstName"
-      #userFirstName="ngModel"
       minlength="5"
       required
     />
+    </mat-form-field>
+    
     <br />
-    <div
-      *ngIf="
+    <!-- <div
+       *ngIf="
         userFirstName.errors?.required &&
         (userFirstName.touched || userFirstName.dirty)
-      "
+      " 
       class="alert alert-danger"
     >
       שם פרטי אינו תקין
-    </div>
+    </div> -->
     <label>שם משפחה</label>
+    <mat-form-field>
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="user.user_last_name"
       name="lastName"
-      #userLastName="ngModel"
       minlength="5"
       required
-    />
+    /></mat-form-field>
     <br />
-    <div
+    <!-- <div
       *ngIf="
         userLastName.errors?.required &&
         (userLastName.touched || userLastName.dirty)
@@ -41,50 +41,44 @@
       class="alert alert-danger"
     >
       שם משפחה אינו תקין
-    </div>
+    </div> -->
     <div class="form-group">
+      <mat-form-field>
       <label>כתובת מייל</label>
       <input
         type="text"
         class="form-control"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         id="email"
         name="email"
-        [(ngModel)]="user.user_email"
-        #userEmail="ngModel"
-      />
-      <div
+      /></mat-form-field>
+      <!-- <div
         *ngIf="userEmail.errors && (userEmail.touched || userEmail.dirty)"
         class="alert alert-danger"
       >
         <div [hidden]="!userEmail.errors?.pattern">
           Invalid email
         </div>
-      </div>
+      </div> -->
     </div>
 
-    <br />
+    <br /><mat-form-field>
     <label>מספר טלפון לא חובה</label>
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="user.user_phone_number"
       name="AmountOfPlaces"
-      #phoneNumber="ngModel"
       value="10"
-    />
-    <br />
+    /></mat-form-field>
+    <br /><mat-form-field>
     <label>סיסמה: </label>
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="user.user_password"
       name="AmountOfPlaces"
-      #phoneNumber="ngModel"
       value="10"
-    />
+    /></mat-form-field>
     <br />
-     <button (click)="add(user.user_first_name.value , user.user_last_name.value ,user.user_email.value,user.user_phone_number.value,user.user_password.value); user_first_name.value='',user_last_name.value='',user_email.value='',user_phone_number.value='',user_password.value=''"> 
+     <button (click)="add()"> 
        add
     </button> 
     <button (click)="save()">save</button>

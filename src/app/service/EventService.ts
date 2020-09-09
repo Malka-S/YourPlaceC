@@ -9,55 +9,84 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EventService {
-  Event: Event[] = [
-    new Event(
-      3546,
-      'wedding',
-      'Rivky and Hallel',
-      1 / 2 / 2000,
-      1 / 2 / 2000,
-      5,
-      6,
-      7,
-      'cgfng'
-    ),
-    new Event(
-      3546,
-      'wedding',
-      'Rivky and Hallel',
-      1 / 2 / 2000,
-      1 / 2 / 2000,
-      5,
-      6,
-      7,
-      'cgfng'
-    ),
-    new Event(
-      3546,
-      'wedding',
-      'Rivky and Hallel',
-      1 / 2 / 2000,
-      1 / 2 / 2000,
-      5,
-      6,
-      7,
-      'cgfng'
-    ),
-  ];
-  constructor(private http: HttpClient) {
-    this.getEventType();
-  }
-  GetEventFromServer(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:44390/api/Event/Get');
-  }
 
-  getEvents(): Promise<Event[]> {
-    return new Promise((res) => {
-      setTimeout(() => {
-        res(this.Event);
-      }, 1);
-    });
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  
+  // Event: Event[] = [
+  //   new Event(
+  //     3546,
+  //     'wedding',
+  //     'Rivky and Hallel',
+  //     1 / 2 / 2000,
+  //     1 / 2 / 2000,
+  //     5,
+  //     6,
+  //     7,
+  //     'cgfng'
+  //   ),
+  //   new Event(
+  //     3546,
+  //     'wedding',
+  //     'Rivky and Hallel',
+  //     1 / 2 / 2000,
+  //     1 / 2 / 2000,
+  //     5,
+  //     6,
+  //     7,
+  //     'cgfng'
+  //   ),
+  //   new Event(
+  //     3546,
+  //     'wedding',
+  //     'Rivky and Hallel',
+  //     1 / 2 / 2000,
+  //     1 / 2 / 2000,
+  //     5,
+  //     6,
+  //     7,
+  //     'cgfng'
+  //   ),
+  // ];
+  constructor(private http: HttpClient,private EventService:EventService) {
+    this.getEventType();
+    this.addEvent(EventService);
   }
+  private UsersUrl = 'https://localhost:44390/api/Event';
+  getEvent(): Observable<any[]> {
+    return this.http.get<any[]>(this.UsersUrl)
+    // .pipe(
+    //     catchError(this.handleError <Any[]>('getUser', []))
+    //   );
+  }
+  addEvent(User: any): Observable<any> {
+    return this.http.post<any>('https://localhost:44390/api/Evnt/PostEvent', User, this.httpOptions);
+
+  }
+  updateEvent(event: Event): Observable<any> {
+    return this.http.put(this.UsersUrl+'/PostEvent', event, this.httpOptions).pipe(
+      tap(_ => this.log(`updated user id=${event.EventCode}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
+  log(arg0: string): void {
+    throw new Error("Method not implemented.");
+  }
+  handleError<T>(arg0: string): (err: any, caught: Observable<any>) => import("rxjs").ObservableInput<any> {
+    throw new Error("Method not implemented.");
+  }
+  // GetEventFromServer(): Observable<any[]> {
+  //   return this.http.get<any[]>('https://localhost:44390/api/Event/Get');
+  // }
+
+  // getEvents(): Promise<Event[]> {
+  //   return new Promise((res) => {
+  //     setTimeout(() => {
+  //       res(this.Event);
+  //     }, 1);
+  //   });
+  // }
 
   getEventType(): Observable<BaseCode[]> {
     let url = 'https://localhost:44390/api/Event/GetEventType';

@@ -1,9 +1,11 @@
 <div class="container mt-4" dir="rtl">
   <h1>הגדרת ארוע בסיסי</h1>
-  <h2> new changes</h2>
-  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
+  <!-- <h2> new changes</h2> -->
+  <!-- <form novalidate #a="ngForm" (ngSubmit)="onSend(a)"> -->
     <!-- <button type="button" (click)="new(); a.reset()">ניקוי</button> -->
-    <div class="form-group">
+    <form (ngSubmit)="add()" [formGroup]="form">
+
+    <!-- <div class="form-group"> -->
       <label>סוג ארוע</label>
     
      <select>
@@ -11,7 +13,16 @@
      </select>
       <h5>{{messageService}}</h5>
       <label>שם ארוע</label>
-      <input
+      <mat-form-field>
+        <input
+        type="text"
+        class="form-control"
+        name="EventName"
+        minlength="5"
+        required
+      />
+      </mat-form-field>
+      <!-- <input
         type="text"
         class="form-control"
         [(ngModel)]="event.EventName" 
@@ -19,28 +30,42 @@
         #EventName="ngModel"
         minlength="5"
         required
-      />
-      <div
+      /> -->
+      <!-- <div
         *ngIf="EventName.errors?.minlength && EventName.touched"
         class="alert alert-danger"
       >
         -קצר מידי שם ארוע אינו תקין
-      </div>
-    </div>
-    <div class="form-group">
+      </div> -->
+    <!-- </div> -->
+    <!-- <div class="form-group"> -->
       <label>הזמנה</label>
-      <input
+      <mat-form-field>
+        <input
+          type="text"
+          class="form-control"
+          name="Invitation"
+          minlength="5"
+          required
+        /></mat-form-field>
+      <!-- <input
         type="text"
         class="form-control"
         [(ngModel)]="event.Invitation"
         name="Invitation"
         #Invitation="ngModel"
         value="לעשות תיבה להעלות מהמחשב"
-      />
-    </div>
-    <div class="form-group">
-      <label>מועד אחרון לאשר</label>
-      <input
+      /> -->
+    <!-- </div> -->
+    <!-- <div class="form-group"> -->
+  
+        <mat-form-field appearance="fill">
+          <mat-label>תאריך אחרון לאישור</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      <!-- <input
         type="text"
         class="form-control"
         [(ngModel)]="event.EventDueDate"
@@ -50,7 +75,7 @@
         value="לעשות תיבה עם תאריך או אחרב"
         required
       />
-    </div>
+    </div> -->
     <!--  <div class="p-col-12 p-md-4">
       <h3>Icon</h3>
       <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
@@ -59,11 +84,11 @@
       <p-calendar [(ngModel)]="date3"></p-calendar>
     </div> -->
     <br />
-    <a>אמור להיות כתוב {{ event.EventName }}, {{ event.EventType }}</a>
-    <div *ngIf="event.EventName && event.EventType && event.EventDate">
+    <!-- <a>אמור להיות כתוב {{ event.EventName }}, {{ event.EventType }}</a> -->
+    <!-- <div *ngIf="event.EventName && event.EventType && event.EventDate">
       בדיקת תקינות
     </div>
-    העלאת קובץ
+    העלאת קובץ -->
     <!-- <input
       type="file"
       style="display: inline-block;"
@@ -75,7 +100,11 @@
       Upload
     </button> -->
     <!-- <button (click)="navigate()">המשך</button> -->
-    <button [disabled]="!a.form.valid">סיימתי</button>
+    <!-- <button [disabled]="!a.form.valid">סיימתי</button> -->
+    <button (click)="add()"> 
+      add
+   </button> 
+   <button (click)="save()">save</button>
     <a routerLink="/new-event2">second page</a>
   </form>
 </div>

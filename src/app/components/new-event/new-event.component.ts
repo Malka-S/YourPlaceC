@@ -3,6 +3,8 @@ import { Event } from '../../model/event.model';
 import { BaseCode } from '../../model/baseCode';
 import { EventService } from '../../service/EventService';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 //import * as XLSX from 'xlsx'
 // import * as XLSX from 'ts-xlsx';
@@ -17,8 +19,13 @@ import { Router } from '@angular/router';
 export class NewEventComponent implements OnInit{
  
   @Input()
-  event: Event;
+  // event: Event;
   messageService: BaseCode[];
+  public form: FormGroup;
+  _selectedEvent: Event = new Event();
+  get selectedUser() {
+    return this._selectedEvent;
+  }
  
   date3: Date;
   arrayBuffer: any;
@@ -26,8 +33,28 @@ export class NewEventComponent implements OnInit{
   incomingfile(event) {
     this.file = event.target.files[0];
   }
-  constructor(private eventService: EventService, private router: Router) {}
- 
+  constructor(private eventService: EventService, private router: Router,private fb: FormBuilder) {
+    this.crateForm()
+
+  }
+  crateForm() {
+    this.form = this.fb.group({
+      EventName : [this._selectedEvent.EventName, Validators.compose([Validators.required])],
+      EventType: [this._selectedEvent.EventType],
+      Invitation:[this._selectedEvent.Invitation,Validators.compose([Validators.required])],
+    })
+  }
+  save(): void {
+    this.eventService.updateEvent(this.form.value)
+      .subscribe();
+  }
+  add(): void {
+    this.eventService.addEvent(this.form.value).subscribe();
+      //  .subscribe(hero => {
+      //   this.userService.push(this.User.firstName);
+      // });
+     
+  }
   ngOnInit(){
     this.eventService.getEventType().toPromise().then(data=> this.messageService=data);
   }

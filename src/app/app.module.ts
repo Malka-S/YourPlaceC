@@ -5,7 +5,7 @@ import { NewEventComponent } from './components/new-event/new-event.component';
 import { NewEvent2Component } from './components/new-event-two/new-event2.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
@@ -13,6 +13,13 @@ import { RouterModule, RouterState, Routes } from '@angular/router';
 // <<<<<<< HEAD
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { LoginComponent } from './components/login/login.component';
+//import {MatFormField, MatFormFieldControl} from '@angular/material/form-field'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 // =======
 // import { MatSliderModule } from '@angular/material/slider';
 // >>>>>>> 81e4a4623650f58d72380908dad0002ee247ba03
@@ -38,6 +45,10 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+ MatDatepickerModule,
     // MatSliderModule
   ],
   providers: [

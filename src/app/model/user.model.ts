@@ -5,19 +5,13 @@ export class User{
     user_phone_number: string;
     user_email: string;
     user_password: string;
-  constructor(
-    id,
-last_name,
-first_name,
-phone_number,
-email,
-password
-  ) {
-    this.user_id = id;
-    this.user_last_name=last_name;
-    this.user_first_name=first_name;
-    this.user_phone_number=phone_number;
-    this.user_email=email;
-    this.user_password=password;
-  }
+
+  // constructor(id,last_name,first_name,phone_number,email,password) {
+  //   this.user_id = id;
+  //   this.user_last_name=last_name;
+  //   this.user_first_name=first_name;
+  //   this.user_phone_number=phone_number;
+  //   this.user_email=email;
+  //   this.user_password=password;
+  // }
 }
