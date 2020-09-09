@@ -5,21 +5,20 @@ import { EventService } from '../../service/EventService';
 import { Router } from '@angular/router';
 
 //import * as XLSX from 'xlsx';
-// import * as XLSX from 'ts-xlsx';
-// const { read, write, utils } = XLSX;
+import * as XLSX from 'ts-xlsx';
+const { read, write, utils } = XLSX;
 
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css'],
-  providers:[EventService]
+  providers: [EventService],
 })
-export class NewEventComponent implements OnInit{
- 
+export class NewEventComponent implements OnInit {
   @Input()
   event: Event;
   messageService: BaseCode[];
- 
+
   date3: Date;
   arrayBuffer: any;
   file: File;
@@ -27,26 +26,30 @@ export class NewEventComponent implements OnInit{
     this.file = event.target.files[0];
   }
   constructor(private eventService: EventService, private router: Router) {}
- 
-  ngOnInit(){
-    this.eventService.getEventType().toPromise().then(data=> this.messageService=data);
+
+  ngOnInit() {
+    this.eventService
+      .getEventType()
+      .toPromise()
+      .then((data) => (this.messageService = data));
   }
-  Upload() {
-    //   let fileReader = new FileReader();
-    //   fileReader.onload = (e) => {
-    //     this.arrayBuffer = fileReader.result;
-    //     var data = new Uint8Array(this.arrayBuffer);
-    //     var arr = new Array();
-    //     for (var i = 0; i != data.length; ++i)
-    //       arr[i] = String.fromCharCode(data[i]);
-    //     var bstr = arr.join('');
-    //     var workbook = XLSX.read(bstr, { type: 'binary' });
-    //     var first_sheet_name = workbook.SheetNames[0];
-    //     var worksheet = workbook.Sheets[first_sheet_name];
-    //     console.log(XLSX.utils.sheet_to_json(worksheet, { raw: true }));
-    //   };
-    //   fileReader.readAsArrayBuffer(this.file);
-  } // }
+  // Upload() {
+  //   let fileReader = new FileReader();
+  //   fileReader.onload = (e) => {
+  //     this.arrayBuffer = fileReader.result;
+  //     var data = new Uint8Array(this.arrayBuffer);
+  //     var arr = new Array();
+  //     for (var i = 0; i != data.length; ++i)
+  //       arr[i] = String.fromCharCode(data[i]);
+  //     var bstr = arr.join('');
+  //     var workbook = XLSX.read(bstr, { type: 'binary' });
+  //     var first_sheet_name = workbook.SheetNames[0];
+  //     var worksheet = workbook.Sheets[first_sheet_name];
+  //     console.log(XLSX.utils.sheet_to_json(worksheet, { raw: true }));
+  //   };
+  //   fileReader.readAsArrayBuffer(this.file);
+  // }
+
   onSend({ value, valid }) {
     if (valid) {
       console.log(value);
@@ -54,12 +57,9 @@ export class NewEventComponent implements OnInit{
       console.log('not valid');
     }
   }
-  // navigate() {
-  //   this.router.navigate(['app-new-event2']);
 
   uploadedFiles: any[] = [];
 
- 
   new() {}
   // onUpload(event) {
   //   for (let file of event.files) {
