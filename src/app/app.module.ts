@@ -14,10 +14,11 @@ import { RouterModule, RouterState, Routes } from '@angular/router';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { LoginComponent } from './components/login/login.component';
 //import {MatFormField, MatFormFieldControl} from '@angular/material/form-field'
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 // =======
@@ -46,6 +47,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
     MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     MatDialogModule,
  MatDatepickerModule,

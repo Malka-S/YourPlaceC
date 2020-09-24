@@ -4,7 +4,8 @@ import { BaseCode } from '../../model/baseCode';
 import { EventService } from '../../service/EventService';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppService } from 'src/app/service/AppService';
 
 //import * as XLSX from 'xlsx'
 // import * as XLSX from 'ts-xlsx';
@@ -14,10 +15,10 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css'],
-  providers:[EventService]
+  providers: [AppService, EventService]
 })
-export class NewEventComponent implements OnInit{
- 
+export class NewEventComponent implements OnInit {
+
   @Input()
   // event: Event;
   messageService: BaseCode[];
@@ -26,22 +27,29 @@ export class NewEventComponent implements OnInit{
   get selectedUser() {
     return this._selectedEvent;
   }
- 
+
   date3: Date;
   arrayBuffer: any;
   file: File;
   incomingfile(event) {
     this.file = event.target.files[0];
   }
-  constructor(private eventService: EventService, private router: Router,private fb: FormBuilder) {
-    this.crateForm()
+  constructor(private eventService: EventService, private router: Router, private fb: FormBuilder) {
+    // ssthis.crateForm()
 
+  }
+
+  ngOnInit() {
+    this.eventService.getEventType().subscribe(data => {
+      debugger;
+      this.messageService = data;
+    });
   }
   crateForm() {
     this.form = this.fb.group({
-      EventName : [this._selectedEvent.EventName, Validators.compose([Validators.required])],
+      EventName: [this._selectedEvent.EventName, Validators.compose([Validators.required])],
       EventType: [this._selectedEvent.EventType],
-      Invitation:[this._selectedEvent.Invitation,Validators.compose([Validators.required])],
+      Invitation: [this._selectedEvent.Invitation, Validators.compose([Validators.required])],
     })
   }
   save(): void {
@@ -50,14 +58,12 @@ export class NewEventComponent implements OnInit{
   }
   add(): void {
     this.eventService.addEvent(this.form.value).subscribe();
-      //  .subscribe(hero => {
-      //   this.userService.push(this.User.firstName);
-      // });
-     
+    //  .subscribe(hero => {
+    //   this.userService.push(this.User.firstName);
+    // });
+
   }
-  ngOnInit(){
-    this.eventService.getEventType().toPromise().then(data=> this.messageService=data);
-  }
+
   Upload() {
     //   let fileReader = new FileReader();
     //   fileReader.onload = (e) => {
@@ -86,8 +92,8 @@ export class NewEventComponent implements OnInit{
 
   uploadedFiles: any[] = [];
 
- 
-  new() {}
+
+  new() { }
   // onUpload(event) {
   //   for (let file of event.files) {
   //     this.uploadedFiles.push(file);

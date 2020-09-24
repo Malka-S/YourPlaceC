@@ -4,13 +4,7 @@
     <br />
     <label>שם פרטי</label>
     <mat-form-field>
-      <input
-      type="text"
-      class="form-control"
-      name="firstName"
-      minlength="5"
-      required
-    />
+      <input matInput formControlName="user_first_name"/>
     </mat-form-field>
     
     <br />
@@ -25,13 +19,7 @@
     </div> -->
     <label>שם משפחה</label>
     <mat-form-field>
-    <input
-      type="text"
-      class="form-control"
-      name="lastName"
-      minlength="5"
-      required
-    /></mat-form-field>
+    <input matInput formControlName="user_last_name" /></mat-form-field>
     <br />
     <!-- <div
       *ngIf="
@@ -45,12 +33,7 @@
     <div class="form-group">
       <mat-form-field>
       <label>כתובת מייל</label>
-      <input
-        type="text"
-        class="form-control"
-        id="email"
-        name="email"
-      /></mat-form-field>
+      <input matInput id="email" formControlName="user_email"/></mat-form-field>
       <!-- <div
         *ngIf="userEmail.errors && (userEmail.touched || userEmail.dirty)"
         class="alert alert-danger"
@@ -63,24 +46,17 @@
 
     <br /><mat-form-field>
     <label>מספר טלפון לא חובה</label>
-    <input
-      type="text"
-      class="form-control"
-      name="AmountOfPlaces"
-      value="10"
-    /></mat-form-field>
-    <br /><mat-form-field>
+    <input matInput formControlName="user_phone_number"    />
+  </mat-form-field>
+    <br />
+    <mat-form-field>
     <label>סיסמה: </label>
-    <input
-      type="text"
-      class="form-control"
-      name="AmountOfPlaces"
-      value="10"
-    /></mat-form-field>
+    <input matInput formControlName="user_password"/>
+    </mat-form-field>
     <br />
      <button (click)="add()"> 
        add
     </button> 
-    <button (click)="save()">save</button>
+    <button [disabled]="!form.valid" (click)="save()">save</button>
   </form>
 </div>

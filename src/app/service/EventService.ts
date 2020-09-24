@@ -5,6 +5,7 @@ import { Event } from '../model/event.model';
 import { BaseCode } from '../model/baseCode';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { AppService } from './AppService';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,63 +14,30 @@ export class EventService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  
-  // Event: Event[] = [
-  //   new Event(
-  //     3546,
-  //     'wedding',
-  //     'Rivky and Hallel',
-  //     1 / 2 / 2000,
-  //     1 / 2 / 2000,
-  //     5,
-  //     6,
-  //     7,
-  //     'cgfng'
-  //   ),
-  //   new Event(
-  //     3546,
-  //     'wedding',
-  //     'Rivky and Hallel',
-  //     1 / 2 / 2000,
-  //     1 / 2 / 2000,
-  //     5,
-  //     6,
-  //     7,
-  //     'cgfng'
-  //   ),
-  //   new Event(
-  //     3546,
-  //     'wedding',
-  //     'Rivky and Hallel',
-  //     1 / 2 / 2000,
-  //     1 / 2 / 2000,
-  //     5,
-  //     6,
-  //     7,
-  //     'cgfng'
-  //   ),
-  // ];
-  constructor(private http: HttpClient,private EventService:EventService) {
-    this.getEventType();
-    this.addEvent(EventService);
+ 
+  constructor(private http: HttpClient,public appService:AppService) {
+    // this.getEventType();
+    // this.addEvent(appService);
   }
-  private UsersUrl = 'https://localhost:44390/api/Event';
-  getEvent(): Observable<any[]> {
-    return this.http.get<any[]>(this.UsersUrl)
-    // .pipe(
-    //     catchError(this.handleError <Any[]>('getUser', []))
-    //   );
-  }
-  addEvent(User: any): Observable<any> {
-    return this.http.post<any>('https://localhost:44390/api/Evnt/PostEvent', User, this.httpOptions);
+
+ 
+  getEventType()
+  {
+     return this.appService.get('Event/GetEventType');
 
   }
-  updateEvent(event: Event): Observable<any> {
-    return this.http.put(this.UsersUrl+'/PostEvent', event, this.httpOptions).pipe(
-      tap(_ => this.log(`updated user id=${event.EventCode}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
+  getEvent(params){
+    return this.appService.getbyId('Event',params);
   }
+  addEvent(event): Observable<any> 
+  {
+    return this.appService.post({ path: 'Evnt/PutEvent', body: event });
+  } 
+  updateEvent(event)
+  {
+    return this.appService.put('Evnt/PostEvent',event);
+  }
+ 
   log(arg0: string): void {
     throw new Error("Method not implemented.");
   }
@@ -88,10 +56,6 @@ export class EventService {
   //   });
   // }
 
-  getEventType(): Observable<BaseCode[]> {
-    let url = 'https://localhost:44390/api/Event/GetEventType';
-    return this.http.get<BaseCode[]>(url);
-  }
  
   
 }
