@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Event } from '../model/event.model';
 import { BaseCode } from '../model/baseCode';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })

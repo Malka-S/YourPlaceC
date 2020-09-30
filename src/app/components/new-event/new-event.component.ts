@@ -4,9 +4,9 @@ import { BaseCode } from '../../model/baseCode';
 import { EventService } from '../../service/EventService';
 import { Router } from '@angular/router';
 
-//import * as XLSX from 'xlsx';
-import * as XLSX from 'ts-xlsx';
-const { read, write, utils } = XLSX;
+//import * as XLSX from 'xlsx'
+// import * as XLSX from 'ts-xlsx';
+// const { read, write, utils } = XLSX;
 
 @Component({
   selector: 'app-new-event',
@@ -30,8 +30,9 @@ export class NewEventComponent implements OnInit {
   ngOnInit() {
     this.eventService
       .getEventType()
-      .toPromise()
-      .then((data) => (this.messageService = data));
+      .subscribe((data) => (this.messageService = data));
+    // .toPromise()
+    // .then((data) => (this.messageService = data));
   }
   // Upload() {
   //   let fileReader = new FileReader();
