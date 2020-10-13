@@ -17,20 +17,24 @@ import { Router } from '@angular/router';
 export class NewEventComponent implements OnInit {
   @Input()
   event: Event;
-  messageService: BaseCode[];
-
+  // messageService:
+  eventTypeList: BaseCode[] = [];
   date3: Date;
   arrayBuffer: any;
   file: File;
+  parameter: number = 2;
   incomingfile(event) {
     this.file = event.target.files[0];
   }
   constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit() {
-    this.eventService
-      .getEventType()
-      .subscribe((data) => (this.messageService = data));
+    this.eventService.getEventType().subscribe((data) => {
+      this.eventTypeList = data;
+    });
+    this.eventService.updateEventType(this.parameter).subscribe((data) => {
+      alert(data);
+    });
     // .toPromise()
     // .then((data) => (this.messageService = data));
   }

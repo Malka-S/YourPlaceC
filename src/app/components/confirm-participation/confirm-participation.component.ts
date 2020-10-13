@@ -15,7 +15,17 @@ export class ConfirmParticipationComponent implements OnInit {
     }
   }
   @Input()
-  TableMember = {
+  TableMember1 = {
+    GuestId: '',
+    FriendId: '',
+    likeOrNot: '',
+  };
+  TableMember2 = {
+    GuestId: '',
+    FriendId: '',
+    likeOrNot: '',
+  };
+  TableMember3 = {
     GuestId: '',
     FriendId: '',
     likeOrNot: '',

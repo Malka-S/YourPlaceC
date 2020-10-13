@@ -10,7 +10,7 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="TableMember.FriendId"
+      [(ngModel)]="TableMember1.FriendId"
       name="FriendId"
       #FriendId="ngModel"
     />
@@ -18,7 +18,7 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="TableMember.FriendId"
+      [(ngModel)]="TableMember2.FriendId"
       name="FriendId"
       #FriendId="ngModel"
     />
@@ -26,12 +26,14 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="TableMember.FriendId"
+      [(ngModel)]="TableMember3.FriendId"
       name="FriendId"
       #FriendId="ngModel"
     />
     <br />
-    <a>החברים שלך הם</a>
-    <a>החברים שלך הם: {{ TableMember.FriendId }},</a>
+    <a>:החברים שלך הם</a>
+    <a> {{ TableMember1.FriendId }} ,</a>
+    <a> {{ TableMember2.FriendId }} ,</a>
+    <a> {{ TableMember3.FriendId }} ,</a>
   </form>
 </div>

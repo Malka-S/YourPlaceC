@@ -63,4 +63,9 @@ export class EventService {
     let url = 'https://localhost:44390/api/Event/GetEventType';
     return this.http.get<BaseCode[]>(url);
   }
+
+  updateEventType(parameter: number): Observable<boolean> {
+    let url = 'https://localhost:44390/api/Users/UpdateEventType';
+    return this.http.post<boolean>(url, parameter);
+  }
 }

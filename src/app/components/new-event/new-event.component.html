@@ -1,19 +1,21 @@
 <div class="container mt-4" dir="rtl">
   <h1>הגדרת ארוע בסיסי</h1>
-  <h2>new changes</h2>
   <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
     <!-- <button type="button" (click)="new(); a.reset()">ניקוי</button> -->
     <div class="form-group">
       <label>סוג ארוע</label>
 
-      <select>
+      <!-- <select>
         <option [value]="mes.des" *ngFor="let mes of messageService">
-          {{ messageService }}
+          {{ mes.des }}
         </option>
-      </select>
-      <h5>{{ messageService }}</h5>
+      </select> -->
+
+      <div *ngFor="let x of eventTypeList">
+        {{ x.Des }}
+      </div>
       <label>שם ארוע</label>
-      <input
+      <!-- <input
         type="text"
         class="form-control"
         [(ngModel)]="event.EventName"
@@ -21,15 +23,15 @@
         #EventName="ngModel"
         minlength="5"
         required
-      />
-      <div
+      /> -->
+      <!-- <div
         *ngIf="EventName.errors?.minlength && EventName.touched"
         class="alert alert-danger"
       >
         -קצר מידי שם ארוע אינו תקין
-      </div>
+      </div> -->
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label>הזמנה</label>
       <input
         type="text"
@@ -54,19 +56,20 @@
         value="לעשות תיבה עם תאריך או אחרב"
         required
       />
-    </div>
+    </div> -->
     <!--  <div class="p-col-12 p-md-4">
       <h3>Icon</h3>
       <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
     </div>
     <div class="p-col-12 p-md-4">
       <p-calendar [(ngModel)]="date3"></p-calendar>
-    </div> -->
+    </div> 
     <br />
-    <a>אמור להיות כתוב {{ event.EventName }}, {{ event.EventType }}</a>
+    <a>welcome to {{ event.EventName }},</a>
+    <br />
     <div *ngIf="event.EventName && event.EventType && event.EventDate">
       בדיקת תקינות
-    </div>
+    </div> -->
     העלאת קובץ
     <!-- <input
       type="file"
@@ -78,8 +81,8 @@
     <button type="button" class="btn btn-info" (click)="Upload()">
       Upload
     </button>-->
-    <!-- <button (click)="navigate()">המשך</button> -->
-    <button [disabled]="!a.form.valid">סיימתי</button>
+    <!-- <button (click)="navigate()">המשך</button> 
+    <button [disabled]="!a.form.valid">סיימתי</button>-->
     <a routerLink="/new-event2">second page</a>
   </form>
 </div>
