@@ -21,7 +21,7 @@ export class NewEventComponent implements OnInit {
 
   @Input()
   // event: Event;
-  messageService: BaseCode[];
+  eventTypeList: BaseCode[];
   public form: FormGroup;
   _selectedEvent: Event = new Event();
   get selectedUser() {
@@ -42,7 +42,7 @@ export class NewEventComponent implements OnInit {
   ngOnInit() {
     this.eventService.getEventType().subscribe(data => {
       debugger;
-      this.messageService = data;
+      this.eventTypeList = data;
     });
   }
   crateForm() {

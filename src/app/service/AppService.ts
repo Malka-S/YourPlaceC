@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import {catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { BaseCode } from '../model/baseCode';
 
 @Injectable()
 export class AppService {
@@ -25,7 +26,7 @@ export class AppService {
         .pipe(catchError((err) => err).apply(res => {return res}).share());
     }
     get( path:string): Observable<any> {
-        return this.http.get(`${this.api_url}${path}`);//, {headers: this.getHeaders(), observe: 'response'});
+        return this.http.get<BaseCode>(`${this.api_url}${path}`);//, {headers: this.getHeaders(), observe: 'response'});
         //.pipe(catchError((err) => err).apply(res => {return res}).share());
     }
     getbyId( path:string, params:HttpParams=new HttpParams() ): Observable<any> {
