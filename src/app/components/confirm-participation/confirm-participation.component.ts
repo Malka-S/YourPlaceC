@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-0;
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AuthenticationService } from '../../service/authentication.server';
+
 
 @Component({
   selector: 'app-confirm-participation',
@@ -40,6 +43,16 @@ export class ConfirmParticipationComponent implements OnInit {
     //שהאורח יוכל לצפות במקומו-רק כאשר מוכן
   }
   constructor() {}
-
+  // constructor(
+  //   private formBuilder: FormBuilder,
+  //   private route: ActivatedRoute,
+  //   private router: Router,
+  //   private authenticationService: AuthenticationService //private alertService: AlertService
+  // ) {
+  //   // redirect to home if already logged in
+  //   if (this.authenticationService.currentUserValue) {
+  //     this.router.navigate(['/']);
+  //   }
+  // }
   ngOnInit(): void {}
 }

@@ -1,31 +1,54 @@
-<div dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Email Validation Tutorial</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- <app-root></app-root> -->
+</body>
+
+</html>
+
+<div dir="rtl" class="container-fluid">
   <h2>Login</h2>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        formControlName="username"
+  <form   [formGroup]="loginForm">
+
+    <div class="form-group"  >
+      <label for="user_email">Username</label>
+      <input  [class.is-invalid] = "loginForm.get('user_email').invalid && loginForm.get('user_email').touched"
+        type="email"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+        formControlName="user_email"
       />
-      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-        <div *ngIf="f.username.errors.required">Username is required</div>
+      <div *ngIf="(user_email.invalid && user_email.touched) || user_email.dirty">
+        <small *ngIf="user_email.errors?.required" class="text-danger">Primary email is required</small>
+        <!--question mark(?) is a safe navigation operator-->
+        <small *ngIf="user_email.errors?.pattern" class="text-danger">Please provide a valid email address</small>
       </div>
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input
+      <label for="user_password">Password</label>
+      <input  [class.is-invalid] = "loginForm.get('user_password').invalid && loginForm.get('user_password').touched"
         type="password"
-        formControlName="password"
+        formControlName="user_password"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
       />
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
+      <div *ngIf="(user_password.invalid && user_password.touched) || user_password.dirty">
+        <small *ngIf="user_password.errors?.required" class="text-danger">Secondary email is required</small>
+        <small *ngIf="user_password.errors?.pattern" class="text-danger">Please provide a valid email address</small>
       </div>
     </div>
-    <div class="form-group">
+    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="Submit" [disabled]="!loginForm.valid">
+
+    <!-- <div class="form-group">
       <button [disabled]="loading" class="btn btn-primary">
         <span
           *ngIf="loading"
@@ -34,9 +57,8 @@
         Login
       </button>
       <a routerLink="/register" class="btn btn-link">Register</a>
-    </div>
+    </div> -->
   </form>
-  <a routerLink="/new-event">הגדרת ארוע </a><br />
 </div>
 <!--<h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">

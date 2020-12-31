@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Event } from './model/event.model';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,7 @@ import { Event } from './model/event.model';
 })
 export class AppComponent {
   title = 'YourPlace';
-  constructor() {}
-  ngOnInit() {}
+  constructor() { }
+  ngOnInit() { }
+  
 }

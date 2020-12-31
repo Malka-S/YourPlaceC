@@ -9,41 +9,41 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EventService {
-  Event: Event[] = [
-    new Event(
-      3546,
-      'wedding',
-      'Rivky and Hallel',
-      1 / 2 / 2000,
-      1 / 2 / 2000,
-      5,
-      6,
-      7,
-      'cgfng'
-    ),
-    new Event(
-      3546,
-      'wedding',
-      'Rivky and Hallel',
-      1 / 2 / 2000,
-      1 / 2 / 2000,
-      5,
-      6,
-      7,
-      'cgfng'
-    ),
-    new Event(
-      3546,
-      'wedding',
-      'Rivky and Hallel',
-      1 / 2 / 2000,
-      1 / 2 / 2000,
-      5,
-      6,
-      7,
-      'cgfng'
-    ),
-  ];
+  Event: Event[] = [];
+  //   new Event(
+  //     3546,
+  //     'wedding',
+  //     'Rivky and Hallel',
+  //     1 / 2 / 2000,
+  //     1 / 2 / 2000,
+  //     5,
+  //     6,
+  //     7,
+  //     'cgfng'
+  //   ),
+  //   new Event(
+  //     3546,
+  //     'wedding',
+  //     'Rivky and Hallel',
+  //     1 / 2 / 2000,
+  //     1 / 2 / 2000,
+  //     5,
+  //     6,
+  //     7,
+  //     'cgfng'
+  //   ),
+  //   new Event(
+  //     3546,
+  //     'wedding',
+  //     'Rivky and Hallel',
+  //     1 / 2 / 2000,
+  //     1 / 2 / 2000,
+  //     5,
+  //     6,
+  //     7,
+  //     'cgfng'
+  //   ),
+  // ];
   constructor(private http: HttpClient) {
     this.getEventType();
   }

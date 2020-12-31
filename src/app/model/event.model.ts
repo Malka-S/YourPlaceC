@@ -1,32 +1,26 @@
 export class Event {
-  public EventCode: number;
+  public EventId: number;
   public EventType: string;
-  public EventName: string;
+  public EventDes: string;
   public EventDate: Date;
   public EventDueDate: Date;
-  public ManagerCode: number;
-  public SeatingArrangementCode: number;
-  public GuestCode: number;
+  public UserId: number;
   public Invitation: string;
   constructor(
     code,
     type,
-    name,
+    des,
     date,
     DueDate,
-    managerCode,
-    seatingArrangementCode,
-    guestCode,
+    userId,
     invitation
   ) {
-    this.EventCode = code;
+    this.EventId = code;
     this.EventType = type;
-    this.EventName = name;
+    this.EventDes = des;
     this.EventDate = date;
     this.EventDueDate = DueDate;
-    this.ManagerCode = managerCode;
-    this.SeatingArrangementCode = seatingArrangementCode;
-    this.GuestCode = guestCode;
+    this.UserId = userId;
     this.Invitation = invitation;
   }
 }

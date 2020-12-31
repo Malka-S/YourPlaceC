@@ -1,88 +1,223 @@
-<div class="container mt-4" dir="rtl">
-  <h1>הגדרת ארוע בסיסי</h1>
-  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
-    <!-- <button type="button" (click)="new(); a.reset()">ניקוי</button> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Email Validation Tutorial</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div dir="rtl" class="container">
+  <h1>הגדרת ארוע </h1>
+  <form [formGroup]="creatEvent">
     <div class="form-group">
-      <label>סוג ארוע</label>
 
-      <!-- <select>
-        <option [value]="mes.des" *ngFor="let mes of messageService">
-          {{ mes.des }}
-        </option>
-      </select> -->
-
-      <div *ngFor="let x of eventTypeList">
-        {{ x.Des }}
+      <div class="form-group" name="שם ארוע">
+        <label for="EventDes"> הכנס שם פרטי</label>
+        <input [class.is-invalid]="creatEvent.get('EventDes').invalid && creatEvent.get('EventDes').touched" type="text"
+          class="form-control" formControlName="EventDes" />
+        <div *ngIf="(EventDes.invalid && EventDes.touched) || EventDes.dirty">
+          <small *ngIf="EventDes.errors?.required" class="text-danger">הכנס שם ארוע</small>
+          <small *ngIf="EventDes.errors?.pattern" class="text-danger">שם ארוע אינו תקין</small>
+        </div>
       </div>
-      <label>שם ארוע</label>
-      <!-- <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="event.EventName"
-        name="EventName"
-        #EventName="ngModel"
-        minlength="5"
-        required
-      /> -->
-      <!-- <div
-        *ngIf="EventName.errors?.minlength && EventName.touched"
-        class="alert alert-danger"
-      >
-        -קצר מידי שם ארוע אינו תקין
+      <div name="סוג ארוע">
+        <label>סוג ארוע</label>
+        <!-- <div *ngFor='let message of eventService'> {{message}} </div> -->
+        <select>
+          <option [value]="mes.des" *ngFor="let mes of eventService">
+            {{ mes.des }}
+          </option>
+        </select> 
+
+        <!-- <div *ngFor="let x of eventTypeList">
+          {{ x.Des }}
+        </div> -->
+      </div>
+
+      <div name="תאריך ארוע" class="form-group">
+        <label> תאריך אירוע </label>
+        <input type="date" class="form-control" ngModel="event.EventDate" [(ngModel)]="event.EventDate" name="EventDate"
+          #EventDate="ngModel" minlength="10" value="לעשות תיבה עם תאריך " required />
+      </div>
+
+
+      <div name=" הזמנה" class="form-group">
+        <label>הזמנה</label>
+        <input type="file" style="display: inline-block;" ngModel="event.Invitation" [(ngModel)]="event.Invitation"
+          name="Invitation" #Invitation="ngModel" (change)="incomingfile($event)" placeholder="Upload file"
+          accept=".xlsx" />
+      </div>
+
+      <div name="מועד אחרון לאשר" class="form-group">
+        <label>מועד אחרון לאשר</label>
+        <input type="date" class="form-control" ngModel="event.EventDueDate" [(ngModel)]="event.EventDueDate"
+          name="EventDueDate" #EventDueDate="ngModel" minlength="10" value="לעשות תיבה עם תאריך או אחרב" required />
+      </div>
+
+      <div class="form-group" name=" מספר קטגוריות ">
+        <label for="numCategory">הכנס מספר קטגוריות שצפוי להיות בארוע </label>
+        <input [class.is-invalid]="creatEvent.get('numCategory').invalid && creatEvent.get('numCategory').touched"
+          type="number" class="form-control" formControlName="numCategory" />
+        <div *ngIf="(numCategory.invalid && numCategory.touched) || numCategory.dirty">
+          <small *ngIf="numCategory.errors?.required" class="text-danger">הכנס מספר מקומות ישיבה סביב השולחן</small>
+          <small *ngIf="numCategory.errors?.pattern" class="text-danger"> מספר מקומות אינו תקין </small>
+        </div>
+      </div>
+
+
+      <!-- <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1> To-Do Application </h1>
+          </div>
+        </div>
       </div> -->
+
+      <!-- <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <input type="text" class="form-control" name="task" placeholder="Task" #taskInput>
+          </div>
+
+          <div class="col-xs-4">
+            <button class="btn btn-info" (click)="addTask(taskInput)">Add</button>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <div class="col-xs-12">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>To-Do list</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let task of tasks; let idx = index">
+                  <td *ngIf="task.is_canceled; else elseTd">
+                    <s>{{ idx + 1 }}. {{task.title}}</s>
+                  </td>
+                  <ng-template #elseTd>
+                    <td>{{ idx + 1 }}. {{task.title}}</td>
+                  </ng-template>
+
+                  <td>
+                    <button class="btn btn-primary btn-xs" (click)="editTask(idx)"> Edit </button>
+                  </td>
+
+                  <td>
+                    <button class="btn btn-warning btn-xs" (click)="cancelTask(idx)"> Cancel </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger btn-xs" (click)="deleteTask(idx)"> Delete </button>
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+                <tr>
+                  <button class="btn btn-danger" (click)="clearToDo()">Clear</button>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div> -->
+      <!-- <h1></h1>
+      <div class="p-col-12 p-md-4">
+        <p-calendar [(ngModel)]="date3"></p-calendar>
+      </div>
+      <br />
+      <a>welcome to {{ event.EventDes }},</a>
+      <br />
+      <div *ngIf="event.EventDes && event.EventType && event.EventDate">
+        בדיקת תקינות
+      </div> -->
+      <!-- <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="לטעינת שולחנות"
+      [disabled]="!creatEvent.valid"> -->
+      <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="לטעינת שולחנות">
     </div>
-    <!-- <div class="form-group">
-      <label>הזמנה</label>
-      <input
-        type="text"
-        class="form-control"
-        ngModel="event.Invitation"
-        [(ngModel)]="event.Invitation"
-        name="Invitation"
-        #Invitation="ngModel"
-        value="לעשות תיבה להעלות מהמחשב"
-      />
-    </div>
-    <div class="form-group">
-      <label>מועד אחרון לאשר</label>
-      <input
-        type="text"
-        class="form-control"
-        ngModel="event.EventDueDate"
-        [(ngModel)]="event.EventDueDate"
-        name="EventDueDate"
-        #EventDueDate="ngModel"
-        minlength="10"
-        value="לעשות תיבה עם תאריך או אחרב"
-        required
-      />
-    </div> -->
-    <!--  <div class="p-col-12 p-md-4">
-      <h3>Icon</h3>
-      <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
-    </div>
-    <div class="p-col-12 p-md-4">
-      <p-calendar [(ngModel)]="date3"></p-calendar>
-    </div> 
-    <br />
-    <a>welcome to {{ event.EventName }},</a>
-    <br />
-    <div *ngIf="event.EventName && event.EventType && event.EventDate">
-      בדיקת תקינות
-    </div> -->
-    העלאת קובץ
-    <!-- <input
-      type="file"
-      style="display: inline-block;"
-      (change)="incomingfile($event)"
-      placeholder="Upload file"
-      accept=".xlsx"
-    /> 
-    <button type="button" class="btn btn-info" (click)="Upload()">
-      Upload
-    </button>-->
-    <!-- <button (click)="navigate()">המשך</button> 
-    <button [disabled]="!a.form.valid">סיימתי</button>-->
-    <a routerLink="/new-event2">second page</a>
+
   </form>
 </div>
+</body>
+</html>
+<!-- <div class="container mt-4" dir="rtl">
+  <h1>הגדרת ארוע </h1>
+  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
+    <button type="button" (click)="new(); a.reset()">ניקוי</button>
+    <div class="form-group">
+
+      <div name="שם אירוע" class="form-group">
+        <label>שם ארוע</label>
+        <input id="EventDes" name="EventDes" type="text" class="form-control" required minlength="4"
+          appForbiddenName="bob" value="שם של האירוע " [(ngModel)]="event.EventDes" #EventDes="ngModel" />
+
+      </div>
+
+      <div name="סוג ארוע">
+        <label>סוג ארוע</label>
+        <select>
+          <option [value]="mes.des" *ngFor="let mes of messageService">
+            {{ mes.des }}
+          </option>
+        </select>
+
+        <div *ngFor="let x of eventTypeList">
+          {{ x.Des }}
+        </div>
+      </div>
+
+      <div name="תאריך ארוע" class="form-group">
+        <label> תאריך אירוע </label>
+        <input type="text" class="form-control" ngModel="event.EventDate" [(ngModel)]="event.EventDate" name="EventDate"
+          #EventDate="ngModel" minlength="10" value="לעשות תיבה עם תאריך " required />
+      </div>
+
+      <div name=" הזמנה" class="form-group">
+        <label>הזמנה</label>
+        <input type="file" style="display: inline-block;" ngModel="event.Invitation" [(ngModel)]="event.Invitation"
+          name="Invitation" #Invitation="ngModel" (change)="incomingfile($event)" placeholder="Upload file"
+          accept=".xlsx" />
+      </div>
+
+      <div name="מועד אחרון לאשר" class="form-group">
+        <label>מועד אחרון לאשר</label>
+        <input type="text" class="form-control" ngModel="event.EventDueDate" [(ngModel)]="event.EventDueDate"
+          name="EventDueDate" #EventDueDate="ngModel" minlength="10" value="לעשות תיבה עם תאריך או אחרב" required />
+      </div>
+
+      <div class="p-col-12 p-md-4">
+        <h3>Icon</h3>
+        <p-calendar [(ngModel)]="date3" [showIcon]="true"></p-calendar>
+      </div>
+      <div class="p-col-12 p-md-4">
+        <p-calendar [(ngModel)]="date3"></p-calendar>
+      </div>
+      <br />
+      <a>welcome to {{ event.EventDes }},</a>
+      <br />
+      <div *ngIf="event.EventDes && event.EventType && event.EventDate">
+        בדיקת תקינות
+      </div>
+
+      <button type="button" class="btn btn-info" (click)="Upload()">
+      Upload
+    </button>
+      <button (click)="navigate()">המשך</button> 
+      <div>
+        <button [disabled]="!a.form.valid">סיימתי</button>
+      </div>
+      <div>
+        <a routerLink="/new-event2">טעינת השולחנות</a>
+      </div>
+    </div>
+  </form>
+</div> -->
