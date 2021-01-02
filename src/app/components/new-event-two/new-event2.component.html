@@ -1,33 +1,90 @@
-<div class="container mt-4" dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Email Validation Tutorial</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- <app-root></app-root> -->
+</body>
+
+</html>
+<div dir="rtl" class="container-fluid">
+  <form   [formGroup]="newTables">
+
+    <div class="form-group" name="שם שולחן" >
+      <label for="TableTitle"> הכנס שם שולחן</label>
+      <input  [class.is-invalid] = "newTables.get('TableTitle').invalid && newTables.get('TableTitle').touched"
+        type="text"
+        class="form-control"
+        formControlName="TableTitle"
+      />
+      <div *ngIf="(TableTitle.invalid && TableTitle.touched) || TableTitle.dirty">
+        <small *ngIf="TableTitle.errors?.required" class="text-danger">הכנס שם שולחן</small>
+        <!--question mark(?) is a safe navigation operator-->
+        <small *ngIf="TableTitle.errors?.pattern" class="text-danger">שם שולחן אינו תקין</small>
+      </div>
+    </div>
+    <div class="form-group" name=" מספר מקומות ישיבה סביב השולחן">
+      <label for="AmountOfPlaces">הכנס מספר מקומות ישיבה סביב השולחן</label>
+      <input  [class.is-invalid] = "newTables.get('AmountOfPlaces').invalid && newTables.get('AmountOfPlaces').touched"
+        type="number"
+        class="form-control"
+        formControlName="AmountOfPlaces"
+      />
+      <div *ngIf="(AmountOfPlaces.invalid && AmountOfPlaces.touched) || AmountOfPlaces.dirty">
+        <small *ngIf="AmountOfPlaces.errors?.required" class="text-danger">הכנס מספר מקומות ישיבה סביב השולחן</small>
+        <small *ngIf="AmountOfPlaces.errors?.pattern" class="text-danger">   מספר מקומות אינו תקין    </small>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- <div  class="container mt-4" dir="rtl">
   <h1>שולחנות</h1>
   <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
     <br />
-    <label>מאפינים</label>
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="Table.TableType"
-      name="TableType"
-      #TableType="ngModel"
-      minlength="5"
-      required
-    />
+    <div class="form-group">
+
+    <div name=" קטגוריה">
+      <label>קטגוריה</label>
+      <input type="text" class="form-control" ngModel="Table.CategoryId" [(ngModel)]="Table.CategoryId" name="CategoryId" #CategoryId="ngModel"
+        minlength="5" required />
+      <div *ngIf="CategoryId.errors?.minlength && CategoryId.touched" class="alert alert-danger">
+        -קצר מידי שם ארוע אינו תקין
+      </div>
+      <br />
+    </div>
+    <div name="שם שולחן">
+      <label>שם שולחן</label>
+      <input type="text" class="form-control"  ngModel="Table.TableTitle"  [(ngModel)]="Table.TableTitle" name="TableTitle" #TableTitle="ngModel"
+        minlength="5" required />
+      <div *ngIf="TableTitle.errors?.minlength && TableTitle.touched" class="alert alert-danger">
+        -קצר מידי שם ארוע אינו תקין
+      </div>
+      <br />
+    </div>
+    <div name="מושבים סביב שולחן">
+      <label>מושבים סביב שולחן</label>
+      <input type="number" class="form-control" ngModel="Table.AmountOfPlaces" [(ngModel)]="Table.AmountOfPlaces" name="AmountOfPlaces"
+        #AmountOfPlaces="ngModel" value="10" required />
+      <br />
+    </div>
+    <a>סוג שולחן {{ Table.CategoryId }}, </a>
     <br />
-    <label>מושבים סביב שולחן</label>
-    <input
-      type="number"
-      class="form-control"
-      [(ngModel)]="Table.AmountOfPlaces"
-      name="AmountOfPlaces"
-      #AmountOfPlaces="ngModel"
-      value="10"
-      required
-    />
-    <br />
-    <a>סוג שולחן {{ Table.TableType }}, </a>
+    <a> שם שולחן {{ Table.TableTitle }}, </a>
     <br />
     <a>כמות כסאות {{ Table.AmountOfPlaces }},</a>
 
+    <button (click)="clear()">הוספת שולחן נוסף</button>
+
     <a routerLink="/reminders">תזכירים</a>
+    </div>
   </form>
-</div>
+</div> -->

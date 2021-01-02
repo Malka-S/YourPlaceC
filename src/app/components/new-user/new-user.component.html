@@ -1,4 +1,120 @@
-<div class="container mt-4" dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Email Validation Tutorial</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- <app-root></app-root> -->
+</body>
+
+</html>
+
+
+<div dir="rtl" class="container-fluid">
+  <h2>משתמש חדש </h2>
+  <form   [formGroup]="newUserForn">
+
+    <div class="form-group" name="שם פרטי" >
+      <label for="user_first_name"> הכנס שם פרטי</label>
+      <input  [class.is-invalid] = "newUserForn.get('user_first_name').invalid && newUserForn.get('user_first_name').touched"
+        type="text"
+        class="form-control"
+        formControlName="user_first_name"
+      />
+      <div *ngIf="(user_first_name.invalid && user_first_name.touched) || user_first_name.dirty">
+        <small *ngIf="user_first_name.errors?.required" class="text-danger">הכנס שם פרטי</small>
+        <!--question mark(?) is a safe navigation operator-->
+        <small *ngIf="user_first_name.errors?.pattern" class="text-danger">שם פרטי אינו תקין</small>
+      </div>
+    </div>
+     <div class="form-group" name="שם משפחה">
+      <label for="user_last_name"> הכנס שם משפחה</label>
+      <input  [class.is-invalid] = "newUserForn.get('user_last_name').invalid && newUserForn.get('user_last_name').touched"
+        type="text"
+        class="form-control"
+        formControlName="user_last_name"
+      />
+      <div *ngIf="(user_last_name.invalid && user_last_name.touched) || user_last_name.dirty">
+        <small *ngIf="user_last_name.errors?.required" class="text-danger">הכנס שם משפחה</small>
+        <!-- question mark(?) is a safe navigation operator -->
+        <small *ngIf="user_last_name.errors?.pattern" class="text-danger">שם משפחה אינו תקין</small>
+      </div>
+    </div> 
+    <div class="form-group" name="טלפון">
+      <label for="user_phone_number">הכנס מספר טלפון</label>
+      <input  [class.is-invalid] = "newUserForn.get('user_phone_number').invalid && newUserForn.get('user_phone_number').touched"
+        type="number"
+        class="form-control"
+        formControlName="user_phone_number"
+      />
+      <div *ngIf="(user_phone_number.invalid && user_phone_number.touched) || user_phone_number.dirty">
+        <small *ngIf="user_phone_number.errors?.required" class="text-danger">הכנס מספר טלפון</small>
+        <!--question mark(?) is a safe navigation operator-->
+        <small *ngIf="user_phone_number.errors?.pattern" class="text-danger">   טלפון אינו תקין    </small>
+      </div>
+    </div>
+    <div class="form-group" name="מייל" >
+      <label for="user_email"> הכנס דואר אלקטרוני</label>
+      <input  [class.is-invalid] = "newUserForn.get('user_email').invalid && newUserForn.get('user_email').touched"
+        type="email"
+        class="form-control"
+        formControlName="user_email"
+      />
+      <div *ngIf="(user_email.invalid && user_email.touched) || user_email.dirty">
+        <small *ngIf="user_email.errors?.required" class="text-danger">הכנס דואר אלקטרוני</small>
+        <!--question mark(?) is a safe navigation operator-->
+        <small *ngIf="user_email.errors?.pattern" class="text-danger">כתובת המייל לא תקינה</small>
+      </div>
+    </div>
+    <div class="form-group" name="סיסמה">
+      <label for="user_password">הכנס סיסמה</label>
+      <input  [class.is-invalid] = "newUserForn.get('user_password').invalid && newUserForn.get('user_password').touched"
+        type="password"
+        formControlName="user_password"
+        class="form-control"
+      />
+      <div *ngIf="(user_password.invalid && user_password.touched) || user_password.dirty">
+        <small *ngIf="user_password.errors?.required" class="text-danger"> הכנס סיסמה</small>
+        <small *ngIf="user_password.errors?.pattern" class="text-danger">סיסמה לא תקינה</small>
+      </div>
+    </div>
+    <div class="form-group" name="הכנס סיסמה">
+      <label for="user_confirmPassword">אשר סיסמה</label>
+      <input  [class.is-invalid] = "newUserForn.get('user_confirmPassword').invalid && newUserForn.get('user_confirmPassword').touched"
+        type="password"
+        formControlName="user_confirmPassword"
+        class="form-control"
+      />
+      <div *ngIf="(user_confirmPassword.invalid && user_confirmPassword.touched) || user_confirmPassword.dirty">
+        <small *ngIf="user_confirmPassword.errors?.required" class="text-danger"> הכנס סיסמה</small>
+        <small *ngIf="user_confirmPassword.errors?.pattern" class="text-danger">סיסמה לא תקינה</small>
+      </div>
+    </div>
+    <!-- <button class="btn btn-primary" type="submit" [disabled]="!newUserForn.valid" ng-click="onSubmit">Submit</button> -->
+    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="Submit" [disabled]="!newUserForn.valid">
+
+  
+    <!-- <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Login
+      </button>
+      <a routerLink="/register" class="btn btn-link">Register</a>
+    </div> -->
+  </form>
+</div>
+<!-- <div class="container" dir="rtl">
   <h1>משתמש חדש</h1>
   <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
     <br />
@@ -82,9 +198,9 @@
       value="10"
     />
     <br />
-    <!-- <button (click)="add(user.user_first_name.value , user.user_last_name.value ,user.user_email.value,user.user_phone_number.value,user.user_password.value); 
+     <button (click)="add(user.user_first_name.value , user.user_last_name.value ,user.user_email.value,user.user_phone_number.value,user.user_password.value); 
      user_first_name.value='',user_last_name.value='',user_email.value='',user_phone_number.value='',user_password.value=''
-     ">  -->
+     ">  
     <button
       (click)="
         add(
@@ -100,4 +216,4 @@
     </button>
     <button (click)="save()">save</button>
   </form>
-</div>
+</div> -->

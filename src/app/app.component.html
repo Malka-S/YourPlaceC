@@ -1,7 +1,36 @@
-<div dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
+
+<head dir="rtl" class="container-fluid">
+  <meta charset="utf-8">
+  <title>Email Validation Tutorial</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<div dir="rtl"class="container">
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/new-event">הגדרת אירוע</a></li>
+   <li class="breadcrumb-item"><a routerLink="/confirm-participation">אישור השתתפות</a></li>
+    <li class="breadcrumb-item"><a routerLink="/add-guest">הוספת אורח </a></li>
+    <!-- <li class="breadcrumb-item"><a routerLink="/edit-guest">עריכת אורח </a></li> -->
+    <li class="breadcrumb-item"><a routerLink="/list-guests"> רשימת אורחים</a></li>
+    <li class="breadcrumb-item"><a routerLink="/new-user">משתמש חדש</a></li>
+    <li class="breadcrumb-item"><a routerLink="/login">משתמש קיים</a></li>
+    <!-- <li class="breadcrumb-item active">Courses</li>  -->
+  </ol>
+
   <router-outlet></router-outlet>
-  <a routerLink="/new-event">הגדרת ארוע </a><br />
-  <a routerLink="/confirm-participation">אישור השתתפות</a><br />
-  <a routerLink="/new-user">משתמש חדש</a><br />
-  <a routerLink="/login">משתמש קיים</a><br />
+
 </div>
+</body>
+
+</html> 
+<!-- </main>  -->
+<!-- 
+<router-outlet></router-outlet> -->
