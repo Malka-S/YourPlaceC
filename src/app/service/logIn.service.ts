@@ -8,17 +8,18 @@ import { Observable } from 'rxjs';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getAll() {
-    return this.http.get<User[]>(`/users`);
-  }
+//   getAll() {
+//     return this.http.get<User[]>(`/users`);
+//   }
 
   register(user: User) {
     return this.http.post(`/users/register`, user);
   }
-  delete(id: number) {
-    return this.http.delete(`/users/${id}`);
-  }
-  GetUserFromServer(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:44390/api/User/Get');
-  }
+
+//   delete(id: number) {
+//     return this.http.delete(`/users/${id}`);
+//   }
+//   GetUserFromServer(): Observable<any[]> {
+//     return this.http.get<any[]>('https://localhost:44390/api/User/Get');
+//   }
 }
