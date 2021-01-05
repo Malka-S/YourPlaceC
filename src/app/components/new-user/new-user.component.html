@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
   <meta charset="utf-8">
@@ -20,7 +20,7 @@
 
 <div dir="rtl" class="container-fluid">
   <h2>משתמש חדש </h2>
-  <form   [formGroup]="newUserForn">
+  <form [formGroup]="newUserForn">
 
     <div class="form-group" name="שם פרטי" >
       <label for="user_first_name"> הכנס שם פרטי</label>
@@ -51,7 +51,7 @@
     <div class="form-group" name="טלפון">
       <label for="user_phone_number">הכנס מספר טלפון</label>
       <input  [class.is-invalid] = "newUserForn.get('user_phone_number').invalid && newUserForn.get('user_phone_number').touched"
-        type="number"
+        type="tel"
         class="form-control"
         formControlName="user_phone_number"
       />
@@ -99,7 +99,7 @@
       </div>
     </div>
     <!-- <button class="btn btn-primary" type="submit" [disabled]="!newUserForn.valid" ng-click="onSubmit">Submit</button> -->
-    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="Submit" [disabled]="!newUserForn.valid">
+    <input type="button" class="btn btn-primary" (click)="onSubmit()" value="Submit" [disabled]="!newUserForn.valid">
 
   
     <!-- <div class="form-group">

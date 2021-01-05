@@ -10,20 +10,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
   user: User;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  alertService: any;
+  
 
   loginForm = new FormGroup({
     user_email: new FormControl('', [
       Validators.required,
       Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    user_password: new FormControl(''),
-    user_name: new FormControl('')
+    user_password: new FormControl('' ,[Validators.required]),
+    user_name: new FormControl('',[Validators.required])
 
   });
 
-  loading = false;
-  submitted = false;
-  returnUrl: string;
-  alertService: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,18 +38,15 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit() {
-    // this.loginForm = this.formBuilder.group({
-    //   user_email: ['', Validators.required],
-    //   user_password: ['', Validators.required],
-        //   user_name: ['', Validators.required],
+    this.loginForm = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required]
+    });
 
-    
-    // });
-
-    //  get return url from route parameters or default to '/'
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  }
-
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+}
+ 
   // convenience getter for easy access to form fields
   get f() {
     return this.loginForm.controls;
@@ -56,46 +54,45 @@ export class LoginComponent implements OnInit {
   get user_email() {
     return this.loginForm.get('user_email')
   }
-
   get user_password() {
     return this.loginForm.get('user_password')
   }
   get user_name() {
     return this.loginForm.get('user_name')
   }
-  onSubmit() {  
-    this.router.navigateByUrl('/new-event');
-} 
-  // onSubmit() {
-  //   this.submitted = true;
+  register(): void {
+    this.router.navigateByUrl('/new-user');
+  };
+//  updateUser(idx: number) {
+//   let any = this.user[idx].any;
+//   let result = prompt("update user ", any);
+//   if (result !== null && result !== "") {
+//     this.user[idx].any = result;
+//   }
+//}
 
-  //   // stop here if form is invalid
-  //   if (this.loginForm.invalid) {
-  //     return;
-  //   }
+  onSubmit() {
+    this.submitted = true;
 
-  //   this.loading = true;
-  //   this.authenticationService
-  //     .login(this.f.user_email.value, this.f.user_password.value)
-  //     .pipe(first())
-  //     .subscribe(
-  //       (data) => {
-  //         this.router.navigate([this.returnUrl]);
-  //       },
-  //       (error) => {
-  //         this.alertService.error(error);
-  //         this.loading = false;
-  //       }
-  //     );
-  // }
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    this.authenticationService
+      .login(this.f.user_email.value, this.f.user_password.value)
+      .pipe(first())
+      .subscribe(
+        (data) => {
+          this.router.navigate([this.returnUrl]);
+        },
+        (error) => {
+          this.alertService.error(error);
+          this.loading = false;
+        }
+      );
+  }
 }
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css'],
-// })
-// export class LoginComponent implements OnInit {
-//   constructor() {}
-//   ngOnInit(): void {}
-//   onSubmit() {}
-// }
+
+
