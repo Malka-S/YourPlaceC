@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { User } from '../model/user.model';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+  User:User[]=[];
   constructor(private http: HttpClient) {}
 
-//   getAll() {
-//     return this.http.get<User[]>(`/users`);
-//   }
-
+getUser(): Promise<User[]> {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res(this.User);
+    }, 1);
+  });
+}
   register(user: User) {
     return this.http.post(`/users/register`, user);
   }
   put(user: User){
     return this.http.put(`/users`, user);
   }
-
-//   delete(id: number) {
-//     return this.http.delete(`/users/${id}`);
-//   }
-//   GetUserFromServer(): Observable<any[]> {
-//     return this.http.get<any[]>('https://localhost:44390/api/User/Get');
-//   }
+  GetUserFromServer(): Observable<any[]> {
+    return this.http.get<any[]>('https://localhost:44390/api/User/GetUser');
+  }
 }

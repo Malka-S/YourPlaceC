@@ -11,10 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 // import * as XLSX from 'ts-xlsx';
 // const { read, write, utils } = XLSX;
 
-interface Task {
-  title: string,
-  is_canceled: boolean
-}
+// interface Task {
+//   title: string,
+//   is_canceled: boolean
+// }
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
@@ -35,20 +35,20 @@ export class NewEventComponent implements OnInit {
   file: File;
   parameter: number = 2;
   // task: string;
-  tasks: Array<Task> = [
-    {
-      title: "Go home",
-      is_canceled: false
-    },
-    {
-      title: "Take a nap",
-      is_canceled: false
-    },
-    {
-      title: "Start learning Angular with Sabuj",
-      is_canceled: false
-    }
-  ];
+  // tasks: Array<Task> = [
+  //   {
+  //     title: "Go home",
+  //     is_canceled: false
+  //   },
+  //   {
+  //     title: "Take a nap",
+  //     is_canceled: false
+  //   },
+  //   {
+  //     title: "Start learning Angular with Sabuj",
+  //     is_canceled: false
+  //   }
+  // ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -86,45 +86,7 @@ export class NewEventComponent implements OnInit {
   // get numCategory() {
   //   return this.creatEvent.get('numCategory')
   // }
-  //clearToDo() {
-  //   let do_delete = confirm("Are you sure to delete all tasks?");
-  //   if (do_delete) {
-  //     this.tasks.splice(0);
-  //   }
-  // }
 
-  addTask(input) {
-    let value = input.value;
-    input.value = "";
-    this.tasks.push(
-      {
-        title: value,
-        is_canceled: false
-      });
-  }
-
-  cancelTask(idx: number) {
-    if (this.tasks[idx].is_canceled) {
-      this.tasks[idx].is_canceled = false;
-    } else {
-      this.tasks[idx].is_canceled = true;
-    }
-  }
-
-  deleteTask(idx: number) {
-    let do_delete = confirm("Are you sure to delete the task?");
-    if (do_delete) {
-      this.tasks.splice(idx, 1);
-    }
-  }
-
-  editTask(idx: number) {
-    let title = this.tasks[idx].title;
-    let result = prompt("Edit Task Title", title);
-    if (result !== null && result !== "") {
-      this.tasks[idx].title = result;
-    }
-  }
   onSubmit() {
     this.router.navigateByUrl('/new-event2');
   }

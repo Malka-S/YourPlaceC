@@ -6,15 +6,16 @@ import { AuthenticationService } from '../../service/authentication.server';
 import { AlertService } from '../../service/alert.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import {Login}from '../../model/login.model'
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-  user: User;
+  //user: User;
   loading = false;
   submitted = false;
   returnUrl: string;
   alertService: any;
-  
+  login: Login;
+
 
   loginForm = new FormGroup({
     user_email: new FormControl('', [
