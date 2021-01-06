@@ -13,31 +13,23 @@ export class ListGuestsComponent implements OnInit {
   guests: Guest[];
   constructor(private router: Router, private guestService: GuestService) { }
 
-  ngOnInit() {
-    // if(!window.localStorage.getItem('token')) {
-    //   this.router.navigate(['login']);
-    //   return;
-    // }
-    // this.guestService.getGuest()
-    //   .subscribe( data => {
-    //     this.guests = data.result;
-    //   });
-  }
+  ngOnInit() {}
+   
+  
   deleteGuest(guest: Guest): void {
     this.guests = this.guests.filter(u => u !== guest);
 
-    // this.guestService.deleteGuest(guest.guest_id)
-    //   .subscribe( data => {
-    //     this.guests = this.guests.filter(u => u !== guest);
-    //   })
+    this.guestService.deleteGuest(guest.guest_id)
+      .subscribe( data => {
+        this.guests = this.guests.filter(u => u !== guest);
+      })
   };
 
   editGuest(guest: Guest): void {
     window.localStorage.removeItem("editGuestId");
     window.localStorage.setItem("editGuestId", guest.guest_first_name.toString());
     this.router.navigate(['edit-guest']);
-  };
-
+  }; 
   addGuest(): void {
     this.router.navigate(['add-guest']);
   };

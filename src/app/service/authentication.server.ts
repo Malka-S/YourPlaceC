@@ -22,6 +22,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
+    debugger;
     return this.http
       .post<any>(`/users/authenticate`, { username, password })
       .pipe(

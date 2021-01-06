@@ -16,31 +16,34 @@
 
 </html>
 
-<div dir="rtl" class="col-md-6 user-container" class="container-fluid">
+<div dir="rtl" class="col-md-6" class="container-fluid">
     <h2 style="margin: auto"> Guest Details</h2>
     <button class="btn btn-danger" style="width:100px" (click)="addGuest()"> Add User</button>
     <table class="table table-striped">
       <thead>
       <tr>
-        <th class="hidden">Id</th>
+        <th class="hide">Id</th>
         <th>FirstName</th>
         <th>LastName</th>
-        <th>Tz</th>
-        <th>Email</th>
         <th>gender</th>
+        <th>Email</th>
+        <th>message before</th>
+        <th>message after</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let guest of guests">
-        <td class="hidden"></td>
+        <td class="hide"></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-        <td><button class="btn btn-success" (click)="deleteGuest(guest)"> Delete</button>
+        <td></td>
+        <td> 
+          <button class="btn btn-success" (click)="deleteGuest(guest)"> Delete</button>
           <button class="btn btn-success" (click)="editGuest(guest)" style="margin-left: 20px;"> Edit</button></td>
-      </tr>
+     </tr>
       </tbody>
     </table>
   </div>

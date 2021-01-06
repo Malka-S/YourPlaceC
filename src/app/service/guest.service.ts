@@ -18,19 +18,16 @@ export class GuestService {
 //     return this.http.get<ApiResponse>(this.baseUrl + id);
 //   }
 
- 
-
-
   //  createGuest(guest: Guest): Observable<any> {
   //   return this.http.post<Guest>(this.baseUrl, guest);
   // }
  
-//   updateGuest(guest: Guest): Observable<ApiResponse> {
-//     return this.http.put<ApiResponse>(this.baseUrl + guest.guest_id, guest);
-//   }
+  // updateGuest(guest: Guest): Observable<> {
+  //   return this.http.put<ApiResponse>(this.baseUrl + guest.guest_id, guest);
+  // }
 
-//   deleteGuest(id: number): Observable<ApiResponse> {
-//     return this.http.delete<ApiResponse>(this.baseUrl + id);
-//   }
+  deleteGuest(id: number): Observable<Guest> {
+    return this.http.delete<Guest>(this.baseUrl + id);
+  }
   
   }

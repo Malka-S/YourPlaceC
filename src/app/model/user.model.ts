@@ -1,4 +1,7 @@
 export class User {
+  push(arg0: { title: any; is_canceled: boolean; }) {
+    throw new Error('Method not implemented.');
+  }
   user_id: number;
   user_last_name: string;
   user_first_name: string;

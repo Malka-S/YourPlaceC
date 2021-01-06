@@ -15,13 +15,13 @@
 
 <div dir="rtl" class="container">
   <h1>הגדרת ארוע </h1>
-  <form [formGroup]="creatEvent">
+  <form >
     <div class="form-group">
 
       <div class="form-group" name="שם ארוע">
         <label for="EventDes"> הכנס שם פרטי</label>
         <input [class.is-invalid]="creatEvent.get('EventDes').invalid && creatEvent.get('EventDes').touched" type="text"
-          class="form-control" formControlName="EventDes" />
+        [(ngModel)]="event.EventDes" #EventDes="ngModel" class="form-control"  />
         <div *ngIf="(EventDes.invalid && EventDes.touched) || EventDes.dirty">
           <small *ngIf="EventDes.errors?.required" class="text-danger">הכנס שם ארוע</small>
           <small *ngIf="EventDes.errors?.pattern" class="text-danger">שם ארוע אינו תקין</small>
@@ -61,15 +61,15 @@
           name="EventDueDate" #EventDueDate="ngModel" minlength="10" value="לעשות תיבה עם תאריך או אחרב" required />
       </div>
 
-      <div class="form-group" name=" מספר קטגוריות ">
+      <!-- <div class="form-group" name=" מספר קטגוריות ">
         <label for="numCategory">הכנס מספר קטגוריות שצפוי להיות בארוע </label>
         <input [class.is-invalid]="creatEvent.get('numCategory').invalid && creatEvent.get('numCategory').touched"
-          type="number" class="form-control" formControlName="numCategory" />
+          type="number"  [(ngModel)]="event.numCategory"   #numCategory="ngModel" class="form-control"/>
         <div *ngIf="(numCategory.invalid && numCategory.touched) || numCategory.dirty">
           <small *ngIf="numCategory.errors?.required" class="text-danger">הכנס מספר מקומות ישיבה סביב השולחן</small>
           <small *ngIf="numCategory.errors?.pattern" class="text-danger"> מספר מקומות אינו תקין </small>
         </div>
-      </div>
+      </div> -->
 
 
       <!-- <div class="container">

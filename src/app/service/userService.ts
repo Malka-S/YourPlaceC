@@ -15,9 +15,10 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient, private UserService: UserService) {
-    this.addUser(UserService);
-  }
+  constructor(private http: HttpClient){}
+ // , private UserService: UserService) {
+  //  this.addUser(UserService);
+ // }
   private UsersUrl = 'https://localhost:44390/api/Users';
   getUser(): Observable<any[]> {
     return this.http.get<any[]>(this.UsersUrl);
@@ -25,13 +26,16 @@ export class UserService {
     //     catchError(this.handleError <Any[]>('getUser', []))
     //   );
   }
-  addUser(User: any): Observable<any> {
-    return this.http.post<any>(
+  addUser(newUser: User): Observable<{}> {
+    return this.http.post(
       'https://localhost:44390/api/Users/PostUser',
-      User,
+      newUser,
       this.httpOptions
     );
   }
+  register(user: User) {
+   // return this.http.post(`${config.apiUrl}/users/register`, user);
+}
   updateUser(user: User): Observable<any> {
     return this.http
       .put(this.UsersUrl + '/PostUser', user, this.httpOptions)

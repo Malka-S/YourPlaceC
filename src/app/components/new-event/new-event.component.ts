@@ -67,30 +67,31 @@ export class NewEventComponent implements OnInit {
     console.log(this.eventService);
     
     this.eventService.getEventType().subscribe((data) =>{this.eventTypeList=data;});
-    this.creatEvent = new FormGroup({
-      EventDes: new FormControl('', Validators.required)
-    });
+    
     
     // this.eventService.getEventType().subscribe((data) => {
     //       this.eventTypeList = data;
     //     });
        
   }
-  get f() {
-    return this.creatEvent.controls;
-  }
-  get EventDes() {
-    return this.creatEvent.get('user_email')
-  }
-  get numCategory() {
-    return this.creatEvent.get('numCategory')
-  }
-  clearToDo() {
-    let do_delete = confirm("Are you sure to delete all tasks?");
-    if (do_delete) {
-      this.tasks.splice(0);
-    }
-  }
+  // get f() {
+  //   return this.creatEvent.controls;
+  // }
+  // get EventDes() {
+  //   return this.creatEvent.get('EventDes')
+  // }
+  // get EventDate() {
+  //   return this.creatEvent.get('EventDate')
+  // }
+  // get numCategory() {
+  //   return this.creatEvent.get('numCategory')
+  // }
+  //clearToDo() {
+  //   let do_delete = confirm("Are you sure to delete all tasks?");
+  //   if (do_delete) {
+  //     this.tasks.splice(0);
+  //   }
+  // }
 
   addTask(input) {
     let value = input.value;

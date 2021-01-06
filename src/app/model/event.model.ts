@@ -6,6 +6,7 @@ export class Event {
   public EventDueDate: Date;
   public UserId: number;
   public Invitation: string;
+  
   constructor(
     code,
     type,
