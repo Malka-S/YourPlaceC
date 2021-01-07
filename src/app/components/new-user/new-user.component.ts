@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../service/UserService';
 // import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { first } from 'rxjs/operators';
@@ -7,6 +6,7 @@ import { AuthenticationService } from '../../service/authentication.server';
 import { AlertService } from '../../service/alert.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 // import { ConfirmedValidator } from './confirmed.validator';
 //user_first_name: string,
@@ -125,7 +125,7 @@ export class NewUserComponent implements OnInit {
     user_password =this.user.user_password.trim();
     user_phone_number =this.user.user_phone_number.trim();
     if (!user_first_name) { return; }
-    this.userService.addUser({user_first_name} as User).toPromise().then(data=> this.user.user_first_name);
+    // this.userService.addUser({user_first_name} as User).toPromise().then(data=> this.user.user_first_name);
       //  .subscribe(user => {
       //   this.userService.push(this.User.firstName);
       // });
