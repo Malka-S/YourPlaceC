@@ -36,6 +36,8 @@
       <label for="AmountOfPlaces">הכנס מספר מקומות ישיבה סביב השולחן</label>
       <input  [class.is-invalid] = "newTables.get('AmountOfPlaces').invalid && newTables.get('AmountOfPlaces').touched"
         type="number"
+        min="6"
+        max="20"
         class="form-control"
         formControlName="AmountOfPlaces"
       />

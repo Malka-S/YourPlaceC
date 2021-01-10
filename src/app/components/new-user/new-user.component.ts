@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../service/UserService';
+import { LogInService } from '../../service/logIn.service';
 // import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { first } from 'rxjs/operators';
@@ -18,7 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.css'],
-  providers: [UserService]
+  providers: [LogInService]
 })
 export class NewUserComponent implements OnInit {
   // [x: string]: any;
@@ -33,7 +33,7 @@ export class NewUserComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
-    private userService:UserService
+    private loginService:LogInService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -100,7 +100,7 @@ export class NewUserComponent implements OnInit {
     // this.router.navigateByUrl('/login');
 
 //     this.loading = true;
-//     this.userService
+//     this.loginService
 //     .register
 // (this.newUserForn.value)
 //         pipe(first())
@@ -115,7 +115,7 @@ export class NewUserComponent implements OnInit {
 //             });
 }
   // save(): void {
-  //   this.userService.updateUser(this.user)
+  //   this.loginService.updateUser(this.user)
   //     .subscribe(() => this.goBack());
   // }
   add(user_first_name: string,user_last_name:string,user_email:string,user_password:string,user_phone_number:string): void {
@@ -125,9 +125,9 @@ export class NewUserComponent implements OnInit {
     user_password =this.user.user_password.trim();
     user_phone_number =this.user.user_phone_number.trim();
     if (!user_first_name) { return; }
-    this.userService.addUser({user_first_name} as User).toPromise().then(data=> this.user.user_first_name);
+    this.loginService.AddUser({user_first_name} as User).toPromise().then(data=> this.user.user_first_name);
       //  .subscribe(user => {
-      //   this.userService.push(this.User.firstName);
+      //   this.loginService.push(this.User.firstName);
       // });
 
   }

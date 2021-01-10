@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { User } from '../../model/user.model';
-import { UserService } from '../../service/user.service';
+import { LogInService } from '../../service/logIn.service';
 import { AuthenticationService } from '../../service/authentication.server';
 import { AlertService } from '../../service/alert.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
   register(): void {
     this.router.navigateByUrl('/new-user');
   };
+ 
 //  updateUser(idx: number) {
 //   let any = this.user[idx].any;
 //   let result = prompt("update user ", any);

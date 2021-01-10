@@ -2,32 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Guest } from '../model/guest.model';
 import { Observable } from 'rxjs';
-// import {ApiResponse} from "../model/api.response";
 
 
 @Injectable({ providedIn: 'root' })
 export class GuestService {
 
   constructor(private http: HttpClient) {}
-  baseUrl: string = 'http://localhost:4200/guest/';
-//   getGuest() : Observable<ApiResponse> {
-//     return this.http.get<ApiResponse>(this.baseUrl);
-//   }
-  
-//   getGuestById(id: number): Observable<ApiResponse> {
-//     return this.http.get<ApiResponse>(this.baseUrl + id);
-//   }
+  baseUrl: string = 'http://localhost:4200/Guest/';
 
-  //  createGuest(guest: Guest): Observable<any> {
-  //   return this.http.post<Guest>(this.baseUrl, guest);
-  // }
+  getGuest() : Observable<Guest> {
+    return this.http.get<Guest>(this.baseUrl+'GetGuestList/');
+  }
+  
+  getGuestById(id: number): Observable<Guest> {
+    return this.http.get<Guest>(this.baseUrl +'GetGuestsByCategory/'+ id);
+  }
+
+   createGuest(guest: Guest): Observable<any> {
+    return this.http.post<Guest>(this.baseUrl+'PutGuest/', guest);
+  }
  
-  // updateGuest(guest: Guest): Observable<> {
-  //   return this.http.put<ApiResponse>(this.baseUrl + guest.guest_id, guest);
-  // }
+  updateGuest(guest: Guest): Observable<Guest> {
+    return this.http.put<Guest>(this.baseUrl + 'PostGuest/', guest);
+  }
 
   deleteGuest(id: number): Observable<Guest> {
-    return this.http.delete<Guest>(this.baseUrl + id);
+    return this.http.delete<Guest>(this.baseUrl +'deleteGuest/'+ id);
+  }
+  getGuestByType(parameter:string): Observable<Guest[]> {
+    return this.http.get<Guest[]>(this.baseUrl+'SelectGuestsByCatagory/'+parameter);
   }
   
   }
