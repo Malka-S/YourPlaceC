@@ -49,51 +49,46 @@ export class LoginComponent implements OnInit {
 }
  
   // convenience getter for easy access to form fields
-  get f() {
-    return this.loginForm.controls;
-  }
-  get user_email() {
-    return this.loginForm.get('user_email')
-  }
-  get user_password() {
-    return this.loginForm.get('user_password')
-  }
-  get user_name() {
-    return this.loginForm.get('user_name')
-  }
+  // get f() {
+  //   return this.loginForm.controls;
+  // }
+  // get user_email() {
+  //   return this.loginForm.get('user_email')
+  // }
+  // get user_password() {
+  //   return this.loginForm.get('user_password')
+  // }
+  // get user_name() {
+  //   return this.loginForm.get('user_name')
+  // }
   register(): void {
     this.router.navigateByUrl('/new-user');
   };
- 
-//  updateUser(idx: number) {
-//   let any = this.user[idx].any;
-//   let result = prompt("update user ", any);
-//   if (result !== null && result !== "") {
-//     this.user[idx].any = result;
-//   }
-//}
+  
 
   onSubmit() {
-    this.submitted = true;
+    //מהחוברת מהמורה עמוד 39
+    let dataToSave=this.loginForm.value;
 
+    this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
-    this.authenticationService
-      .login(this.f.user_email.value, this.f.user_password.value)
-      .pipe(first())
-      .subscribe(
-        (data) => {
-          this.router.navigate([this.returnUrl]);
-        },
-        (error) => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
-      );
+    // this.loading = true;
+    // this.authenticationService
+    //   .login(this.f.user_email.value, this.f.user_password.value)
+    //   .pipe(first())
+    //   .subscribe(
+    //     (data) => {
+    //       this.router.navigate([this.returnUrl]);
+    //     },
+    //     (error) => {
+    //       this.alertService.error(error);
+    //       this.loading = false;
+    //     }
+    //   );
   }
 }
 

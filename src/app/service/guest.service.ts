@@ -18,14 +18,17 @@ export class GuestService {
     return this.http.get<Guest>(this.baseUrl +'GetGuestsByCategory/'+ id);
   }
 
-   createGuest(guest: Guest): Observable<any> {
+   AddGuest(guest: Guest): Observable<any> {
     return this.http.post<Guest>(this.baseUrl+'PutGuest/', guest);
   }
- 
+AddRequest(){}
   updateGuest(guest: Guest): Observable<Guest> {
     return this.http.put<Guest>(this.baseUrl + 'PostGuest/', guest);
   }
-
+  getAllGuests(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl+'SelectGuests');
+  }
+     //  מהשרת אמור לקבל את האורח ולמחוק אותו
   deleteGuest(id: number): Observable<Guest> {
     return this.http.delete<Guest>(this.baseUrl +'deleteGuest/'+ id);
   }

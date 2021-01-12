@@ -21,7 +21,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [LogInService]
 })
 export class NewUserComponent implements OnInit {
-  // [x: string]: any;
   user: User;
   newUserForn:FormGroup;
   loading: boolean;
@@ -57,15 +56,26 @@ export class NewUserComponent implements OnInit {
 
     },);
   }
-  addUser(input) {
-    let value = input.value;
-    input.value = "";
-    this.user.push(
-      {
-        title: value,
-        is_canceled: false
-      });
-  }
+
+  AddUser(user:User):void{
+    this.loginService.AddUser(user).subscribe(
+    response=>{console.log(response);
+      this.user=response;
+    },
+    error=>{ console.log(error);
+    })
+    
+    }
+  updateUser(user:User):void{
+    this.loginService.put(user).subscribe(
+    response=>{console.log(response);
+     // this.user=response;
+    },
+    error=>{ console.log(error);
+    })
+    
+    }
+    //לא מבינה למה צריך את זה -קשור לולידציה בHTML
   get f() {
     return this.newUserForn.controls;
   }
@@ -89,7 +99,7 @@ export class NewUserComponent implements OnInit {
   }
 
   onSubmit() {
-
+    //בפונקציה זו בעצם אנו קוראים לפונקיה של הוספת משתמש?
     // reset alerts on submit
     this.alertService.clear();
 
@@ -97,40 +107,25 @@ export class NewUserComponent implements OnInit {
     if (this.newUserForn.invalid) {
         return;
     }
-    // this.router.navigateByUrl('/login');
-
-//     this.loading = true;
-//     this.loginService
-//     .register
-// (this.newUserForn.value)
-//         pipe(first())
-//         .subscribe(
-//             data => {
-//                 this.alertService.success('Registration successful', true);
-//                 this.router.navigate(['/login']);
-//             },
-//             error => {
-//                 this.alertService.error(error);
-//                 this.loading = false;
-//             });
+   
 }
   // save(): void {
   //   this.loginService.updateUser(this.user)
   //     .subscribe(() => this.goBack());
   // }
-  add(user_first_name: string,user_last_name:string,user_email:string,user_password:string,user_phone_number:string): void {
-    user_first_name = this.user.user_first_name.trim();
-    user_last_name =this.user.user_last_name.trim();
-    user_email =this.user.user_email.trim();
-    user_password =this.user.user_password.trim();
-    user_phone_number =this.user.user_phone_number.trim();
-    if (!user_first_name) { return; }
-    this.loginService.AddUser({user_first_name} as User).toPromise().then(data=> this.user.user_first_name);
-      //  .subscribe(user => {
-      //   this.loginService.push(this.User.firstName);
-      // });
+  // add(user_first_name: string,user_last_name:string,user_email:string,user_password:string,user_phone_number:string): void {
+  //   user_first_name = this.user.user_first_name.trim();
+  //   user_last_name =this.user.user_last_name.trim();
+  //   user_email =this.user.user_email.trim();
+  //   user_password =this.user.user_password.trim();
+  //   user_phone_number =this.user.user_phone_number.trim();
+  //   if (!user_first_name) { return; }
+  //   this.loginService.AddUser({user_first_name} as User).toPromise().then(data=> this.user.user_first_name);
+  //     //  .subscribe(user => {
+  //     //   this.loginService.push(this.User.firstName);
+  //     // });
 
-  }
+  // }
   onSend({ value, valid }) {
     if (valid) {
       console.log(value);

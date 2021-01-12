@@ -13,7 +13,17 @@ import { Observable } from 'rxjs';
 export class ListGuestsComponent implements OnInit {
 
   guests: Guest[];
-  constructor(private router: Router, private guestService: GuestService,private http: HttpClient) { }
+  guest: Guest;
+
+  constructor(private router: Router, private guestService: GuestService,private http: HttpClient) { 
+    //פונקצית קריאה לרשימה של כל האורחים-שיטען מיד עם טעינת הקומפוננטה
+    this.guestService.getAllGuests().subscribe(
+      response=>{console.log(response);
+        this.guests=response;
+      },
+      error=>{ console.log(error);
+      })
+  }
 
   ngOnInit() {}
    //?
@@ -23,25 +33,33 @@ export class ListGuestsComponent implements OnInit {
       .subscribe( data => {
         this.guests = this.guests.filter(u => u !== guest);
       })
-  };
-//?
-  // editGuest(guest: Guest): void {
-  //   window.localStorage.removeItem("editGuestId");
-  //   window.localStorage.setItem("editGuestId", guest.guest_first_name.toString());
-  //   this.router.navigate(['edit-guest']);
-  // }; 
-  editGuest(guest: Guest): Observable<Guest[]> {
-    let url = 'https://localhost:44390/api/Guest/PostGuest';
-    return this.http.post<Guest[]>(url, Guest);
-  }
+   };
+
   addGuest(): void {
     this.router.navigate(['add-guest']);
   };
-  //  מהשרת אמור לקבל את האורח ולמחוק אותו
-  // deleteGuest(id: number): Observable<any[]> {
-  //   return this.http.delete<any[]>('https://localhost:44390/api/Guest/DeleteGuest',id);
-  // }
-  getAllGuests(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:44390/api/Guest/SelectGuests');
+  //או שעורכים בקומפוננטה הזאת
+    editGuest(guest:Guest):void{
+    this.guestService.updateGuest(guest).subscribe(
+    response=>{console.log(response);
+      this.guest=response;
+    },
+    error=>{ console.log(error);
+    }) 
   }
+  //לכאורה אמור לשלוח בניתוב גם את האורח שאמור לערוך
+  // editGuest():void{
+  //   this.router.navigate(['edit-guest']);
+  // }
+
+  //הפונקציה נכתבה בתוך הקונסטרקטור כי אמור לעלות מיד עם טעינה
+// getGuests():void{
+// this.guestService.getAllGuests().subscribe(
+// response=>{console.log(response);
+//   this.guest=response;
+// },
+// error=>{ console.log(error);
+// })
+//}
+  
 }

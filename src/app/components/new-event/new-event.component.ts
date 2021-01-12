@@ -34,21 +34,6 @@ export class NewEventComponent implements OnInit {
   arrayBuffer: any;
   file: File;
   parameter: number = 2;
-  // task: string;
-  // tasks: Array<Task> = [
-  //   {
-  //     title: "Go home",
-  //     is_canceled: false
-  //   },
-  //   {
-  //     title: "Take a nap",
-  //     is_canceled: false
-  //   },
-  //   {
-  //     title: "Start learning Angular with Sabuj",
-  //     is_canceled: false
-  //   }
-  // ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,8 +52,6 @@ export class NewEventComponent implements OnInit {
     console.log(this.eventService);
     
     this.eventService.getEventType().subscribe((data) =>{this.eventTypeList=data;});
-    
-    
     // this.eventService.getEventType().subscribe((data) => {
     //       this.eventTypeList = data;
     //     });

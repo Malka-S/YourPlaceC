@@ -4,6 +4,10 @@ import {Router} from "@angular/router";
 import {GuestService}from '../../service/guest.service';
 import {first} from "rxjs/operators";
 import { Guest } from 'src/app/model/guest.model';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-edit-guest',
@@ -14,7 +18,7 @@ export class EditGuestComponent implements OnInit {
 
   guest: Guest;
   editForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private router: Router, private guestService: GuestService) { }
+  constructor(private formBuilder: FormBuilder,private router: Router, private guestService: GuestService,private http: HttpClient) { }
 
   ngOnInit() {
     let guestId = window.localStorage.getItem("editGuestId");
@@ -39,25 +43,16 @@ export class EditGuestComponent implements OnInit {
     //   });
   }
 
-  onSubmit() {
-
-
-    
+  onSubmit() { 
     this.router.navigate(['list-guests']);
-
-    // this.guestService.updateGuest(this.editForm.value)
-    //   .pipe(first())
-    //   .subscribe(
-    //     data => {
-    //       if(data.status === 200) {
-    //         alert('Guest updated successfully.');
-    //         this.router.navigate(['list-guests']);
-    //       }else {
-    //         alert(data.message);
-    //       }
-    //     },
-    //     error => {
-    //       alert(error);
-    //     });
   }
+    
+    EditGuest(guest:Guest):void{
+      this.guestService.updateGuest(guest).subscribe(
+      response=>{console.log(response);
+        this.guest=response;
+      },
+      error=>{ console.log(error);
+      }) 
+    }
 }
