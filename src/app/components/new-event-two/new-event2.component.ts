@@ -8,6 +8,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { NewEventComponent } from '../new-event/new-event.component';
 import { NewEventThreeComponent } from '../new-event-three/new-event-three.component';
 import { BaseCode } from 'src/app/model/baseCode';
+import { EventService } from '../../service/EventService';
+
 export interface DialogData {
   animal: string;
   name: string;
@@ -24,7 +26,7 @@ export class NewEvent2Component implements OnInit {
   idCatagory:number=0;
 
   constructor(
-    
+    public eventService:EventService,
     private router: Router,
     public dialog: MatDialog,
     private authenticationService: AuthenticationService //private alertService: AlertService
@@ -63,19 +65,14 @@ export class NewEvent2Component implements OnInit {
     // });
     
   }
-  // openDialog(): void {
-  //     const dialogRef = this.dialog.open(NewEventThreeComponent, {
-  //       width: '250px',
-  //       data: {name: this.nameCatagroy}
-  //     });
+
   addGuest() {
     this.router.navigate(['add-guest']);
-    // this.router.navigateByUrl('/new-event2');
-    // this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
-    //   this.router.navigate(['new-event2']);
-    // });
+    // 
+    
     
   }
+
 
 }
 

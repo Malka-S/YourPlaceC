@@ -16,6 +16,8 @@
 
 
 <div dir="rtl" class="container-fluid">
+
+  
   <h2>הגדרת אירוע </h2>
   <form [formGroup]="creatEvent">
 
@@ -27,10 +29,10 @@
         is required</div>
     </div>
 
-    <div class="form-group" name="EventType">
+    <div class="form-group" name="EventType" >
       <label dor="EventType">סוג ארוע:</label>
       <mat-select>
-        <mat-option *ngFor="let mes of eventTypeList" [value]="mes.Des">
+        <mat-option  *ngFor="let mes of eventTypeList" [value]="mes.Des" >
           {{mes.Des}}
         </mat-option>
       </mat-select>
@@ -48,7 +50,7 @@
 
     <div class="form-group" name="Invitation">
       <div class="text-center">
-        <input class="form-control" type="file" (change)="onChange($event)">
+        <input class="form-control" type="file" (change)="onChange($event)"  formControlName="Invitation" id="Invitation" autocomplete="off">
 
         <button (click)="onUpload()"  
             class="btn btn-success"> 
