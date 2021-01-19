@@ -10,40 +10,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class EventService {
   Event: Event[] = [];
-  //   new Event(
-  //     3546,
-  //     'wedding',
-  //     'Rivky and Hallel',
-  //     1 / 2 / 2000,
-  //     1 / 2 / 2000,
-  //     5,
-  //     6,
-  //     7,
-  //     'cgfng'
-  //   ),
-  //   new Event(
-  //     3546,
-  //     'wedding',
-  //     'Rivky and Hallel',
-  //     1 / 2 / 2000,
-  //     1 / 2 / 2000,
-  //     5,
-  //     6,
-  //     7,
-  //     'cgfng'
-  //   ),
-  //   new Event(
-  //     3546,
-  //     'wedding',
-  //     'Rivky and Hallel',
-  //     1 / 2 / 2000,
-  //     1 / 2 / 2000,
-  //     5,
-  //     6,
-  //     7,
-  //     'cgfng'
-  //   ),
-  // ];
+  baseApiUrl = "https://localhost:44390/api/Event"
+
   constructor(private http: HttpClient) {
     this.getEventType();
   }
@@ -68,4 +36,21 @@ export class EventService {
     let url = 'https://localhost:44390/api/Users/UpdateEventType';
     return this.http.post<boolean>(url, parameter);
   }
+  createEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.baseApiUrl+'postEvent', event);
+  }
+  // Returns an observable 
+  upload(file):Observable<any> { 
+  
+    // Create form data 
+    const formData = new FormData();  
+      
+    // Store form name as "file" with file data 
+    formData.append("file", file, file.name); 
+      
+    // Make http post request over api 
+    // with formData as req 
+   return this.http.post(this.baseApiUrl, formData) 
+ 
+} 
 }

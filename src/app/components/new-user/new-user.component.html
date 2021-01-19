@@ -11,9 +11,9 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
-  <!-- <app-root></app-root> -->
-</body>
+<body></body>
+
+
 
 </html>
 
@@ -99,7 +99,7 @@
       </div>
     </div>
     <!-- <button class="btn btn-primary" type="submit" [disabled]="!newUserForn.valid" ng-click="onSubmit">Submit</button> -->
-    <input type="button" class="btn btn-primary" (click)="onSubmit()" value="Submit" [disabled]="!newUserForn.valid">
+    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="Submit" [disabled]="!newUserForn.valid"/>
 
   
     <!-- <div class="form-group">
@@ -114,106 +114,3 @@
     </div> -->
   </form>
 </div>
-<!-- <div class="container" dir="rtl">
-  <h1>משתמש חדש</h1>
-  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
-    <br />
-    <label>שם פרטי</label>
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="user.user_first_name"
-      name="firstName"
-      #userFirstName="ngModel"
-      minlength="5"
-      required
-    />
-    <br />
-    <div
-      *ngIf="
-        userFirstName.errors?.required &&
-        (userFirstName.touched || userFirstName.dirty)
-      "
-      class="alert alert-danger"
-    >
-      שם פרטי אינו תקין
-    </div>
-    <label>שם משפחה</label>
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="user.user_last_name"
-      name="lastName"
-      #userLastName="ngModel"
-      minlength="5"
-      required
-    />
-    <br />
-    <div
-      *ngIf="
-        userLastName.errors?.required &&
-        (userLastName.touched || userLastName.dirty)
-      "
-      class="alert alert-danger"
-    >
-      שם משפחה אינו תקין
-    </div>
-    <div class="form-group">
-      <label>כתובת מייל</label>
-      <input
-        type="text"
-        class="form-control"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-        id="email"
-        name="email"
-        [(ngModel)]="user.user_email"
-        #userEmail="ngModel"
-      />
-      <div
-        *ngIf="userEmail.errors && (userEmail.touched || userEmail.dirty)"
-        class="alert alert-danger"
-      >
-        <div [hidden]="!userEmail.errors?.pattern">Invalid email</div>
-      </div>
-    </div>
-
-    <br />
-    <label>מספר טלפון לא חובה</label>
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="user.user_phone_number"
-      name="AmountOfPlaces"
-      #phoneNumber="ngModel"
-      value="10"
-    />
-    <br />
-    <label>סיסמה: </label>
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="user.user_password"
-      name="AmountOfPlaces"
-      #phoneNumber="ngModel"
-      value="10"
-    />
-    <br />
-     <button (click)="add(user.user_first_name.value , user.user_last_name.value ,user.user_email.value,user.user_phone_number.value,user.user_password.value); 
-     user_first_name.value='',user_last_name.value='',user_email.value='',user_phone_number.value='',user_password.value=''
-     ">  
-    <button
-      (click)="
-        add(
-          user.user_first_name,
-          user.user_last_name,
-          user.user_email,
-          user.user_phone_number,
-          user.user_password
-        )
-      "
-    >
-      add
-    </button>
-    <button (click)="save()">save</button>
-  </form>
-</div> -->

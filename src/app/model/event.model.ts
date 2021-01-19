@@ -6,7 +6,8 @@ export class Event {
   public EventDueDate: Date;
   public UserId: number;
   public Invitation: string;
-  
+  public NumTables:number;
+  public NumPlacesAroundATable:number;
   constructor(
     code,
     type,
@@ -14,7 +15,9 @@ export class Event {
     date,
     DueDate,
     userId,
-    invitation
+    invitation,
+    numtables,
+    placesAroundTables,
   ) {
     this.EventId = code;
     this.EventType = type;
@@ -23,5 +26,7 @@ export class Event {
     this.EventDueDate = DueDate;
     this.UserId = userId;
     this.Invitation = invitation;
+    this.NumTables=numtables;
+    this.NumPlacesAroundATable=placesAroundTables;
   }
 }

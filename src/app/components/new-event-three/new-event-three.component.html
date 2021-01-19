@@ -1,0 +1,14 @@
+<!-- <p>new-event-three works!</p> -->
+<!-- <h1 mat-dialog-title>Hi {{data.des}}</h1> -->
+<div mat-dialog-content dir="rtl" class="container-fluid">
+  <p>הכנס קטגוריה להוספה:</p>
+  <mat-form-field>
+    <mat-label>שם קטגוריה:</mat-label>
+    <input matInput [(ngModel)]="data.des">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">בעצם לא</button>
+  <button mat-button [mat-dialog-close]="data.des" cdkFocusInitial>הוסף</button>
+  
+</div>

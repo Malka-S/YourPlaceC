@@ -1,10 +1,9 @@
-import { Component,Input, OnInit } from '@angular/core';
-import { Guest } from '../../model/guest.model';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { BaseCode } from 'src/app/model/baseCode';
+import { Guest } from '../../model/guest.model';
 import { GuestService } from '../../service/guest.service';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-guest',
@@ -12,11 +11,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./add-guest.component.css']
 })
 export class AddGuestComponent implements OnInit {
-  @Input()
-  guest: Guest;
-  addForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private router: Router, private guestService: GuestService,private http: HttpClient) { }
+
   
+  addForm: FormGroup;
+  guestCatagoryList: BaseCode[] = [];
+  
+  constructor(
+    private formBuilder: FormBuilder,
+     private router: Router, 
+      private guestService: GuestService,
+     ) { }
+  // public dialogRef: MatDialogRef<AddGuestComponent>,
+  // @Inject(MAT_DIALOG_DATA) public data: BaseCode) {
+  // console.log(data);
+  // }
 
   ngOnInit() {
  
@@ -30,19 +38,34 @@ export class AddGuestComponent implements OnInit {
       guest_message_befor: ['', Validators.required],
       guest_message_after: ['', Validators.required]
     });
+        // this.guestCatagoryList = this.newEvent2.getcategoryList();
+
+
   }
   
   AddGuest(guest:Guest):void{
     this.guestService.AddGuest(guest).subscribe(
     response=>{console.log(response);
-      this.guest=response;
+      guest = response;
     },
     error=>{ console.log(error);
     }) 
   }
   onSubmit() {
-  // this.router.navigateByUrl('/list-guest');
-  this.router.navigate(['list-guest']);
+    // this.router.navigateByUrl('/list-guest');
+    this.router.navigate(['list-guest']);
+
+    // this.guestService.createGuest(this.addForm.value)
+    //   .subscribe( data => {
+    //     this.router.navigate(['list-guest']);
+    //   });
   }
-  
+
+
+
+
+
+
+
+
 }

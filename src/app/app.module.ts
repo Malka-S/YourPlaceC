@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { NewEventComponent } from './components/new-event/new-event.component';
 import { NewEvent2Component } from './components/new-event-two/new-event2.component';
@@ -18,6 +19,17 @@ import { AddGuestComponent } from './guest/add-guest/add-guest.component';
 import { EditGuestComponent } from './guest/edit-guest/edit-guest.component';
 import { ListGuestsComponent } from './guest/list-guests/list-guests.component';
 //import { MaterialModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import { NewEventThreeComponent } from './components/new-event-three/new-event-three.component';
 
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
@@ -36,12 +48,34 @@ import { ListGuestsComponent } from './guest/list-guests/list-guests.component';
     AddGuestComponent,
     EditGuestComponent,
     ListGuestsComponent,
+    NewEventThreeComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    //MaterialModule,            // <----- this module will be deprecated in the future version.
+    //MatDatepickerModule,        // <----- import(must)
+    // MatNativeDateModule,        // <----- import for date formating(optional)
+    //MatMomentDateModule,
+    //MaterialModule,
+    // MaterialModule,
+    //  MatDatepickerModule,        // <----- import(must)
+    //  MatNativeDateModule,        // <----- import for date formating(optional)
+    //MatMomentDateModule, 
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
     ReactiveFormsModule
@@ -51,5 +85,9 @@ import { ListGuestsComponent } from './guest/list-guests/list-guests.component';
     // myServer
   ],
   bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+
 })
-export class AppModule {}
+export class AppModule { }
