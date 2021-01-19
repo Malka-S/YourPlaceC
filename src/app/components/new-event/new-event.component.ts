@@ -8,9 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AuthenticationService } from '../../service/authentication.server';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
-// import { Observable } from 'rxjs/Rx';  
-//import * as XLSX from 'xlsx'
-// import * as XLSX from 'ts-xlsx';
+import { Observable } from 'rxjs';
 // const { read, write, utils } = XLSX;
 
 @Component({
@@ -24,17 +22,13 @@ export class NewEventComponent implements OnInit {
  
   creatEvent = new FormGroup({});
   eventTypeList: BaseCode[] = [];
-
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
   shortLink: string = ""; 
   loading: boolean = false; // Flag variable 
   file: File = null; // Variable to store file 
-  private isUploadBtn: boolean = true;  
+  isLinear = false;
 
-  // categoryTable = [];
-  // date3: Date;
-  // arrayBuffer: any;
-  // parameter: number = 2;
-  // event: Event;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,7 +44,6 @@ export class NewEventComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.eventService);
-    
     this.eventService.getEventType().subscribe((data) =>{this.eventTypeList=data;});
     this.creatEvent = this.formBuilder.group({
       EventId:[],
@@ -58,7 +51,7 @@ export class NewEventComponent implements OnInit {
       EventDate: ['', Validators.required],
       EventType: ['', Validators.required],
       EventDueDate: ['', Validators.required],
-      Invitation:this.onUpload.name,
+      Invitation:['', Validators.required],
       NumTables: ['', Validators.required],
       NumPlacesAroundATable: ['', Validators.required]
     });
@@ -72,28 +65,27 @@ export class NewEventComponent implements OnInit {
 onUpload() { 
   this.loading = !this.loading; 
   console.log(this.file); 
-  // this.eventService.upload(this.file).subscribe( 
-  //     (event: any) => { 
-  //         if (typeof (event) === 'object') { 
+  this.eventService.upload(this.file).subscribe( 
+      (event: any) => { 
+          if (typeof (event) === 'object') { 
 
-  //             // Short link via api response 
-  //             this.shortLink = event.link; 
+              // Short link via api response 
+              // this.shortLink = event.link; 
 
-  //             this.loading = false; // Flag variable  
-  //         } 
-  //     } 
-  // ); 
+              this.loading = false; // Flag variable  
+          } 
+      } 
+  ); 
 } 
   onSubmit() {
     // this.router.navigate(['new-event2']);
     // this.router.navigateByUrl('/new-event2');
+    console.log(this.creatEvent);
     this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
       this.router.navigate(['new-event2']);
     });
   }
-  // incomingfile(event) {
-  //   this.file = event.target.files[0];
-  // }
+
   
   // onSend({ value, valid }) {
   //   if (valid) {
@@ -103,8 +95,5 @@ onUpload() {
   //   }
   // }
 
-  // uploadedFiles: any[] = [];
-
-  // new() { }
-  
+   
 }

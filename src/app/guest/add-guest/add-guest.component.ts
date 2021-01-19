@@ -16,6 +16,7 @@ import { NewEvent2Component } from 'src/app/components/new-event-two/new-event2.
 })
 export class AddGuestComponent implements OnInit {
 
+  catagoryList:BaseCode[]=[];
   constructor(
     private formBuilder: FormBuilder,
      private router: Router, 
@@ -29,6 +30,8 @@ export class AddGuestComponent implements OnInit {
   addForm: FormGroup;
   guestCatagoryList: BaseCode[] = [];
   ngOnInit() {
+    // this.guestService.getCatagoryList().subscribe((data) =>{this.catagoryList=data;});
+
     this.addForm = this.formBuilder.group({
       guest_id: [],
       guest_last_name: ['', Validators.required],
@@ -46,7 +49,7 @@ export class AddGuestComponent implements OnInit {
 
   onSubmit() {
     // this.router.navigateByUrl('/list-guest');
-    this.router.navigate(['list-guest']);
+    this.router.navigate(['/list-guests']);
 
     // this.guestService.createGuest(this.addForm.value)
     //   .subscribe( data => {
