@@ -11,6 +11,7 @@ import { GuestService } from '../../service/guest.service';
   styleUrls: ['./add-guest.component.css']
 })
 export class AddGuestComponent implements OnInit {
+  addForm: FormGroup;
 
   catagoryList:BaseCode[]=[];
   constructor(
