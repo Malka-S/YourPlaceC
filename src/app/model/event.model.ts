@@ -1,6 +1,6 @@
 export class Event {
   public EventId: number;
-  public EventType: string;
+  public EventType: number;
   public EventDes: string;
   public EventDate: Date;
   public EventDueDate: Date;

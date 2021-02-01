@@ -11,9 +11,10 @@ import { GuestService } from '../../service/guest.service';
   styleUrls: ['./add-guest.component.css']
 })
 export class AddGuestComponent implements OnInit {
-  addForm: FormGroup;
 
+  addForm: FormGroup;
   catagoryList:BaseCode[]=[];
+
   constructor(
     private formBuilder: FormBuilder,
      private router: Router, 
@@ -25,7 +26,7 @@ export class AddGuestComponent implements OnInit {
   // }
 
   ngOnInit() {
-    // this.guestService.getCatagoryList().subscribe((data) =>{this.catagoryList=data;});
+    this.guestService.getCatagoryList().subscribe((data) =>{this.catagoryList=data;});
 
     this.addForm = this.formBuilder.group({
       guest_id: [],

@@ -22,10 +22,12 @@ export class NewEventComponent implements OnInit {
  
   creatEvent = new FormGroup({});
   eventTypeList: BaseCode[] = [];
+  EventTypeId:Number=0;
   shortLink: string = ""; 
   loading: boolean = false; // Flag variable 
   file: File = null; // Variable to store file 
-  isLinear = false;
+  // isLinear = false;
+  private isUploadBtn: boolean = true;  
 
 
   constructor(
@@ -44,7 +46,8 @@ export class NewEventComponent implements OnInit {
     console.log(this.eventService);
     this.eventService.getEventType().subscribe((data) =>{this.eventTypeList=data;});
     this.creatEvent = this.formBuilder.group({
-      EventId:[],
+      EventId:8,
+      UserId:1,
       EventDes: ['', Validators.required],
       EventDate: ['', Validators.required],
       EventType: ['', Validators.required],
@@ -58,7 +61,11 @@ export class NewEventComponent implements OnInit {
  onChange(event) { 
   this.file = event.target.files[0]; 
 } 
-
+get EventType() {
+  
+ 
+  return this.creatEvent.get('EventType');
+}
 // OnClick of button Upload 
 onUpload() { 
   this.loading = !this.loading; 
@@ -76,12 +83,13 @@ onUpload() {
   ); 
 } 
   onSubmit() {
-    // this.router.navigate(['new-event2']);
     // this.router.navigateByUrl('/new-event2');
     console.log(this.creatEvent);
-    this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
-      this.router.navigate(['new-event2']);
-    });
+    this.router.navigate(['new-event2']);
+
+    // this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
+    //   this.router.navigate(['new-event2']);
+    // });
   }
 
   

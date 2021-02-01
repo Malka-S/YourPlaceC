@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Guest } from '../model/guest.model';
 import { Observable } from 'rxjs';
+import { BaseCode } from '../model/baseCode';
 
 
 @Injectable({ providedIn: 'root' })
 export class GuestService {
 
   constructor(private http: HttpClient) {}
-  baseUrl: string = 'http://localhost:4200/Guest/';
+  baseUrl: string = 'https://localhost:44390/api/Guest/';
 
   getGuest() : Observable<Guest> {
     return this.http.get<Guest>(this.baseUrl+'GetGuestList/');
@@ -35,5 +36,7 @@ AddRequest(){}
   getGuestByType(parameter:string): Observable<Guest[]> {
     return this.http.get<Guest[]>(this.baseUrl+'SelectGuestsByCatagory/'+parameter);
   }
-  
+  getCatagoryList(): Observable<BaseCode[]> {
+    return this.http.get<BaseCode[]>(`${this.baseUrl}GetCatagoryList`);
+  }
   }

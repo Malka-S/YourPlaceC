@@ -22,7 +22,7 @@ export class EventService {
     return this.http.post<Event>(this.baseApiUrl + 'postEvent', event);
   }
   postCategoryiesList(catagoryList:BaseCode[]):Observable<BaseCode[]>{
-    return this.http.post<BaseCode[]>(this.baseApiUrl+"postCategoryiesList",catagoryList);
+    return this.http.post<BaseCode[]>(this.baseApiUrl+"PostCategoryiesList",catagoryList);
   }
   // Returns an observable 
   upload(file): Observable<any> {
