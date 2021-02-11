@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Guest } from '../model/guest.model';
 import { Observable } from 'rxjs';
+import { BaseCode } from '../model/baseCode';
 
 
 @Injectable({ providedIn: 'root' })
@@ -35,6 +36,7 @@ export class GuestService {
   deleteGuest(id: number): Observable<Guest> {
     return this.http.delete<Guest>(this.baseUrl +'deleteGuestById?id='+ id);
   }
- 
-  
+  getCatagoryList(): Observable<BaseCode[]> {
+    return this.http.get<BaseCode[]>(`${this.baseUrl}GetCatagoryList`);
+  }
   }

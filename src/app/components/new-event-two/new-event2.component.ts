@@ -67,9 +67,11 @@ export class NewEvent2Component implements OnInit {
   }
 
   addGuest() {
-    this.router.navigate(['add-guest']);
-    // 
+    // this.router.navigate(['add-guest']);
     
+     this.eventService.postCategoryiesList(this.catagryList) .subscribe( data => {
+      this.router.navigate(['add-guest']);
+    });
     
   }
 
