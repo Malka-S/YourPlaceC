@@ -22,7 +22,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NewUserComponent implements OnInit {
   user: User;
-  newUserForn:FormGroup;
+  newUserForm=new FormGroup({});
   loading: boolean;
   submitted = false;
 
@@ -40,24 +40,24 @@ export class NewUserComponent implements OnInit {
     }
   }
   ngOnInit() { 
-    
-    this.newUserForn = new FormGroup({
-      user_first_name: new FormControl('', Validators.required),
-      user_last_name: new FormControl('', Validators.required),
-      user_phone_number: new FormControl('', [
-        Validators.required,
-        Validators.pattern("")]),
-      user_email: new FormControl('', [
-        Validators.required,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      user_password: new FormControl('', Validators.minLength(6)),
-      user_confirmPassword: new FormControl('', Validators.required),
-      // validator: ConfirmedValidator('user_password', 'user_confirmPassword')
 
+    this.newUserForm = this.formBuilder.group({
+      user_first_name: ['', Validators.required],
+      user_last_name: ['', Validators.required],
+      user_phone_number: ['', [
+        Validators.required,
+        Validators.pattern("")]],
+      user_email: ['', [
+        Validators.required],
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+      user_password: ['', Validators.minLength(6)],
+      user_confirmPassword: ['', Validators.required],
     },);
   }
 
   AddUser(user:User):void{
+    console.log('here2');
+
     this.loginService.AddUser(user).subscribe(
     response=>{console.log(response);
       this.user=response;
@@ -77,36 +77,39 @@ export class NewUserComponent implements OnInit {
     }
     //לא מבינה למה צריך את זה -קשור לולידציה בHTML
   get f() {
-    return this.newUserForn.controls;
+    return this.newUserForm.controls;
   }
   get user_first_name() {
-    return this.newUserForn.get('user_email')
+    return this.newUserForm.get('user_email')
   }
   get user_last_name() {
-    return this.newUserForn.get('user_email')
+    return this.newUserForm.get('user_email')
   }
   get user_phone_number() {
-    return this.newUserForn.get('user_email')
+    return this.newUserForm.get('user_email')
   }
   get user_email() {
-    return this.newUserForn.get('user_email')
+    return this.newUserForm.get('user_email')
   }
   get user_password() {
-    return this.newUserForn.get('user_password')
+    return this.newUserForm.get('user_password')
   }
   get user_confirmPassword() {
-    return this.newUserForn.get('user_password')
+    return this.newUserForm.get('user_password')
   }
 
   onSubmit() {
     //בפונקציה זו בעצם אנו קוראים לפונקיה של הוספת משתמש?
     // reset alerts on submit
-    this.alertService.clear();
+    console.log('here');
 
+    // this.alertService.clear();
+    
     // stop here if form is invalid
-    if (this.newUserForn.invalid) {
-        return;
-    }
+    // if (this.newUserForm.invalid) {
+    //     return;
+    // }
+    this.AddUser(this.newUserForm.value);
    
 }
   // save(): void {

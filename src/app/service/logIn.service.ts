@@ -7,23 +7,30 @@ import { Observable } from 'rxjs';
 export class LogInService {
   User:User[]=[];
   constructor(private http: HttpClient) {}
-  baseUrl = 'https://localhost:44390/api/Users/';
+  baseUrl = 'https://localhost:44390/api/UserLogin/';
 
   AddUser(user: User): Observable<any> {
-    return this.http.post<User>(this.baseUrl+'PutUser/', user);
+
+    return this.http.put<any>(this.baseUrl+'PutUser/', user);
   }
-//2 parametors of string
-Login(parameters:string): Observable<any[]>{
-  return this.http.post<any>(this.baseUrl+'Loging/', parameters);
+ 
+  Login(useremail:string,password:string): Observable<any[]>{
+  return this.http.get<any>(this.baseUrl+'Login?useremail='+ useremail + '&password' +password); 
 }
   register(user: User) {
-    return this.http.post(`/users/register`, user);
+    return this.http.post(`register`, user);
   }
   put(user: User){
     return this.http.put(`/users`, user);
   }
-  GetUserFromServer(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:44390/api/User/GetUser');
+  sendEmailToUser(useremail:string): Observable<any[]>{
+    return this.http.get<any>('https://localhost:44390/api/Email/SendEmail?to='+ useremail+'?body=welcome to our site'); 
   }
-
+  // GetUserFromServer(): Observable<any[]> {
+  //   return this.http.get<any[]>('https://localhost:44390/api/User/GetUser');
+  // }
+  //יותר טוב
+  GetUserFromServer() {
+    return this.http.get<any[]>(this.baseUrl+'GetUser').toPromise().then(result=>{return result;}).catch(err=>{return false;});
+  }
 }

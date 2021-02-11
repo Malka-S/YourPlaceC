@@ -8,32 +8,33 @@ import { Observable } from 'rxjs';
 export class GuestService {
 
   constructor(private http: HttpClient) {}
-  baseUrl: string = 'http://localhost:4200/Guest/';
+  baseUrl: string = 'https://localhost:44390/api/Guest/';
 
   getGuest() : Observable<Guest> {
-    return this.http.get<Guest>(this.baseUrl+'GetGuestList/');
+    return this.http.get<Guest>(this.baseUrl+'GetGuestList');
   }
   
   getGuestById(id: number): Observable<Guest> {
-    return this.http.get<Guest>(this.baseUrl +'GetGuestsByCategory/'+ id);
+    return this.http.get<Guest>(this.baseUrl +'GetGuestsById?id='+ id);
+  }
+  getGuestByCategory(parameter:string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl +'GetGuestsByCategory?category='+ parameter);
   }
 
    AddGuest(guest: Guest): Observable<any> {
-    return this.http.post<Guest>(this.baseUrl+'PutGuest/', guest);
+    return this.http.put<Guest>(this.baseUrl+'PutGuest/', guest);
   }
-AddRequest(){}
   updateGuest(guest: Guest): Observable<Guest> {
-    return this.http.put<Guest>(this.baseUrl + 'PostGuest/', guest);
+    console.log('id ' + guest.guest_id);
+    return this.http.post<Guest>(this.baseUrl + 'PostGuest/', guest);
   }
   getAllGuests(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl+'SelectGuests');
+    return this.http.get<any[]>(this.baseUrl+'GetGuestList');
   }
      //  מהשרת אמור לקבל את האורח ולמחוק אותו
   deleteGuest(id: number): Observable<Guest> {
-    return this.http.delete<Guest>(this.baseUrl +'deleteGuest/'+ id);
+    return this.http.delete<Guest>(this.baseUrl +'deleteGuestById?id='+ id);
   }
-  getGuestByType(parameter:string): Observable<Guest[]> {
-    return this.http.get<Guest[]>(this.baseUrl+'SelectGuestsByCatagory/'+parameter);
-  }
+ 
   
   }

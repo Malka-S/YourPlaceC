@@ -17,25 +17,21 @@
 
 </html>
 
-<div dir="rtl" class="col-md-6 user-container"  class="container-fluid">
-    <h2 class="text-center">Add Guest</h2>
-    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<div class="col-md-6 user-container"  class="container-fluid">
+    <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Edit Guest</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()"style="font-size: large;">
       
   
       <div class="form-group">
         <label for="guest_first_name">First Name:</label>
-        <input formControlName="guest_first_name" placeholder="First Name" name="guest_first_name" class="form-control" id="guest_first_name">
+        <input type="text" formControlName="guest_first_name" placeholder="First Name" name="guest_first_name" class="form-control" id="guest_first_name">
       </div>
   
       <div class="form-group">
         <label for="guest_last_name">Last Name:</label>
-        <input formControlName="guest_last_name" placeholder="Last name" name="guest_last_name" class="form-control" id="guest_last_name">
+        <input formControlName="guest_last_name" placeholder="guest_last_name" name="guest_last_name" class="form-control" id="guest_last_name">
       </div>
 
-      <div class="form-group">
-        <label for="guest_tz">Tz :</label>
-        <input formControlName="guest_tz" placeholder="Tz" name="guest_tz" class="form-control" id="guest_tz">
-      </div>
       
       <div class="form-group">
         <label for="guest_email">guest_email:</label>
@@ -47,8 +43,8 @@
         <input formControlName="gender" placeholder="gender" name="gender" class="form-control" id="gender">
       </div>
       <div class="form-group">
-        <label for="guest_message_befor">guest_message_befor :</label>
-        <input formControlName="guest_message_befor" placeholder="guest_message_befor" name="guest_message_befor" class="form-control" id="guest_message_befor">
+        <label for="guest_message_before">guest_message_before :</label>
+        <input formControlName="guest_message_before" placeholder="guest_message_before" name="guest_message_before" class="form-control" id="guest_message_before">
       </div>
       <div class="form-group">
         <label for="guest_message_after">guest_message_after :</label>
@@ -57,6 +53,6 @@
 
       
   
-      <button class="btn btn-success">Add</button>
+      <button class="btn btn-success"  (click)="EditGuest(guest)">Update</button>
     </form>
   </div>

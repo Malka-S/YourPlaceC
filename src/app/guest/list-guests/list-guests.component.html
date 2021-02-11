@@ -10,19 +10,16 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
 </body>
 
-</html>
-
-<div dir="rtl" class="col-md-6" class="container-fluid">
-    <h2 style="margin: auto"> Guest Details</h2>
-    <button class="btn btn-danger" style="width:100px" (click)="addGuest()"> Add User</button>
-    <table class="table table-striped">
+<div class="col-md-6 container-fluid">
+    <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Guests Details</h2>
+    <button class="btn btn-danger" style="width:100px" (click)="addGuest()"> Add User</button><br/>
+    <table style="width:1000px" class="table table-striped">
       <thead>
       <tr>
-        <th class="hide">Id</th>
+        <th class="hidden">Id</th>
         <th>FirstName</th>
         <th>LastName</th>
         <th>gender</th>
@@ -32,17 +29,17 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let guest of guests">
-        <td class="hide"></td>
-        <td>guest</td>
-        <td>guest</td>
-        <td>guest</td>
-        <td>guest</td>
-        <td>guest</td>
-        <td>guest</td>
+      <tr *ngFor="let g of guests">
+       <td class="hidden"></td>
+        <td>{{g.guest_first_name}}</td>
+         <td>{{g.guest_last_name}}</td>
+        <td>{{g.gender}}</td>
+        <td>{{g.guest_email}}</td>
+        <td>{{g.guest_message_befor}}</td>
+        <td>{{g.guest_message_after}}</td>
         <td> 
-          <button class="btn btn-success" (click)="deleteGuest(guest)"> Delete</button>        
-          <button class="btn btn-success" (click)="editGuest(guest)" style="margin-left: 20px;"> Edit</button></td>
+          <button  class="btn btn-success" (click)="deleteGuest(g)"> Delete</button>        
+          <button  class="btn btn-success" (click)="editGuest(g)" > Edit</button></td>
      </tr>
       </tbody>
     </table>

@@ -54,10 +54,7 @@ export class AddGuestComponent implements OnInit {
     // this.router.navigateByUrl('/list-guest');
     this.router.navigate(['/list-guests']);
 
-    // this.guestService.createGuest(this.addForm.value)
-    //   .subscribe( data => {
-    //     this.router.navigate(['list-guest']);
-    //   });
+   
   }
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Guest } from '../../model/guest.model';
 import { Router } from "@angular/router";
 import { GuestService } from '../../service/guest.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, JsonpClientBackend } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -15,7 +15,10 @@ export class ListGuestsComponent implements OnInit {
   guests: Guest[];
   guest: Guest;
 
-  constructor(private router: Router, private guestService: GuestService,private http: HttpClient) { 
+  constructor(
+    private router: Router,
+     private guestService: GuestService,
+     private http: HttpClient) { 
     //פונקצית קריאה לרשימה של כל האורחים-שיטען מיד עם טעינת הקומפוננטה
     this.guestService.getAllGuests().subscribe(
       response=>{console.log(response);
@@ -23,29 +26,44 @@ export class ListGuestsComponent implements OnInit {
       },
       error=>{ console.log(error);
       })
+
+
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
    //?
-  deleteGuest(guest: Guest): void {
-    this.guests = this.guests.filter(u => u !== guest);
-    this.guestService.deleteGuest(guest.guest_id)
+   deleteGuest(g: Guest): void {
+    this.guestService.deleteGuest(g.guest_id)
       .subscribe( data => {
-        this.guests = this.guests.filter(u => u !== guest);
+        this.guests = this.guests.filter(u => u !== g);
       })
    };
 
   addGuest(): void {
     this.router.navigate(['add-guest']);
   };
-  //או שעורכים בקומפוננטה הזאת
-    editGuest(guest:Guest):void{
-    this.guestService.updateGuest(guest).subscribe(
-    response=>{console.log(response);
-      this.guest=response;
-    },
-    error=>{ console.log(error);
-    }) 
+  //א:ו שעורכים בקומפוננטה הזאת
+    editGuest(g):void{
+      console.log('guest ' + JSON.stringify(g));
+    // this.guestService.updateGuest(guest).subscribe(
+    // response=>{console.log(response);
+    //   this.guest=response;
+    // },
+    // error=>{ console.log(error);
+    // }) 
+    window.localStorage.setItem('editGuestId', g.guest_id);
+    window.localStorage.setItem('editguest_first_name', g.guest_first_name);
+    window.localStorage.setItem('editguest_last_name', g.guest_last_name);
+    window.localStorage.setItem('editguest_gender', g.guest_gender);
+    window.localStorage.setItem('editguest_email', g.guest_email);
+    window.localStorage.setItem('editguest_message_before', g.guest_message_befor);
+    window.localStorage.setItem('editguest_message_after', g.guest_message_after);
+
+
+    this.router.navigate(['edit-guest']);
+
   }
   //לכאורה אמור לשלוח בניתוב גם את האורח שאמור לערוך
   // editGuest():void{
@@ -63,3 +81,4 @@ export class ListGuestsComponent implements OnInit {
 //}
   
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

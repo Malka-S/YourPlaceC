@@ -12,48 +12,55 @@
 </head>
 
 <body>
-  <!-- <app-root></app-root> -->
 </body>
 
-</html>
     
-<div dir="rtl" class="container" >
+<div  class="container" >
 
-  <h1>אישור השתתפות</h1>
+  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">אישור השתתפות</h1>
   <br />
-  <form novalidate #a="ngForm" (ngSubmit)="onSend(a)">
-    <button (click)="seeInvitation()">צפיה בהזמנה</button><br />
-    <button (click)="confirm()">אישור</button><br />
-    <button (click)="navigateToPlace()">צפיה במקום</button><br />
+  <form  novalidate #a="ngForm" (ngSubmit)="onSend(a)" style="font-size: large;" >
+    <button class="btn btn-success" style="margin-left: 50pt;" (click)="seeInvitation()">צפיה בהזמנה</button>
+    <button class="btn btn-success" style="margin-left: 50pt;" (click)="confirm()">אישור</button>
+    <button class="btn btn-success"style="margin-left: 50pt;" (click)="navigateToPlace()">צפיה במקום</button>
     <br />
-    <div>אני שמחה לאשר השתתפות ורוצה או לא לשבת ליד</div>
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="TableMember1.FriendId"
-      name="FriendId"
-      #FriendId="ngModel"
-    />
     <br />
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="TableMember2.FriendId"
-      name="FriendId"
-      #FriendId="ngModel"
-    />
-    <br />
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)]="TableMember3.FriendId"
-      name="FriendId"
-      #FriendId="ngModel"
-    />
-    <br />
-    <a>:החברים שלך הם</a>
-    <a> {{ TableMember1.FriendId }} ,</a>
-    <a> {{ TableMember2.FriendId }} ,</a>
-    <a> {{ TableMember3.FriendId }} ,</a>
+
+    <div >אני שמחה לאשר השתתפות ורוצה או לא לשבת ליד</div>
+<!-- <mat-form-field appearance="fill">
+  <mat-label>my options</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let g of guests" [value]="g.value">
+      {{g.guest_last_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-selection-list #friends>
+  <mat-list-option *ngFor="let g of guests">
+    {{g.guest_last_name}}
+  </mat-list-option>
+</mat-selection-list> -->
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="hidden">Id</th>
+    <th>first Name</th>
+    <th>last Name</th>
+    <td>status</td>
+    <td>priority</td>
+  </tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let g of guests">
+  <td class="hidden"></td>
+   <td>{{g.guest_first_name}}</td>
+    <td>{{g.guest_last_name}}</td>
+    <td></td>
+     <td></td>
+</tr>
+</tbody>
+</table>
+
   </form>
+
 </div>

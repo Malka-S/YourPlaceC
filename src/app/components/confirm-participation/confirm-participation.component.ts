@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../../service/authentication.server';
 import { GuestService } from '../../service/guest.service';
+import { Guest } from '../../model/guest.model';
+import { JsonPipe } from '@angular/common';
 
 
 @Component({
@@ -11,6 +13,8 @@ import { GuestService } from '../../service/guest.service';
   styleUrls: ['./confirm-participation.component.css'],
 })
 export class ConfirmParticipationComponent implements OnInit {
+  category:'חברות כלה';
+  guests: Guest[];
   onSend({ value, valid }) {
     if (valid) {
       console.log(value);
@@ -18,6 +22,9 @@ export class ConfirmParticipationComponent implements OnInit {
       console.log('not valid');
     }
   }
+
+  ngOnInit(): void {}
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -25,27 +32,27 @@ export class ConfirmParticipationComponent implements OnInit {
     private guestService: GuestService,
     private authenticationService: AuthenticationService //private alertService: AlertService
   ) {
+   //פונקצית קריאה לרשימה של כל האורחים לפי קטגוריה-שיטען מיד עם טעינת הקומפוננטה
+   console.log('got to oninit')
+//לא מכיר את המשתנה של  this.category
+
+   this.guestService.getGuestByCategory('חברות כלה').subscribe(
+     response=>{console.log(response);
+       this.guests=response;
+       console.log(JSON.stringify(response));
+     },
+     error=>{ console.log(error);
+     })
+//לא מקבל שום דבר מבשרת
+     console.log('the guests ',this.guests)
+ 
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
     }
   }
   @Input()
-  TableMember1 = {
-    GuestId: '',
-    FriendId: '',
-    likeOrNot: '',
-  };
-  TableMember2 = {
-    GuestId: '',
-    FriendId: '',
-    likeOrNot: '',
-  };
-  TableMember3 = {
-    GuestId: '',
-    FriendId: '',
-    likeOrNot: '',
-  };
+
   seeInvitation() {
     //אפשרות לצפות בהזמנה
   }
@@ -58,11 +65,11 @@ export class ConfirmParticipationComponent implements OnInit {
       // },
       // error=>{ console.log(error);
       // })
+      this.guestService
       
   }
   navigateToPlace() {
     //שהאורח יוכל לצפות במקומו-רק כאשר מוכן
   }
 
-  ngOnInit(): void {}
 }

@@ -1,0 +1,41 @@
+<p>upload-xl works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Email Validation Tutorial</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+</body>
+<input type="file" (change)="uploadExcel($event)"> -->
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>guest FirstName</th>
+            <th>guest LastName</th>
+            <th>guest gender</th>
+            <th>guest Email</th>
+            <th>guest messageBefore</th>
+            <th>guest messageAfter</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let guest of guests; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{guest.FirstName}}</td>
+            <td>{{guest.LastName}}</td>
+            <td>{{guest.gender}}</td>
+            <td>{{guest.Email}}</td>
+            <td>{{guest.messageBefore}}</td>
+            <td>{{guest.messageAfter}}</td>
+        </tr>
+    </tbody>
+</table> 

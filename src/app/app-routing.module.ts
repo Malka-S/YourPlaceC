@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AddGuestComponent } from './guest/add-guest/add-guest.component';
 import { EditGuestComponent } from './guest/edit-guest/edit-guest.component';
 import { ListGuestsComponent } from './guest/list-guests/list-guests.component';
+import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
 //import { RegisterComponent } from './components/register/register.component';
 
 
@@ -23,7 +24,7 @@ const routes: Routes = [
       { path: 'confirm-participation', component: ConfirmParticipationComponent },
       { path: 'new-user', component: NewUserComponent },
       { path: 'login', component: LoginComponent },
-
+//{path:'upload-xl',component:UploadXlComponent},
       { path: 'add-guest', component: AddGuestComponent },
       { path: 'edit-guest', component: EditGuestComponent },
       { path: 'list-guests', component: ListGuestsComponent },

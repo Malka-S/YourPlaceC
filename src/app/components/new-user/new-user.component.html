@@ -18,16 +18,17 @@
 </html>
 
 
-<div dir="rtl" class="container-fluid">
-  <h2>משתמש חדש </h2>
-  <form [formGroup]="newUserForn">
+<div  class="container-fluid">
+  <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">new user</h2>
+  <form [formGroup]="newUserForm" style="font-size: large;">
 
-    <div class="form-group" name="שם פרטי" >
-      <label for="user_first_name"> הכנס שם פרטי</label>
-      <input  [class.is-invalid] = "newUserForn.get('user_first_name').invalid && newUserForn.get('user_first_name').touched"
+    <div class="form-group" name="firstname" >
+      <label for="user_first_name"> first name</label>
+      <input  [class.is-invalid] = "newUserForm.get('user_first_name').invalid && newUserForm.get('user_first_name').touched"
         type="text"
         class="form-control"
         formControlName="user_first_name"
+        placeholder="first name"
       />
       <div *ngIf="(user_first_name.invalid && user_first_name.touched) || user_first_name.dirty">
         <small *ngIf="user_first_name.errors?.required" class="text-danger">הכנס שם פרטי</small>
@@ -35,25 +36,27 @@
         <small *ngIf="user_first_name.errors?.pattern" class="text-danger">שם פרטי אינו תקין</small>
       </div>
     </div>
-     <div class="form-group" name="שם משפחה">
-      <label for="user_last_name"> הכנס שם משפחה</label>
-      <input  [class.is-invalid] = "newUserForn.get('user_last_name').invalid && newUserForn.get('user_last_name').touched"
+     <div class="form-group" name="lastname">
+      <label for="user_last_name"> last name</label>
+      <input  [class.is-invalid] = "newUserForm.get('user_last_name').invalid && newUserForm.get('user_last_name').touched"
         type="text"
         class="form-control"
         formControlName="user_last_name"
+        placeholder="last name"
       />
       <div *ngIf="(user_last_name.invalid && user_last_name.touched) || user_last_name.dirty">
-        <small *ngIf="user_last_name.errors?.required" class="text-danger">הכנס שם משפחה</small>
+        <small *ngIf="user_last_name.errors?.required" class="text-danger">enter last name</small>
         <!-- question mark(?) is a safe navigation operator -->
         <small *ngIf="user_last_name.errors?.pattern" class="text-danger">שם משפחה אינו תקין</small>
       </div>
     </div> 
     <div class="form-group" name="טלפון">
-      <label for="user_phone_number">הכנס מספר טלפון</label>
-      <input  [class.is-invalid] = "newUserForn.get('user_phone_number').invalid && newUserForn.get('user_phone_number').touched"
+      <label for="user_phone_number">enter phone number</label>
+      <input  [class.is-invalid] = "newUserForm.get('user_phone_number').invalid && newUserForm.get('user_phone_number').touched"
         type="tel"
         class="form-control"
         formControlName="user_phone_number"
+        placeholder="phone number"
       />
       <div *ngIf="(user_phone_number.invalid && user_phone_number.touched) || user_phone_number.dirty">
         <small *ngIf="user_phone_number.errors?.required" class="text-danger">הכנס מספר טלפון</small>
@@ -61,12 +64,13 @@
         <small *ngIf="user_phone_number.errors?.pattern" class="text-danger">   טלפון אינו תקין    </small>
       </div>
     </div>
-    <div class="form-group" name="מייל" >
-      <label for="user_email"> הכנס דואר אלקטרוני</label>
-      <input  [class.is-invalid] = "newUserForn.get('user_email').invalid && newUserForn.get('user_email').touched"
+    <div class="form-group" name="email" >
+      <label for="user_email">enter email address</label>
+      <input  [class.is-invalid] = "newUserForm.get('user_email').invalid && newUserForm.get('user_email').touched"
         type="email"
         class="form-control"
         formControlName="user_email"
+        placeholder="user email"
       />
       <div *ngIf="(user_email.invalid && user_email.touched) || user_email.dirty">
         <small *ngIf="user_email.errors?.required" class="text-danger">הכנס דואר אלקטרוני</small>
@@ -75,11 +79,13 @@
       </div>
     </div>
     <div class="form-group" name="סיסמה">
-      <label for="user_password">הכנס סיסמה</label>
-      <input  [class.is-invalid] = "newUserForn.get('user_password').invalid && newUserForn.get('user_password').touched"
+      <label for="user_password">password</label>
+      <input  [class.is-invalid] = "newUserForm.get('user_password').invalid && newUserForm.get('user_password').touched"
         type="password"
         formControlName="user_password"
         class="form-control"
+        placeholder="user password"
+
       />
       <div *ngIf="(user_password.invalid && user_password.touched) || user_password.dirty">
         <small *ngIf="user_password.errors?.required" class="text-danger"> הכנס סיסמה</small>
@@ -87,19 +93,21 @@
       </div>
     </div>
     <div class="form-group" name="הכנס סיסמה">
-      <label for="user_confirmPassword">אשר סיסמה</label>
-      <input  [class.is-invalid] = "newUserForn.get('user_confirmPassword').invalid && newUserForn.get('user_confirmPassword').touched"
+      <label for="user_confirmPassword">varify password</label>
+      <input  [class.is-invalid] = "newUserForm.get('user_confirmPassword').invalid && newUserForm.get('user_confirmPassword').touched"
         type="password"
         formControlName="user_confirmPassword"
         class="form-control"
+        placeholder="confirm password"
+
       />
       <div *ngIf="(user_confirmPassword.invalid && user_confirmPassword.touched) || user_confirmPassword.dirty">
         <small *ngIf="user_confirmPassword.errors?.required" class="text-danger"> הכנס סיסמה</small>
         <small *ngIf="user_confirmPassword.errors?.pattern" class="text-danger">סיסמה לא תקינה</small>
       </div>
     </div>
-    <!-- <button class="btn btn-primary" type="submit" [disabled]="!newUserForn.valid" ng-click="onSubmit">Submit</button> -->
-    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="Submit" [disabled]="!newUserForn.valid"/>
+    <!-- <button class="btn btn-primary" type="submit" [disabled]="!newUserForm.valid"  [disabled]="!newUserForm.valid"ng-click="onSubmit">Submit</button> -->
+    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="add" />
 
   
     <!-- <div class="form-group">

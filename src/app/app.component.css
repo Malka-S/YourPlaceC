@@ -1,0 +1,10 @@
+:h2 {
+  display: inline;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
+  color: brown;
+  border: 1%;
+}
+:div {
+  margin-left: 10%;
+}

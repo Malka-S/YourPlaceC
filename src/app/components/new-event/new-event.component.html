@@ -15,14 +15,12 @@
 <body></body>
 
 
-<div dir="rtl" class="container-fluid">
-
-  
-  <h2>הגדרת אירוע </h2>
-  <form [formGroup]="creatEvent">
+<div  class="container-fluid">
+  <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">הגדרת אירוע </h2>
+  <form [formGroup]="creatEvent" style="font-size: large;">
 
     <div class="form-group" name="EventDes">
-      <label for="EventDes">שם אירוע:</label>
+      <label for="EventDes">event name</label>
       <input type="text" class="form-control" formControlName="EventDes" id="EventDes" autocomplete="off">
       <div class="error"
         *ngIf="creatEvent.controls['EventDes'].hasError('required') && creatEvent.controls['EventDes'].touched">EventDes
@@ -30,17 +28,17 @@
     </div>
 
     <div class="form-group" name="EventType" >
-      <label dor="EventType">סוג ארוע:</label>
+      <label dor="EventType">event type</label>
       <mat-select>
         <mat-option  *ngFor="let mes of eventTypeList" [value]="mes.Des" >
           {{mes.Des}}
         </mat-option>
       </mat-select>
     </div>
-
+   
     <div></div>
     <div class="form-group" name="EventDate">
-      <label for="EventDate">תאריך אירוע:
+      <label for="EventDate">event date:
       </label>
       <input type="date" class="form-control" formControlName="EventDate" id="EventDate" autocomplete="off">
       <div class="error"
@@ -99,6 +97,6 @@
         *ngIf="creatEvent.controls['NumPlacesAroundATable'].hasError('required') && creatEvent.controls['NumPlacesAroundATable'].touched">
         NumPlacesAroundATable is required</div>
     </div>
-    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="המשך לטעינת אורחים:" >
+    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="המשך לטעינת אורחים:" [disabled]="!creatEvent.valid">
   </form>
 </div>

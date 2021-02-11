@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { User } from '../../model/user.model';
 import { LogInService } from '../../service/logIn.service';
@@ -7,9 +7,14 @@ import { AlertService } from '../../service/alert.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Login}from '../../model/login.model'
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogData } from '../new-event-two/new-event2.component';
+import { BaseCode } from 'src/app/model/baseCode';
+
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
   //user: User;
+user:any[];
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -25,12 +30,15 @@ export class LoginComponent implements OnInit {
     user_name: new FormControl('',[Validators.required])
 
   });
+  nameCatagroy: any;
 
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private logInService:LogInService,
+    public dialog: MatDialog,
     private authenticationService: AuthenticationService //private alertService: AlertService
   ) {
     // redirect to home if already logged in
@@ -38,34 +46,21 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+
   ngOnInit() {
+
     this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
+        useremail: ['', Validators.required],
         password: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-}
- 
-  // convenience getter for easy access to form fields
-  // get f() {
-  //   return this.loginForm.controls;
-  // }
-  // get user_email() {
-  //   return this.loginForm.get('user_email')
-  // }
-  // get user_password() {
-  //   return this.loginForm.get('user_password')
-  // }
-  // get user_name() {
-  //   return this.loginForm.get('user_name')
-  // }
+  }
   register(): void {
     this.router.navigateByUrl('/new-user');
   };
-  
-
   onSubmit() {
     //מהחוברת מהמורה עמוד 39
     let dataToSave=this.loginForm.value;
@@ -75,21 +70,52 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
-    // this.loading = true;
-    // this.authenticationService
-    //   .login(this.f.user_email.value, this.f.user_password.value)
-    //   .pipe(first())
-    //   .subscribe(
-    //     (data) => {
-    //       this.router.navigate([this.returnUrl]);
-    //     },
-    //     (error) => {
-    //       this.alertService.error(error);
-    //       this.loading = false;
-    //     }
-    //   );
+      this.logInService.Login(dataToSave.useremail,dataToSave.password).subscribe(
+      response=>{console.log(response);
+        console.log('res '+response);
+        alert("you are loged in")
+        //ניסיתי את הדיאלוג הזה
+        this.openDialog();
+       //לעשות כאן משהו יפה עם מה שחזר מהשרת
+      },
+      error=>{ alert ("you need to register-can't log in");console.log(error+"user is not found");
+      }) 
+    
+    }
+    
+      openDialog() {
+        this.dialog.open(DialogElementsExampleDialog);
+      }
+    
   }
-}
+   @Component({
+    selector: 'dialog-elements-example-dialog',
+    templateUrl: 'dialog-elements-example-dialog.html',
+  })
+  export class DialogElementsExampleDialog {}
+ 
+
+  // export class DialogContentExampleDialog {
+  //   constructor(
+  //     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+  //     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
+  //   onNoClick(): void {
+  //     this.dialogRef.close('no');
+  //   }
+
+  //   yes() {
+  //     this.dialogRef.close('yes');
+  //   }
+    
+  // }
+  // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  //   width: '250px',
+  //   height: '250px',
+  //   data: { title: 'error', content: "no schools were entered", showNo: false, no: 'no', yes: 'ok' }
+  // });
+  // dialogRef.afterClosed().subscribe(result => {
+  // });
+
 
 
