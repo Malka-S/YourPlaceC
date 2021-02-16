@@ -17,7 +17,7 @@
     
 <div  class="container" >
 
-  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">אישור השתתפות</h1>
+  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">conferm partisipance</h1>
   <br />
   <form  novalidate #a="ngForm" (ngSubmit)="onSend(a)" style="font-size: large;" >
     <button class="btn btn-success" style="margin-left: 50pt;" (click)="seeInvitation()">צפיה בהזמנה</button>
@@ -27,19 +27,20 @@
     <br />
 
     <div >אני שמחה לאשר השתתפות ורוצה או לא לשבת ליד</div>
-<!-- <mat-form-field appearance="fill">
-  <mat-label>my options</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let g of guests" [value]="g.value">
-      {{g.guest_last_name}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-selection-list #friends>
-  <mat-list-option *ngFor="let g of guests">
-    {{g.guest_last_name}}
-  </mat-list-option>
-</mat-selection-list> -->
+    <mat-form-field appearance="fill">
+      <mat-label>Options</mat-label>
+      <mat-select [formControl]="options" multiple>
+        <mat-select-trigger>
+          {{options.value ? options.value[0] : ''}}
+          <span *ngIf="options.value?.length > 1" class="example-additional-selection">
+            (+{{options.value.length - 1}} {{options.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let option of guests" [value]="option.guest_first_name">{{option.guest_first_name+option.guest_last_name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+ 
+<!---table-->
 <table class="table table-striped">
   <thead>
   <tr>
@@ -55,11 +56,13 @@
   <td class="hidden"></td>
    <td>{{g.guest_first_name}}</td>
     <td>{{g.guest_last_name}}</td>
-    <td></td>
+    <td><section class="example-section">
+      <mat-checkbox class="example-margin">friend?!</mat-checkbox>
+    </section></td>
      <td></td>
 </tr>
 </tbody>
-</table>
+</table> 
 
   </form>
 

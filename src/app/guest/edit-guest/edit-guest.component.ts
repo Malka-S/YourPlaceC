@@ -72,7 +72,6 @@ export class EditGuestComponent implements OnInit {
   }
     
   EditGuest(guest:Guest):void{
-    console.log("EditGuest 1");
       //כשלוחץ על הכפתור נשמי=רים השינויים
       this.guestService.updateGuest(this.editForm.value).subscribe(
       response=>{console.log(response);
