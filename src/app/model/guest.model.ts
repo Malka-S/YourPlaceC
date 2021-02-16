@@ -9,7 +9,7 @@ export class Guest{
     table_id:number;
     guest_message_befor:string;
     guest_message_after:string;
-    guest_catagory_id:number;
+    guest_category_id:number;
   constructor(
     id,
 last_name,
@@ -33,6 +33,6 @@ catagory_id
     this.table_id=table_id;
     this.guest_message_befor=mes_befor;
     this.guest_message_after=mes_after;
-    this.guest_catagory_id=catagory_id;
+    this.guest_category_id=catagory_id;
   }
 }

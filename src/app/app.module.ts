@@ -30,7 +30,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NewEventThreeComponent } from './components/new-event-three/new-event-three.component';
-//import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
+
+import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
 
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
@@ -50,7 +51,7 @@ import { NewEventThreeComponent } from './components/new-event-three/new-event-t
     EditGuestComponent,
     ListGuestsComponent,
     NewEventThreeComponent,
-    //UploadXlComponent,
+    UploadXlComponent,
 
   ],
   imports: [

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Guest } from '../../model/guest.model';
+import { GuestService } from '../../service/guest.service';
 import *as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-upload-xl',
   templateUrl: './upload-xl.component.html',
@@ -7,7 +10,9 @@ import *as XLSX from 'xlsx';
 })
 
 export class UploadXlComponent implements OnInit {
-  guests: any;
+ 
+  guests : any;
+  g:Guest;
   //מנסה לפתור את הבעיה
   externals: [
 		{
@@ -15,7 +20,7 @@ export class UploadXlComponent implements OnInit {
 			'../xlsx.js': 'var _XLSX'
 		}
 	]
-  constructor() { }
+  constructor(private guestService: GuestService ) { }
   uploadExcel(e) { 
     try{
        const fileName = e.target.files[0].name;
@@ -24,13 +29,28 @@ export class UploadXlComponent implements OnInit {
           // const file = ev.target.files[0];
      reader.onload = (event) => { const data = reader.result;
        workBook = XLSX.read(data, { type: 'binary' }); 
-       jsonData = workBook.SheetNames.reduce((initial, name) => { const sheet = workBook.Sheets[name]; 
+       jsonData = workBook.SheetNames.reduce((initial, name) => {
+          const sheet = workBook.Sheets[name]; 
         initial[name] = XLSX.utils.sheet_to_json(sheet); return initial; }, {});
          this.guests = jsonData[Object.keys(jsonData)[0]];
+         //לכאן הגיע וכאן עובד-מזהה ומדפיס
           console.log(this.guests); 
+          
         }; reader.readAsBinaryString(e.target.files[0]); 
-      });}catch(e){ console.log('error', e);
-    }}
+      });}
+      catch(e){ console.log('error', e);  
+    }
+  }
+    AddGuest(g:Guest):void{
+      console.log('category '+g.guest_category_id);
+      this.guestService.AddGuest(g).subscribe(
+      response=>{console.log(response);
+        g = response;
+      },
+      error=>{ console.log(error);
+      }) 
+    }
+    
   ngOnInit(): void {
   }
 

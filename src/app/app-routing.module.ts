@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'confirm-participation', component: ConfirmParticipationComponent },
       { path: 'new-user', component: NewUserComponent },
       { path: 'login', component: LoginComponent },
-//{path:'upload-xl',component:UploadXlComponent},
+{path:'upload-xl',component:UploadXlComponent},
       { path: 'add-guest', component: AddGuestComponent },
       { path: 'edit-guest', component: EditGuestComponent },
       { path: 'list-guests', component: ListGuestsComponent },
