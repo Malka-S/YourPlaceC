@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 export class LogInService {
   User:User[]=[];
   constructor(private http: HttpClient) {}
-  baseUrl = 'https://localhost:44390/api/UserLogin/';
+  baseUrl = 'https://localhost:44390/api/User/';
 
   AddUser(user: User): Observable<any> {
 
-    return this.http.put<any>(this.baseUrl+'PutUser/', user);
+    return this.http.put<any>(this.baseUrl+'PutUser', user);
   }
  
   Login(useremail:string,password:string): Observable<any[]>{

@@ -23,7 +23,7 @@ export class NewEvent2Component implements OnInit {
   animal: string[] = [];
   public catagryList:BaseCode[]=[];
   nameCatagroy: string;
-  idCatagory:number=0;
+  idCatagory:number=8;
 
   constructor(
     public eventService:EventService,

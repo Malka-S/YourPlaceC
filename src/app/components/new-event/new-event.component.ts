@@ -83,9 +83,9 @@ onUpload() {
   ); 
 } 
   onSubmit() {
-    // this.router.navigateByUrl('/new-event2');
+    this.router.navigateByUrl('/new-event2');
     console.log(this.creatEvent);
-    this.router.navigate(['new-event2']);
+    // this.router.navigate(['new-event2']);
 
     // this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
     //   this.router.navigate(['new-event2']);
