@@ -21,7 +21,6 @@
   <br />
   <form  novalidate #a="ngForm" (ngSubmit)="onSend(a)" style="font-size: large;" >
     <button class="btn btn-success" style="margin-left: 50pt;" (click)="seeInvitation()">צפיה בהזמנה</button>
-    <button class="btn btn-success" style="margin-left: 50pt;" (click)="confirm()">אישור</button>
     <button class="btn btn-success"style="margin-left: 50pt;" (click)="navigateToPlace()">צפיה במקום</button>
     <br />
     <br />
@@ -36,30 +35,38 @@
             (+{{options.value.length - 1}} {{options.value?.length === 2 ? 'other' : 'others'}})
           </span>
         </mat-select-trigger>
-        <mat-option *ngFor="let option of guests" [value]="option.guest_first_name">{{option.guest_first_name+option.guest_last_name}}</mat-option>
+        <mat-option *ngFor="let option of guests" [value]="option.guest_id+' '+option.guest_first_name+' '+option.guest_last_name">{{option.guest_first_name+option.guest_last_name}}</mat-option>
       </mat-select>
     </mat-form-field>
- 
+    <!-- אם אני רוצה שהאוביקט יכיל שם פרטי ומשפחה וID[value]="option.guest_id+' '+option.guest_first_name+' '+option.guest_last_name" -->
 <!---table-->
 <table class="table table-striped">
   <thead>
   <tr>
-    <th class="hidden">Id</th>
-    <th>first Name</th>
-    <th>last Name</th>
+    <!-- <th class="hidden">Id</th> -->
+    <th>id    Name</th>
     <td>status</td>
     <td>priority</td>
   </tr>
   </thead>
   <tbody>
-<tr *ngFor="let g of guests">
-  <td class="hidden"></td>
-   <td>{{g.guest_first_name}}</td>
-    <td>{{g.guest_last_name}}</td>
+<tr *ngFor="let g of options.value">
+  <!-- <td class="hidden"></td> -->
+   <td>{{g}}</td>
     <td><section class="example-section">
       <mat-checkbox class="example-margin">friend?!</mat-checkbox>
-    </section></td>
-     <td></td>
+    </section>
+       <!-- נסיונות שונים שלא עובדים
+         לא עובד <div class="p-field-checkbox">
+        <p-checkbox [(ngModel)]="checked" binary="true" inputId="binary"></p-checkbox>
+        <label for="binary">{{checked}}</label></div>-->
+        <!--אין לי את EJ2 ולכן לא עובד
+        <ejs-checkbox name="Sport" value="freind" label="freind" [checked]="true"></ejs-checkbox>--></td>
+     <td>
+  {{g.guest_id}}
+     </td>
+<!--לא מקבל את הID-->
+     <button class="btn btn-success" style="margin-left: 50pt;" (click)="confirm(g.guest_id)">save choice</button>
 </tr>
 </tbody>
 </table> 

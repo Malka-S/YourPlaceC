@@ -6,6 +6,8 @@ import { GuestService } from '../../service/guest.service';
 import { Guest } from '../../model/guest.model';
 import { JsonPipe } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { TM } from 'src/app/model/TM.model';
+import { toNumber } from 'lodash';
 
 
 @Component({
@@ -18,9 +20,12 @@ export class ConfirmParticipationComponent implements OnInit {
   guests: Guest[];
   subscription: Subscription;
   private routeSub: Subscription;
+  checked: boolean = false;
+  guest_3TM: TM[];
+  g_3:TM;
   id:any;
-    options = new FormControl();
-  
+ options = new FormControl();
+
   // path: 'item/:id';
   //  component: ConfirmParticipationComponent;
  
@@ -32,6 +37,7 @@ export class ConfirmParticipationComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+
     //ניסוי
     const appRoutes: Routes = [
       { path: '', component: ConfirmParticipationComponent }, {
@@ -73,6 +79,7 @@ export class ConfirmParticipationComponent implements OnInit {
   }
   constructor(
     private formBuilder: FormBuilder,
+    private formControl:FormControl,
     private activatedRoute: ActivatedRoute,
     private route: ActivatedRoute,
     private router: Router,
@@ -111,17 +118,29 @@ export class ConfirmParticipationComponent implements OnInit {
   seeInvitation() {
     //אפשרות לצפות בהזמנה
   }
-  confirm() {
+  confirm(id_chose:number):void {
+    console.log('מה שקיבל מהHTML ',id_chose);
+    //ניסיתי להדפיס את האוביקט של 
+    //console.log(this.formControl.this.options.value);
+
     //שליחת הנתונים לדטה בייס
     //לא יודעת איך לשלוח את הבקשות שלם
-      // this.guestService.AddRequest(x).subscribe(
-      // response=>{console.log(response);
-      //   this.x=response;
-      // },
-      // error=>{ console.log(error);
-      // })
-      this.guestService
-      
+     this.g_3={
+       table_members_id:null,
+      guest_id:8885,
+      friend_id:id_chose,
+      like_or_not:true,
+      guestPriority:3
+    }
+    console.log('obj ',this.g_3);
+        this.guestService.AddTM(this.g_3).subscribe(
+        response=>{console.log(response);
+          this.guest_3TM=response;
+        },
+        error=>{ console.log(error);
+        })
+        
+        
   }
   navigateToPlace() {
     //שהאורח יוכל לצפות במקומו-רק כאשר מוכן
