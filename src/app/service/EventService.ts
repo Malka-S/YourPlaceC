@@ -19,7 +19,7 @@ export class EventService {
     return this.http.get<BaseCode[]>(`${this.baseApiUrl}GetEventType`);
   }
   createEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>(this.baseApiUrl + 'postEvent', event);
+    return this.http.put<Event>(this.baseApiUrl + 'PutEvent', event);
   }
   postCategoryiesList(catagoryList:BaseCode[]):Observable<BaseCode[]>{
     return this.http.post<BaseCode[]>(this.baseApiUrl+"PostCategoryiesList",catagoryList);

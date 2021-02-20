@@ -46,15 +46,15 @@ export class NewEventComponent implements OnInit {
     console.log(this.eventService);
     this.eventService.getEventType().subscribe((data) =>{this.eventTypeList=data;});
     this.creatEvent = this.formBuilder.group({
-      EventId:8,
-      UserId:1,
-      EventDes: ['', Validators.required],
-      EventDate: ['', Validators.required],
-      EventType: ['', Validators.required],
-      EventDueDate: ['', Validators.required],
-      Invitation:['', Validators.required],
-      NumTables: ['', Validators.required],
-      NumPlacesAroundATable: ['', Validators.required]
+      event_id:8,
+      user_id:1,
+      event_des: ['', Validators.required],
+      event_date: ['', Validators.required],
+      event_type_id: ['', Validators.required],
+      due_date: ['', Validators.required],
+      invitation_file:['', Validators.required],
+      num_tables: ['', Validators.required],
+      num_places_around_a_table: ['', Validators.required]
     });
   }
 
@@ -83,15 +83,23 @@ onUpload() {
   ); 
 } 
   onSubmit() {
-    this.router.navigateByUrl('/new-event2');
-    console.log(this.creatEvent);
+    // this.router.navigateByUrl('/new-event2');
+    console.log("jkjkjk" ,this.creatEvent.value);
     // this.router.navigate(['new-event2']);
 
     // this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
-    //   this.router.navigate(['new-event2']);
     // });
+    this.AddEvent(this.creatEvent.value)
+    // this.router.navigate(['new-event2']);
   }
-
+  AddEvent(event:Event):void{
+    this.eventService.createEvent(event).subscribe(
+    response=>{console.log(response);
+      event = response;
+    },
+    error=>{ console.log(error);
+    }) 
+  }
   
   // onSend({ value, valid }) {
   //   if (valid) {
