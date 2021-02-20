@@ -14,15 +14,15 @@
 <body>
   <div class="container-fluid">
     <form>
-      <button mat-raised-button (click)="openDialog()">הוסף קטגוריה</button>
+      <button mat-raised-button (click)="openDialog()">add category</button>
       <ol>
         <li *ngFor="let a of catagryList">
-          שם: <i>{{a.des}}</i>
+          name: <i>{{a.des}}</i>
         </li>
       </ol>
-      <input type="button"   class="btn btn-primary pull-right" (click)="onUploudExel()"  value=" המשך לטעינת אורחים על ידי טבלת אקסל:" >
+      <input type="button"   class="btn btn-primary pull-right" (click)="onUploudExel()"  value="continue to upload XL" >
       &nbsp;
-      <input type="button"  class="btn btn-primary pull-left" (click)="addGuest()" value="המשך לטעינת אורחים ידני:" >
+      <input type="button"  class="btn btn-primary pull-left" (click)="addGuest()" value="continue to add guest" >
     </form>
   </div>
 </body>

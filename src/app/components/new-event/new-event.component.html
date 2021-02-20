@@ -40,7 +40,7 @@
 
     <div class="form-group" name="EventType" >
 
-      <label dor="EventType">סוג ארוע:</label>
+      <label dor="EventType">event type:</label>
       <mat-select formControlName="EventType">
         <mat-option  *ngFor="let mes of eventTypeList" [value]="mes.Id" >
           {{mes.Des}}
@@ -85,7 +85,7 @@
     </div>
 
     <div class="form-group" name="EventDueDate">
-      <label for="EventDueDate">תאריך אחרון לאישור השתתפות:
+      <label for="EventDueDate">last date to confirm-participation:
       </label>
       <input type="date" class="form-control" formControlName="EventDueDate" id="EventDueDate" autocomplete="off">
       <div class="error"
@@ -95,7 +95,7 @@
     
 
     <div class="form-group" name="NumTables">
-      <label for="EventDueDate">מספר שולחנות:
+      <label for="EventDueDate">number of tables:
       </label>
       <input type="number" class="form-control" formControlName="NumTables" id="NumTables" autocomplete="off">
       <div class="error"
@@ -104,7 +104,7 @@
     </div>
 
     <div class="form-group" name="NumPlacesAroundATable">
-      <label for="EventDueDate">מספר שולחנות:
+      <label for="EventDueDate">number of seats around table:
       </label>
       <input type="number" class="form-control" formControlName="NumPlacesAroundATable" id="NumPlacesAroundATable"
         autocomplete="off">
@@ -112,6 +112,6 @@
         *ngIf="creatEvent.controls['NumPlacesAroundATable'].hasError('required') && creatEvent.controls['NumPlacesAroundATable'].touched">
         NumPlacesAroundATable is required</div>
     </div>
-    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="המשך לטעינת אורחים:" [disabled]="!creatEvent.valid">
+    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="continue to upload guests" [disabled]="!creatEvent.valid">
   </form>
 </div>

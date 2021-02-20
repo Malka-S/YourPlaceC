@@ -14,7 +14,7 @@ import { BaseCode } from 'src/app/model/baseCode';
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
   //user: User;
-user:any[];
+user:User[];
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -73,12 +73,20 @@ user:any[];
       this.logInService.Login(dataToSave.useremail,dataToSave.password).subscribe(
       response=>{console.log(response);
         console.log('res '+response);
-        alert("you are loged in")
+        if(response)
+        {
+           alert("you are loged in")
+           this.router.navigateByUrl('/new-event');
+
+        
+        }
+        else 
         //ניסיתי את הדיאלוג הזה
         this.openDialog();
-       //לעשות כאן משהו יפה עם מה שחזר מהשרת
+      //  alert ("you need to register-can't log in.username or password are incorrect");
       },
-      error=>{ alert ("you need to register-can't log in");console.log(error+"user is not found");
+      error=>{ alert ("you need to register-can't log in. username or password are incorrect");
+      console.log(error+"user is not found");
       }) 
     
     }

@@ -47,15 +47,15 @@ export class AddGuestComponent implements OnInit {
     this.guestService.AddGuest(guest).subscribe(
     response=>{console.log(response);
       guest = response;
+      this.router.navigate(['/list-guests']);
     },
     error=>{ console.log(error);
     }) 
+
   }
   onSubmit() {
     // this.router.navigateByUrl('/list-guest');
-    this.router.navigate(['/list-guests']);
-
-   
+    this.AddGuest(this.addForm.value);
   }
 
 
