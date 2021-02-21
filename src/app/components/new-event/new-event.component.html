@@ -40,7 +40,7 @@
 
     <div class="form-group" name="event_type_id">
 
-      <label for="event_type_id">סוג ארוע:</label>
+      <label for="event_type_id">event type:</label>
       <mat-select formControlName="event_type_id">
         <mat-option *ngFor="let mes of eventTypeList" [value]="mes.Id">
           {{mes.Des}}
@@ -86,7 +86,7 @@
     </div>
 
     <div class="form-group" name="due_date">
-      <label for="due_date">תאריך אחרון לאישור השתתפות:
+      <label for="due_date">last date to confirm-participation:
       </label>
       <input type="date" class="form-control" formControlName="due_date" id="due_date" autocomplete="off">
       <div class="error"
@@ -96,7 +96,7 @@
 
 
     <div class="form-group" name="num_tables">
-      <label for="num_tables">מספר שולחנות:
+      <label for="num_tables">number of tables:
       </label>
       <input type="number" class="form-control" formControlName="num_tables" id="num_tables" autocomplete="off">
       <div class="error"
@@ -104,8 +104,8 @@
         NumTables is required</div>
     </div>
 
-    <div class="form-group" name="num_places_around_a_table">
-      <label for="num_places_around_a_table">מספר שולחנות:
+    <div class="form-group" name="NumPlacesAroundATable">
+      <label for="EventDueDate">number of seats around table:
       </label>
       <input type="number" class="form-control" formControlName="num_places_around_a_table" id="num_places_around_a_table"
         autocomplete="off">
@@ -113,7 +113,6 @@
         *ngIf="creatEvent.controls['num_places_around_a_table'].hasError('required') && creatEvent.controls['num_places_around_a_table'].touched">
         NumPlacesAroundATable is required</div>
     </div>
-    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="המשך לטעינת אורחים:"
-      [disabled]="!creatEvent.valid">
+    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="continue to upload guests" [disabled]="!creatEvent.valid">
   </form>
 </div>

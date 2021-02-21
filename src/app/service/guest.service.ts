@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Guest } from '../model/guest.model';
 import { Observable } from 'rxjs';
 import { BaseCode } from '../model/baseCode';
+import { TM } from '../model/TM.model';
 
 
 @Injectable({ providedIn: 'root' })
@@ -24,6 +25,12 @@ export class GuestService {
 
    AddGuest(guest: Guest): Observable<any> {
     return this.http.put<Guest>(this.baseUrl+'PutGuest/', guest);
+  }
+  // AddTM(guest_3TM: TM): Observable<any> {
+  //   return this.http.put<Guest>(this.baseUrl+'PutGuestTM/', guest_3TM);
+  // }
+  AddTMList(guest_3TM:TM[]): Observable<any> {
+    return this.http.put<Guest>(this.baseUrl+'PutGuestTM/', guest_3TM);
   }
   updateGuest(guest: Guest): Observable<Guest> {
     console.log('id ' + guest.guest_id);

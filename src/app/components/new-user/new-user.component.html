@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" >
-
+<!DOCTYPE html >
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Email Validation Tutorial</title>
@@ -16,13 +15,12 @@
 
 
 </html>
-
+<div  class="bg" >
 
 <div  class="container-fluid">
-  <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">new user</h2>
+  <h2>new user</h2>
   <form [formGroup]="newUserForm" style="font-size: large;">
-
-    <div class="form-group" name="firstname" >
+    <div class="form-group" name="user_first_name" >
       <label for="user_first_name"> first name</label>
       <input  [class.is-invalid] = "newUserForm.get('user_first_name').invalid && newUserForm.get('user_first_name').touched"
         type="text"
@@ -30,13 +28,16 @@
         formControlName="user_first_name"
         placeholder="first name"
       />
+      <div class="error"
+      *ngIf="newUserForm.controls['user_first_name'].hasError('required') && newUserForm.controls['user_first_name'].touched">
+      NumPlacesAroundATable is required</div>
       <div *ngIf="(user_first_name.invalid && user_first_name.touched) || user_first_name.dirty">
         <small *ngIf="user_first_name.errors?.required" class="text-danger">הכנס שם פרטי</small>
         <!--question mark(?) is a safe navigation operator-->
         <small *ngIf="user_first_name.errors?.pattern" class="text-danger">שם פרטי אינו תקין</small>
       </div>
     </div>
-     <div class="form-group" name="lastname">
+     <div class="form-group" name="user_last_name">
       <label for="user_last_name"> last name</label>
       <input  [class.is-invalid] = "newUserForm.get('user_last_name').invalid && newUserForm.get('user_last_name').touched"
         type="text"
@@ -50,7 +51,7 @@
         <small *ngIf="user_last_name.errors?.pattern" class="text-danger">שם משפחה אינו תקין</small>
       </div>
     </div> 
-    <div class="form-group" name="טלפון">
+    <div class="form-group" name="user_phone_number">
       <label for="user_phone_number">enter phone number</label>
       <input  [class.is-invalid] = "newUserForm.get('user_phone_number').invalid && newUserForm.get('user_phone_number').touched"
         type="tel"
@@ -64,7 +65,7 @@
         <small *ngIf="user_phone_number.errors?.pattern" class="text-danger">   טלפון אינו תקין    </small>
       </div>
     </div>
-    <div class="form-group" name="email" >
+    <div class="form-group" name="user_email" >
       <label for="user_email">enter email address</label>
       <input  [class.is-invalid] = "newUserForm.get('user_email').invalid && newUserForm.get('user_email').touched"
         type="email"
@@ -78,7 +79,7 @@
         <small *ngIf="user_email.errors?.pattern" class="text-danger">כתובת המייל לא תקינה</small>
       </div>
     </div>
-    <div class="form-group" name="סיסמה">
+    <div class="form-group" name="user_password">
       <label for="user_password">password</label>
       <input  [class.is-invalid] = "newUserForm.get('user_password').invalid && newUserForm.get('user_password').touched"
         type="password"
@@ -121,4 +122,5 @@
       <a routerLink="/register" class="btn btn-link">Register</a>
     </div> -->
   </form>
+</div>
 </div>

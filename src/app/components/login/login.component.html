@@ -19,11 +19,11 @@
       <!--#Myform="ngForm"(ngSubmit)="onSubmit(Myform)"-->
 
         <div class="form-group" name="username">
-        <label for="username">Username</label>
+        <label for="username">User name</label>
         <input type="text" formControlName="username" placeholder="user name" class="form-control"id="username"/>
       </div>
       <div class="form-group" name="useremail">
-        <label for="useremail">Useremail</label>
+        <label for="useremail">User email</label>
         <input type="text" class="form-control"formControlName="useremail" placeholder="user email" id="useremail"/>
       </div>
 
@@ -32,12 +32,12 @@
         <input type="password"  class="form-control"formControlName="password"placeholder="user password" id="password"/>
     </div>
     <div class="form-group">
-        <button [disabled]="!loginForm.valid" class="btn btn-primary"(click)="onSubmit()">
+        <button [disabled]="!loginForm.valid" class="btn btn-primary pull-left"(click)="onSubmit()">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Login
         </button>
 
-        <button [disabled]="loading" class="btn btn-danger" style="width:100px" (click)="register()">Register</button>
+        <button [disabled]="loading" class="btn btn-warning " style="width:100px;float:right" (click)="register()">Register</button>
       </div>
     </form>
   </div>

@@ -47,7 +47,7 @@ export class NewEventComponent implements OnInit {
     this.eventService.getEventType().subscribe((data) =>{this.eventTypeList=data;});
     this.creatEvent = this.formBuilder.group({
       event_id:8,
-      user_id:1,
+      user_id:8461,
       event_des: ['', Validators.required],
       event_date: ['', Validators.required],
       event_type_id: ['', Validators.required],

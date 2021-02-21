@@ -6,14 +6,14 @@ import { NewEventComponent } from './components/new-event/new-event.component';
 import { NewEvent2Component } from './components/new-event-two/new-event2.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+// import {FormsModule, ReactiveFormsModule ,FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule ,FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmParticipationComponent } from './components/confirm-participation/confirm-participation.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { RouterModule, RouterState, Routes } from '@angular/router';
 import { MatSliderModule } from '@angular/material/slider';
 import { NewUserComponent } from './components/new-user/new-user.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AddGuestComponent } from './guest/add-guest/add-guest.component';
 import { EditGuestComponent } from './guest/edit-guest/edit-guest.component';
@@ -59,6 +59,8 @@ import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+
     MatSliderModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -81,7 +83,6 @@ import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
     //MatMomentDateModule, 
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
-    ReactiveFormsModule
     // MatSliderModule
   ],
   providers: [

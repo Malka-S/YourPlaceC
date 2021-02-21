@@ -8,3 +8,9 @@
 :div {
   margin-left: 10%;
 }
+.bg {
+  background: rgba(240, 240, 240, 1) url("/assets/images/M.jpg");
+  background-repeat: no-repeat;
+  background-position: 60% -312px;
+  background-size: 2874px 818px;
+}

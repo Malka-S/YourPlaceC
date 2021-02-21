@@ -58,17 +58,14 @@ export class NewEvent2Component implements OnInit {
   }
 
   onUploudExel() {
-    // this.router.navigate(['new-event2']);
-    // this.router.navigateByUrl('/new-event2');
+    this.router.navigate(['upload-xl']);
     // this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
     //   this.router.navigate(['new-event2']);
     // });
     
   }
 
-  addGuest() {
-    // this.router.navigate(['add-guest']);
-    
+  addGuest() {    
      this.eventService.postCategoryiesList(this.catagryList) .subscribe( data => {
       this.router.navigate(['add-guest']);
     });

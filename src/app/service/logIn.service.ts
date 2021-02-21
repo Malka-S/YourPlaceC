@@ -15,7 +15,7 @@ export class LogInService {
   }
  
   Login(useremail:string,password:string): Observable<any[]>{
-  return this.http.get<any>(this.baseUrl+'Login?useremail='+ useremail + '&password' +password); 
+  return this.http.get<any>(this.baseUrl+'Login?useremail='+ useremail + '&password=' +password); 
 }
   register(user: User) {
     return this.http.post(`register`, user);
