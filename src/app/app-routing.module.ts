@@ -11,6 +11,8 @@ import { AddGuestComponent } from './guest/add-guest/add-guest.component';
 import { EditGuestComponent } from './guest/edit-guest/edit-guest.component';
 import { ListGuestsComponent } from './guest/list-guests/list-guests.component';
 import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
+import { ReminderService } from 'src/app/service/reminders.service';
+
 //import { RegisterComponent } from './components/register/register.component';
 
 

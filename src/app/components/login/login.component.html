@@ -11,7 +11,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg">
 
   <div  class="col-md-6 container-fluid">
     <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Login</h2>
@@ -20,16 +20,16 @@
 
         <div class="form-group" name="username">
         <label for="username">User name</label>
-        <input type="text" formControlName="username" placeholder="user name" class="form-control"id="username"/>
+        <input type="text" formControlName="username"  [class.is-invalid] = "loginForm.get('username').invalid && loginForm.get('username').touched"placeholder="user name" class="form-control"id="username"/>
       </div>
       <div class="form-group" name="useremail">
         <label for="useremail">User email</label>
-        <input type="text" class="form-control"formControlName="useremail" placeholder="user email" id="useremail"/>
+        <input type="text" class="form-control"formControlName="useremail" [class.is-invalid] = "loginForm.get('useremail').invalid && loginForm.get('useremail').touched"placeholder="user email" id="useremail"/>
       </div>
 
       <div class="form-group" name="password">
         <label for="password">Password</label>
-        <input type="password"  class="form-control"formControlName="password"placeholder="user password" id="password"/>
+        <input type="password"  class="form-control"formControlName="password"[class.is-invalid] = "loginForm.get('password').invalid && loginForm.get('password').touched"placeholder="user password" id="password"/>
     </div>
     <div class="form-group">
         <button [disabled]="!loginForm.valid" class="btn btn-primary pull-left"(click)="onSubmit()">

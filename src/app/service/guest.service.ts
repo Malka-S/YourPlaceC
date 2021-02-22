@@ -19,6 +19,9 @@ export class GuestService {
   getGuestById(id: number): Observable<Guest> {
     return this.http.get<Guest>(this.baseUrl +'GetGuestsById?id='+ id);
   }
+  getCategoryById(id: number): Observable<string> {
+    return this.http.get<string>(this.baseUrl +'GetCategoryById?id='+ id);
+  }
   getGuestByCategory(parameter:string): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl +'GetGuestsByCategory?category='+ parameter);
   }
@@ -33,7 +36,6 @@ export class GuestService {
     return this.http.put<Guest>(this.baseUrl+'PutGuestTM/', guest_3TM);
   }
   updateGuest(guest: Guest): Observable<Guest> {
-    console.log('id ' + guest.guest_id);
     return this.http.post<Guest>(this.baseUrl + 'PostGuest/', guest);
   }
   getAllGuests(): Observable<any[]> {

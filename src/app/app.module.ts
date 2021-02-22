@@ -6,6 +6,8 @@ import { NewEventComponent } from './components/new-event/new-event.component';
 import { NewEvent2Component } from './components/new-event-two/new-event2.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { ReminderService } from 'src/app/service/reminders.service';
+
 // import {FormsModule, ReactiveFormsModule ,FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {FormsModule, ReactiveFormsModule ,FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

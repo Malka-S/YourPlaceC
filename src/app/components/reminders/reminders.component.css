@@ -1,7 +1,8 @@
 .bg {
-  background-image: url("/assets/images/old-wooden-armchair.jpg");
-  background-repeat: no-repeat;
-  background-position: 50%;
+  /* background-image: url("/assets/images/old-wooden-armchair.jpg");
+    background-repeat: round;
+    background-position: 100%; */
+  background-color: rgb(57, 202, 154);
 }
 .pic {
   background-image: url("/assets/images/logochair.jpg");

@@ -1,6 +1,7 @@
-<!DOCTYPE html >
+ <!DOCTYPE html >
 <html lang="en">
-<head>
+ 
+<!--<head>
   <meta charset="utf-8">
   <title>Email Validation Tutorial</title>
   <base href="/">
@@ -16,6 +17,49 @@
       <h2 >reminders</h2>
       העלאת תזכורות מהמחשב שלי וכו
         <input class="form-control"type="file" (change)="onChange($event)"  formControlName="Reminder" id="Reminder" autocomplete="off">
+
+        <button  (click)="onUploadReminder()" 
+            class="btn btn-success"> 
+            Upload 
+        </button>     <br />
+
+
+      <div class="container text-center jumbotron" *ngIf="shortLink">
+        <h2> Visit Here</h2>
+        <a href="{{shortLink}}">{{shortLink}}</a>
+      </div>
+      <br />
+
+      <div class="container" *ngIf="loading">
+        <h3>Loading ...</h3>
+      </div>
+      <br />
+
+      <button class="btn btn-info" style="width:100px;float:left" (click)="sendInvitationToAll()">send invitation to all</button>
+      <button class="btn btn-info" style="width:100px;float:right" (click)="sendReminderToAll()">send reminder to all</button>
+
+    </form>
+  </div>
+</body>
+-->
+
+
+<head>
+  <meta charset="utf-8">
+  <title>Email Validation Tutorial</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="bg">
+  <div  >
+    <form [formGroup]="addForm" novalidate #a="ngForm" (ngSubmit)="onSend(a)">
+      <h2 >reminders</h2>
+      <div  style="font-family: Georgia, 'Times New Roman', Times, serif;size: 10px;color: rgb(243, 12, 12);">uploading reminders from PC </div>
+  <input class="form-control"type="file" (change)="onChange($event)"  formControlName="Reminder" id="Reminder" autocomplete="off">
 
         <button  (click)="onUploadReminder()"  
             class="btn btn-success"> 
@@ -34,12 +78,15 @@
       </div>
       <button class="btn btn-info" style="width:100px" (click)="sendInvitationToAll()">send invitation to all</button>
       <button class="btn btn-info" style="width:100px" (click)="sendReminderToAll()">send reminder to all</button>
-
+      <div class="form-group">
+        <label for="body1">Enter body for your mail:</label>
+        <input type="text" formControlName="body1"  name="body1" class="form-control" id="body1">
+      </div>
+      <div class="form-group">
+        <label for="subject">Enter subject for your mail:</label>
+        <input type="text" formControlName="subject"  name="subject" class="form-control" id="subject">
+      </div>
     </form>
   </div>
 </body>
-
-
-
 </html>
-

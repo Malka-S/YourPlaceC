@@ -11,62 +11,64 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
-</body>
+<body class="bg">
+
 
     
 <div  class="container" >
 
-  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">conferm partisipance</h1>
+  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Confirm partisipance</h1>
   <br />
   <form  novalidate #a="ngForm" (ngSubmit)="onSend(a)" style="font-size: large;" >
-    <button class="btn btn-success" style="margin-left: 50pt;" (click)="seeInvitation()">צפיה בהזמנה</button>
-    <button class="btn btn-success"style="margin-left: 50pt;" (click)="navigateToPlace()">צפיה במקום</button>
+    <button class="btn btn-success" style="margin-left: 50pt;" (click)="seeInvitation()">see invitation</button>
+    <button class="btn btn-success"style="margin-left: 50pt;" (click)="navigateToPlace()">see my seat</button>
     <br />
     <br />
-
-    <div >אני שמחה לאשר השתתפות ורוצה או לא לשבת ליד</div>
+    <div style="font-family: Georgia, 'Times New Roman', Times, serif;size: 10px;color: rgb(243, 12, 12);">I am happy to Confirm My partisipance and I would like to shoose:</div>
   </form>
 
-
-
-
-
 </div>
-<!-- <div class="col-md-6 container-fluid">
-  <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Guests Details</h2>
-  <table style="width:1000px" class="table table-striped">
+<div class="col-md-6 container-fluid">
+  <table style="width:100%;color: blue;font-size: large;" class="table table-striped">
     <thead>
     <tr>
       <th>
     </th>
       <th>Name</th> 
-      <th>is ftiend</th>
+      <th>Is friend or not</th>
       <th>priority</th>
    
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let g of VTMList">
+
      <td>
-      <mat-checkbox [checked]="selection.hasValue()">
+    
+       <mat-checkbox [checked]="selection.hasValue()">
       </mat-checkbox>
      </td>
       <td>{{g.tm_full_name}}</td>
-      <td type="checkbox">{{g.like_or_not}}</td>
-      <td>{{g.guestPriority}}</td>
-     
-      <td> 
+      <td >
+      <input style="margin-left: 15%;" type="checkbox" class="form-check-input"
+    type="checkbox"
+    value=""
+    id="is_friend">
+      </td>
+      <td >
+        <input type="number" class="form-control" formControlName="priority" min="1" max="3" id="priority" autocomplete="off">
+      </td>
        
    </tr>
     </tbody>
   </table>
-</div> -->
+  <!--<input type="button" class="btn btn-primary pull-right" (click)="sendParticipance()" value="send my request" >-->
 
-<div class="example-container mat-elevation-z8">
+</div>
+  
+<!-- <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="VTMList">
 
-    <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
       <mat-header-cell *matHeaderCellDef>
         <mat-checkbox  [checked]="selection.hasValue()"></mat-checkbox>
@@ -79,19 +81,16 @@
       </mat-cell>
     </ng-container>
 
-    <!-- Position Column -->
     <ng-container matColumnDef="position">
       <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.tm_full_name}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> like_or_not </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.like_or_not}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="weight">
       <mat-header-cell *matHeaderCellDef> guestPriority </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.guestPriority}} </mat-cell>
@@ -103,9 +102,6 @@
              (click)="selection.toggle(row)">
     </mat-row>
   </mat-table>
-</div>
+</div> -->
 
-
-<!-- Copyright 2018 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->
+</body>

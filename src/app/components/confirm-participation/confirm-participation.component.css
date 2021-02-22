@@ -5,3 +5,9 @@
 .mat-form-field {
   margin-top: 16px;
 }
+.bg {
+  /* background-image: url("/assets/images/old-wooden-armchair.jpg");
+  background-repeat: round;
+  background-position: 100%; */
+  background-color: rgb(250, 233, 236);
+}

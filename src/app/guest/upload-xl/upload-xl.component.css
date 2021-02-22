@@ -1,2 +1,16 @@
-table{ width:75%; margin:20px auto;}
-table tr td, table tr{ border-collapse: collapse; border:1px solid #ccc; font-size:14px;}
+table {
+  width: 75%;
+  margin: 20px auto;
+}
+table tr td,
+table tr {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.bg {
+  /* background-image: url("/assets/images/old-wooden-armchair.jpg");
+      background-repeat: round;
+      background-position: 100%; */
+  background-color: rgb(153, 203, 250);
+}

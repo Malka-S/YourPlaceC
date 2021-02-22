@@ -12,16 +12,16 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body></body>
+<body class="bg">
 
 
 <div  class="container-fluid">
-  <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">new event</h2>
+  <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">New event</h2>
   <form [formGroup]="creatEvent" style="font-size: large;">
 
     <div class="form-group" name="EventDes">
       <label for="EventDes">event name</label>
-      <input type="text" class="form-control" formControlName="EventDes" id="EventDes" autocomplete="off">
+      <input type="text" class="form-control" formControlName="EventDes"[class.is-invalid] = "creatEvent.get('EventDes').invalid && creatEvent.get('EventDes').touched" id="EventDes" autocomplete="off">
       <div class="error"
         *ngIf="creatEvent.controls['EventDes'].hasError('required') && creatEvent.controls['EventDes'].touched">EventDes
         is required</div>
@@ -53,9 +53,9 @@
    
     <div></div>
     <div class="form-group" name="EventDate">
-      <label for="EventDate">event date:
+      <label for="EventDate">Event date:
       </label>
-      <input type="date" class="form-control" formControlName="EventDate" id="EventDate" autocomplete="off">
+      <input type="date" class="form-control" [class.is-invalid] = "creatEvent.get('EventDate').invalid && creatEvent.get('EventDate').touched"formControlName="EventDate" id="EventDate" autocomplete="off">
       <div class="error"
         *ngIf="creatEvent.controls['EventDate'].hasError('required') && creatEvent.controls['EventDate'].touched">
         EventDate is required</div>
@@ -87,7 +87,7 @@
     <div class="form-group" name="EventDueDate">
       <label for="EventDueDate">last date to confirm-participation:
       </label>
-      <input type="date" class="form-control" formControlName="EventDueDate" id="EventDueDate" autocomplete="off">
+      <input type="date" class="form-control"[class.is-invalid] = "creatEvent.get('EventDueDate').invalid && creatEvent.get('EventDueDate').touched" formControlName="EventDueDate" id="EventDueDate" autocomplete="off">
       <div class="error"
         *ngIf="creatEvent.controls['EventDueDate'].hasError('required') && creatEvent.controls['EventDueDate'].touched">
         EventDueDate is required</div>
@@ -95,18 +95,18 @@
     
 
     <div class="form-group" name="NumTables">
-      <label for="EventDueDate">number of tables:
+      <label for="EventDueDate">Number of tables in hall:
       </label>
-      <input type="number" class="form-control" formControlName="NumTables" id="NumTables" autocomplete="off">
+      <input type="number" class="form-control"  [class.is-invalid] = "creatEvent.get('NumTables').invalid && creatEvent.get('NumTables').touched"formControlName="NumTables" id="NumTables" autocomplete="off">
       <div class="error"
         *ngIf="creatEvent.controls['NumTables'].hasError('required') && creatEvent.controls['NumTables'].touched">
         NumTables is required</div>
     </div>
 
     <div class="form-group" name="NumPlacesAroundATable">
-      <label for="EventDueDate">number of seats around table:
+      <label for="EventDueDate">Number of seats around table:
       </label>
-      <input type="number" class="form-control" formControlName="NumPlacesAroundATable" id="NumPlacesAroundATable"
+      <input type="number" class="form-control"[class.is-invalid] = "creatEvent.get('NumPlacesAroundATable').invalid && creatEvent.get('NumPlacesAroundATable').touched" formControlName="NumPlacesAroundATable" id="NumPlacesAroundATable"
         autocomplete="off">
       <div class="error"
         *ngIf="creatEvent.controls['NumPlacesAroundATable'].hasError('required') && creatEvent.controls['NumPlacesAroundATable'].touched">
@@ -115,3 +115,4 @@
     <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="continue to upload guests" [disabled]="!creatEvent.valid">
   </form>
 </div>
+</body>
