@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,15 +14,16 @@
 <body class="bg">
 
 
-<div  class="container-fluid">
-  <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">New event</h2>
+<div class="container-fluid">
+  <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">new
+    event</h2>
   <form [formGroup]="creatEvent" style="font-size: large;">
 
-    <div class="form-group" name="EventDes">
-      <label for="EventDes">event name</label>
-      <input type="text" class="form-control" formControlName="EventDes"[class.is-invalid] = "creatEvent.get('EventDes').invalid && creatEvent.get('EventDes').touched" id="EventDes" autocomplete="off">
+    <div class="form-group" name="event_des">
+      <label for="event_des">event name</label>
+      <input type="text" class="form-control" formControlName="event_des" id="event_des" autocomplete="off">
       <div class="error"
-        *ngIf="creatEvent.controls['EventDes'].hasError('required') && creatEvent.controls['EventDes'].touched">EventDes
+        *ngIf="creatEvent.controls['event_des'].hasError('required') && creatEvent.controls['event_des'].touched">EventDes
         is required</div>
     </div>
     <!-- <div class="form-group" name="EventType" >
@@ -38,37 +38,38 @@
         is required</div>
     </div> -->
 
-    <div class="form-group" name="EventType" >
+    <div class="form-group" name="event_type_id">
 
-      <label dor="EventType">event type:</label>
-      <mat-select formControlName="EventType">
-        <mat-option  *ngFor="let mes of eventTypeList" [value]="mes.Id" >
+      <label for="event_type_id">event type:</label>
+      <mat-select formControlName="event_type_id">
+        <mat-option *ngFor="let mes of eventTypeList" [value]="mes.Id">
           {{mes.Des}}
         </mat-option>
       </mat-select>
       <div class="error"
-        *ngIf="creatEvent.controls['EventType'].hasError('required') && creatEvent.controls['EventType'].touched">EventType
+        *ngIf="creatEvent.controls['event_type_id'].hasError('required') && creatEvent.controls['event_type_id'].touched">
+        EventType
         is required</div>
     </div>
-   
+
     <div></div>
-    <div class="form-group" name="EventDate">
-      <label for="EventDate">Event date:
+    <div class="form-group" name="event_date">
+      <label for="event_date">event date:
       </label>
-      <input type="date" class="form-control" [class.is-invalid] = "creatEvent.get('EventDate').invalid && creatEvent.get('EventDate').touched"formControlName="EventDate" id="EventDate" autocomplete="off">
+      <input type="date" class="form-control" formControlName="event_date" id="event_date" autocomplete="off">
       <div class="error"
-        *ngIf="creatEvent.controls['EventDate'].hasError('required') && creatEvent.controls['EventDate'].touched">
+        *ngIf="creatEvent.controls['event_date'].hasError('required') && creatEvent.controls['event_date'].touched">
         EventDate is required</div>
     </div>
 
-    <div class="form-group" name="Invitation">
+    <div class="form-group" name="invitation_file">
       <div class="text-center">
-        <input class="form-control" type="file" (change)="onChange($event)"  formControlName="Invitation" id="Invitation" autocomplete="off">
+        <input class="form-control" type="file" (change)="onChange($event)" formControlName="invitation_file" id="invitation_file"
+          autocomplete="off">
 
-        <button (click)="onUpload()"  
-            class="btn btn-success"> 
-            Upload 
-        </button> 
+        <button (click)="onUpload()" class="btn btn-success">
+          Upload
+        </button>
       </div>
 
       <!-- Shareable short link of  uoloaded file -->
@@ -84,32 +85,32 @@
 
     </div>
 
-    <div class="form-group" name="EventDueDate">
-      <label for="EventDueDate">last date to confirm-participation:
+    <div class="form-group" name="due_date">
+      <label for="due_date">last date to confirm-participation:
       </label>
-      <input type="date" class="form-control"[class.is-invalid] = "creatEvent.get('EventDueDate').invalid && creatEvent.get('EventDueDate').touched" formControlName="EventDueDate" id="EventDueDate" autocomplete="off">
+      <input type="date" class="form-control" formControlName="due_date" id="due_date" autocomplete="off">
       <div class="error"
-        *ngIf="creatEvent.controls['EventDueDate'].hasError('required') && creatEvent.controls['EventDueDate'].touched">
+        *ngIf="creatEvent.controls['due_date'].hasError('required') && creatEvent.controls['due_date'].touched">
         EventDueDate is required</div>
     </div>
-    
 
-    <div class="form-group" name="NumTables">
-      <label for="EventDueDate">Number of tables in hall:
+
+    <div class="form-group" name="num_tables">
+      <label for="num_tables">number of tables:
       </label>
-      <input type="number" class="form-control"  [class.is-invalid] = "creatEvent.get('NumTables').invalid && creatEvent.get('NumTables').touched"formControlName="NumTables" id="NumTables" autocomplete="off">
+      <input type="number" class="form-control" formControlName="num_tables" id="num_tables" autocomplete="off">
       <div class="error"
-        *ngIf="creatEvent.controls['NumTables'].hasError('required') && creatEvent.controls['NumTables'].touched">
+        *ngIf="creatEvent.controls['num_tables'].hasError('required') && creatEvent.controls['num_tables'].touched">
         NumTables is required</div>
     </div>
 
     <div class="form-group" name="NumPlacesAroundATable">
       <label for="EventDueDate">Number of seats around table:
       </label>
-      <input type="number" class="form-control"[class.is-invalid] = "creatEvent.get('NumPlacesAroundATable').invalid && creatEvent.get('NumPlacesAroundATable').touched" formControlName="NumPlacesAroundATable" id="NumPlacesAroundATable"
+      <input type="number" class="form-control" formControlName="num_places_around_a_table" id="num_places_around_a_table"
         autocomplete="off">
       <div class="error"
-        *ngIf="creatEvent.controls['NumPlacesAroundATable'].hasError('required') && creatEvent.controls['NumPlacesAroundATable'].touched">
+        *ngIf="creatEvent.controls['num_places_around_a_table'].hasError('required') && creatEvent.controls['num_places_around_a_table'].touched">
         NumPlacesAroundATable is required</div>
     </div>
     <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="continue to upload guests" [disabled]="!creatEvent.valid">
