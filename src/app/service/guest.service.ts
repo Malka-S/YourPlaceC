@@ -29,6 +29,9 @@ export class GuestService {
    AddGuest(guest: Guest): Observable<any> {
     return this.http.put<Guest>(this.baseUrl+'PutGuest/', guest);
   }
+  AddAllGuests(guests: Guest[]): Observable<any> {
+    return this.http.put<Guest>(this.baseUrl+'PutGuests/', guests);
+  }
   // AddTM(guest_3TM: TM): Observable<any> {
   //   return this.http.put<Guest>(this.baseUrl+'PutGuestTM/', guest_3TM);
   // }

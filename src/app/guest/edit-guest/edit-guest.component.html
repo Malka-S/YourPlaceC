@@ -18,29 +18,37 @@
 <div class="col-md-6 user-container"  class="container-fluid">
     <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Edit Guest</h2>
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()"style="font-size: large;">
-      
-  
+       
       <div class="form-group">
         <label for="guest_first_name">First Name:</label>
         <input type="text" formControlName="guest_first_name" placeholder="First Name" name="guest_first_name" class="form-control" id="guest_first_name">
+        <div class="error"
+        *ngIf="editForm.controls['guest_first_name'].hasError('required') && editForm.controls['guest_first_name'].touched">guest first name
+        is required</div>
       </div>
   
       <div class="form-group">
         <label for="guest_last_name">Last Name:</label>
         <input formControlName="guest_last_name" placeholder="guest_last_name" name="guest_last_name" class="form-control" id="guest_last_name">
+        <div class="error"
+        *ngIf="editForm.controls['guest_last_name'].hasError('required') && editForm.controls['guest_last_name'].touched">guest last name
+        is required</div>
       </div>
 
       
       <div class="form-group">
         <label for="guest_email">Guest email:</label>
         <input type="email" formControlName="guest_email" placeholder="guest_email" name="guest_email" class="form-control" id="guest_email">
+        <div class="error"
+        *ngIf="editForm.controls['guest_email'].hasError('required') && editForm.controls['guest_email'].touched">guest email
+        is required</div>
       </div>
 
       <div class="form-group">
         <label for="gender">Gender :</label>
         <input formControlName="gender" placeholder="gender" name="gender" class="form-control" id="gender">
       </div>
-      <div class="form-group">
+        <div class="form-group">
         <label for="guest_message_before">Guest message before :</label>
         <input formControlName="guest_message_before" placeholder="guest_message_before" name="guest_message_before" class="form-control" id="guest_message_before">
       </div>
@@ -56,4 +64,3 @@
   </div>
 </body>
 
-</html>

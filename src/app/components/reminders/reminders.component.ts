@@ -101,6 +101,8 @@ export class RemindersComponent implements OnInit {
       })
   }
   sendReminderToAll(): void { };
+  sendToNotConfirmed():void{};
+  sendToConfirmed():void{};
   onChange(event) {
     this.file = event.target.files[0];
   }

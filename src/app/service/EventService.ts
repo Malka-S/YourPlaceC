@@ -44,7 +44,9 @@ export class EventService {
       }, 1);
     });
   }
-
+  updateGuest(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.baseApiUrl + 'PutEvent/', event);
+  }
   updateEventType(parameter: number): Observable<boolean> {
     let url = 'https://localhost:44390/api/Users/UpdateEventType';
     return this.http.post<boolean>(url, parameter);

@@ -26,6 +26,7 @@ export class NewEventComponent implements OnInit {
   shortLink: string = ""; 
   loading: boolean = false; // Flag variable 
   file: File = null; // Variable to store file 
+  event:Event;
   // isLinear = false;
   private isUploadBtn: boolean = true;  
 
@@ -100,7 +101,17 @@ onUpload() {
     error=>{ console.log(error);
     }) 
   }
-  
+  EditEvent(event:Event):void{
+
+      //כשלוחץ על הכפתור נשמי=רים השינויים
+      this.eventService.updateGuest(this.creatEvent.value).subscribe(
+      response=>{console.log(response);
+        this.event=response;
+      },
+      error=>{ console.log(error);
+      }) 
+
+    }
   // onSend({ value, valid }) {
   //   if (valid) {
   //     console.log(value);

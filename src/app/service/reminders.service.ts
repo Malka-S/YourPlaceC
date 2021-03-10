@@ -16,5 +16,13 @@ export class ReminderService {
   SentInvations(Reminder:Reminder): Observable<Guest> {
     return this.http.get<any>(this.baseUrl +'SendEmailToAllGuest'+ Reminder);
   }
-
+  SentToAll(Reminder:Reminder): Observable<Guest> {
+    return this.http.get<any>(this.baseUrl +'SendEmailToAllGuest'+ Reminder);
+  }
+  SendToNotConfirmed(Reminder:Reminder): Observable<Guest> {
+    return this.http.get<any>(this.baseUrl +'SentGuestNotConfirmedMail'+ Reminder);
+  }
+  SendToConfirmed(Reminder:Reminder): Observable<Guest> {
+    return this.http.get<any>(this.baseUrl +'SentGuestConfirmedMail'+ Reminder);
+  }
 }

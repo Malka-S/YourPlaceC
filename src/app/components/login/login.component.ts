@@ -26,9 +26,7 @@ user:User[];
     user_email: new FormControl('', [
       Validators.required,
       Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    user_password: new FormControl('' ,[Validators.required]),
-    user_name: new FormControl('',[Validators.required])
-
+    user_password: new FormControl('' ,[Validators.required])
   });
   nameCatagroy: any;
 
@@ -50,7 +48,6 @@ user:User[];
   ngOnInit() {
 
     this.loginForm = this.formBuilder.group({
-        username: ['', Validators.required],
         useremail: ['', Validators.required],
         password: ['', Validators.required]
     });

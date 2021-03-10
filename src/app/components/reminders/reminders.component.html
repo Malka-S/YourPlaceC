@@ -57,9 +57,10 @@
 <body class="bg">
   <div  >
     <form [formGroup]="addForm" novalidate #a="ngForm" (ngSubmit)="onSend(a)">
-      <h2 >reminders</h2>
-      <div  style="font-family: Georgia, 'Times New Roman', Times, serif;size: 10px;color: rgb(243, 12, 12);">uploading reminders from PC </div>
-  <input class="form-control"type="file" (change)="onChange($event)"  formControlName="Reminder" id="Reminder" autocomplete="off">
+      <h2 >Reminders</h2>
+      <div  class="text-center"style="font-family: Georgia, 'Times New Roman', Times, serif;size: 10px;color: rgb(243, 12, 12);">uploading reminders from PC </div>
+  <input class="form-control text-center"type="file" (change)="onChange($event)"  formControlName="Reminder" id="Reminder" autocomplete="off">
+  <div class="text-center">
 
         <button  (click)="onUploadReminder()"  
             class="btn btn-success"> 
@@ -76,8 +77,12 @@
       <div class="container" *ngIf="loading">
         <h3>Loading ...</h3>
       </div>
-      <button class="btn btn-info" style="width:100px" (click)="sendInvitationToAll()">send invitation to all</button>
-      <button class="btn btn-info" style="width:100px" (click)="sendReminderToAll()">send reminder to all</button>
+    </div>
+      <button class="btn btn-info" style="width:100px;" (click)="sendInvitationToAll()">send invitation to all</button>
+      <button class="btn btn-info" style="width:100px;float:right" (click)="sendReminderToAll()">send reminder to all</button>
+      <button class="btn btn-info" style="width:100px;float:right" (click)="sendToConfirmed()">send to guests that Confirmed</button>
+      <button class="btn btn-info" style="width:100px;float:right" (click)="sendToNotConfirmed()">send to guests that didnt confirm</button>
+
       <div class="form-group">
         <label for="body1">Enter body for your mail:</label>
         <input type="text" formControlName="body1"  name="body1" class="form-control" id="body1">

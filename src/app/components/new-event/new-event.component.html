@@ -15,7 +15,7 @@
 
 
 <div class="container-fluid">
-  <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">new
+  <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">New
     event</h2>
   <form [formGroup]="creatEvent" style="font-size: large;">
 
@@ -113,6 +113,7 @@
         *ngIf="creatEvent.controls['num_places_around_a_table'].hasError('required') && creatEvent.controls['num_places_around_a_table'].touched">
         NumPlacesAroundATable is required</div>
     </div>
+    <button class="btn btn-success"  (click)="EditEvent(event)">Update Event</button>
     <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="continue to upload guests" [disabled]="!creatEvent.valid">
   </form>
 </div>
