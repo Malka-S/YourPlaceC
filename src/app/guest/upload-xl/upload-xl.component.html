@@ -1,56 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="form-wrapper-large col-md-10 container-fluid" style="max-width: 1000px;">
+    <h1 style="min-width:250px"> Upload Excel file</h1>
 
-<head>
-  <meta charset="utf-8">
-  <title>Email Validation Tutorial</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-<body class="bg">
-<h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Upload Excel file</h2>
-<input  style="color: rgb(5, 5, 100);"  type="file" (change)="uploadExcel($event)">
-<div class="text-center">
-    לא עובד לטעון 2 גליונות
-    <input  style="color: rgb(15, 6, 90);"type="file" (change)="uploadExcelCat($event)"> 
+    <input style="color:#310166;" type="file" (change)="uploadExcel($event)">
+    <div class="text-center">
+        לא עובד לטעון 2 גליונות
+        <input style="color: #310166;" type="file" (change)="uploadExcelCat($event)">
     </div>
-<table style="width:100%;color: rgb(129, 12, 12);" class="table table-striped">    
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Guest FirstName</th>
-            <th>Guest LastName</th>
-            <th>Guest gender</th>
-            <th>Guest Email</th>
-            <th>Guest essage Before</th>
-            <th>Guest message After</th>
-            <th>Guest category</th>
+    <table style="width:100%;color: #310166;" class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Guest FirstName</th>
+                <th>Guest LastName</th>
+                <th>Guest gender</th>
+                <th>Guest Email</th>
+                <th>Guest essage Before</th>
+                <th>Guest message After</th>
+                <th>Guest category</th>
 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let guest of guests; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{guest.guest_first_name}}</td>
+                <td>{{guest.guest_last_name}}</td>
+                <td>{{guest.gender}}</td>
+                <td>{{guest.guest_email}}</td>
+                <td>{{guest.guest_message_befor}}</td>
+                <td>{{guest.guest_message_after}}</td>
+                <td>{{guest.guest_category_id}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tr *ngFor="let c of cat">
+            <td>{{c}}</td>
         </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let guest of guests; let i = index">
-            <td>{{i+1}}</td>
-            <td>{{guest.guest_first_name}}</td>
-            <td>{{guest.guest_last_name}}</td>
-            <td>{{guest.gender}}</td>
-            <td>{{guest.guest_email}}</td>
-            <td>{{guest.guest_message_befor}}</td>
-            <td>{{guest.guest_message_after}}</td>
-            <td>{{guest.guest_category_id}}</td>
-        </tr>
-    </tbody>
-</table>
-<table>  
-<tr *ngFor="let c of cat">
-    <td>{{c}}</td>
-</tr>
-</table> 
-<button class="btn btn-success" style="width:100px;margin-left: 50%;" (click)="AddAllGuests(guests)">Add all</button>          
+    </table>
+    <div class="footer-wrapper">
+        <button class="btn-color btn-smaller" (click)="AddAllGuests(guests)">Add all</button>
 
-
-</body>
+    </div>
+</div>

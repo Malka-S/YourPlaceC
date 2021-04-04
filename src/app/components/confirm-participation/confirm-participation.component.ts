@@ -12,8 +12,8 @@ import { TMVM} from 'src/app/model/TMVM.model';
 import { toNumber } from 'lodash';
 import { TmplAstVariable } from '@angular/compiler';
 import { SelectionModel } from '@angular/cdk/collections';
-import { element } from 'protractor';
-
+import { element } from 'protractor'; 
+import Swal from 'sweetalert2';
 export interface Status {
   table_members_id:number,
     tm_full_name:string,
@@ -177,8 +177,9 @@ this.guestService.getCategoryById(this.id).subscribe(
   @Input()
 
   seeInvitation() {
-    alert("not available yet");
+    Swal.fire("Error","Not available yet","error");
 
+   
     //אפשרות לצפות בהזמנה
   }
   sendParticipance(){}
@@ -208,7 +209,10 @@ this.guestService.getCategoryById(this.id).subscribe(
         
   }
   navigateToPlace() {
-    alert("places were not set yet-not available");
+   Swal.fire("Error","Places were not set yet-not available","error");
+
+
+
 
     //שהאורח יוכל לצפות במקומו-רק כאשר מוכן
   }

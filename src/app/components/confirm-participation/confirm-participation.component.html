@@ -1,77 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="form-wrapper-large col-md-10 container-fluid" style="max-width: 700px;">
+    <h1 style="min-width:280px"> Confirm Partisipance</h1>
+    <br>
 
-<head>
-  <meta charset="utf-8">
-  <title>Email Validation Tutorial</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-<body class="bg">
+    <form novalidate #a="ngForm" (ngSubmit)="onSend(a)" style="font-size: large;">
+        <div class="header-wrapper">
+            <button class="btn-gold btn-smaller" (click)="seeInvitation()">See Invitation</button>
+            <button class="btn-gold btn-smaller" style="margin-left: 50px;" (click)="navigateToPlace()">See my seat</button>
 
 
-    
-<div  class="container" >
+        </div>
+        <br />
+        <br />
+        <span style="font-size: medium;" class="text-center">*I am happy to Confirm My partisipance and I would like to choose:</span>
+    </form>
 
-  <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 40%;">Confirm partisipance</h1>
-  <br />
-  <form  novalidate #a="ngForm" (ngSubmit)="onSend(a)" style="font-size: large;" >
-    <button class="btn btn-success" style="margin-left: 50pt;" (click)="seeInvitation()">see invitation</button>
-    <button class="btn btn-success"style="margin-left: 50pt;" (click)="navigateToPlace()">see my seat</button>
-    <br />
-    <br />
-    <div class="text-center"style="font-family: Georgia, 'Times New Roman', Times, serif;size: 10px;color: rgb(243, 12, 12);">I am happy to Confirm My partisipance and I would like to shoose:</div>
-  </form>
 
-</div>
-<div class="col-md-6 container-fluid">
-  <table style="width:100%;color: blue;font-size: large;" class="table table-striped">
-    <thead>
-    <tr>
-      <th><span class="example-list-section"><mat-checkbox class="example-margin"></mat-checkbox></span>
-    </th>
-      <th>Name</th> 
-      <th>Is friend or not</th>
-      <th>priority</th>
-   
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let g of VTMList">
 
-     <td>
-       <mat-checkbox class="example-margin"></mat-checkbox>
-      <!-- ניסוי<span class="example-list-section">
-       <mat-checkbox
-       [checked]="allComplete"
-       [indeterminate]="someComplete()"
-       (change)="setAll($event.checked)">
-      </mat-checkbox>
-      </span> -->
-     </td>
-      <td>{{g.tm_full_name}}</td>
-      <td >
-      <input style="margin-left: 15%;" type="checkbox" class="form-check-input"
-    type="checkbox"
-    value=""
-    id="is_friend">
-      </td>
-      <td >
-        <input type="number" class="form-control" formControlName="priority" min="1" max="3" id="priority" autocomplete="off">
-      </td>
-       
-   </tr>
-    </tbody>
-  </table>
-  <input type="button" class="btn btn-primary align-content-center" (click)="sendParticipance()" value="send my request" >
+    <table style="width:100%;color:  rgb(19, 0, 54);font-size: medium;" class="table table-striped">
+        <thead>
+            <tr>
+                <th><span class="example-list-section"><mat-checkbox class="example-margin"></mat-checkbox></span>
+                </th>
+                <th>Name</th>
+                <th>Is friend or not</th>
+                <th>priority</th>
 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let g of VTMList">
+
+                <td>
+                    <mat-checkbox class="example-margin"></mat-checkbox>
+
+                </td>
+                <td>{{g.tm_full_name}}</td>
+                <td>
+                    <input type="checkbox" type="checkbox" value="" id="is_friend">
+                </td>
+                <td>
+                    <input type="number" class="form-control" formControlName="priority" min="1" max="3" id="priority" autocomplete="off">
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="button" class="btn-color btn-smaller align-content-center" (click)="sendParticipance()" value="send my request">
 
 </div>
-  
+
 <!-- <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="VTMList">
 
@@ -109,5 +87,3 @@
     </mat-row>
   </mat-table>
 </div> -->
-
-</body>

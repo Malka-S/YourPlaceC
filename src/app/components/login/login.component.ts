@@ -10,8 +10,8 @@ import { DialogData } from '../new-event-two/new-event2.component';
 import { BaseCode } from 'src/app/model/baseCode';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../../service/alert.service';
-
-@Component({ templateUrl: 'login.component.html' })
+import Swal from 'sweetalert2';
+@Component({ templateUrl: 'login.component.html',styleUrls:['login.component.css'] })
 
 export class LoginComponent implements OnInit {
 
@@ -70,7 +70,10 @@ export class LoginComponent implements OnInit {
         console.log(response);
         console.log('res ' + response);
         if (response) {
-          alert("you are loged in")
+          Swal.fire("Success","You are logged in","success");
+
+
+       
           this.router.navigateByUrl('/new-event');
 
 
@@ -81,8 +84,9 @@ export class LoginComponent implements OnInit {
         //  alert ("you need to register-can't log in.username or password are incorrect");
       },
       error => {
-        alert("you need to register-can't log in. username or password are incorrect");
-        console.log(error + "user is not found");
+        Swal.fire("Error","You need to register-can't log in. username or password are incorrect","error");
+
+     console.log(error + "user is not found");
       })
 
   }

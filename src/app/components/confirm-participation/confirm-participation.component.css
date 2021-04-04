@@ -1,13 +1,17 @@
-/* .mat-stepper-vertical {
-    margin-top: 8px;
-  } */
-
-.mat-form-field {
-  margin-top: 16px;
+table {
+    width: 100%;
+    margin: 20px auto;
 }
-.bg {
-  /* background-image: url("/assets/images/old-wooden-armchair.jpg");
-  background-repeat: round;
-  background-position: 100%; */
-  background-color: rgb(250, 233, 236);
+
+table tr td,
+table tr {
+    border-collapse: collapse;
+    border: 2% solid rgb(19, 0, 54);
+    font-size: 14px;
+}
+
+table th {
+    font-weight: 500;
+    color: #ffb100;
+    padding: .55rem;
 }

@@ -35,7 +35,7 @@ import { SeatingArrangementComponent } from './components/seating-arrangement/se
 import { ViewEventComponent } from './components/view-event/view-event.component';
 import { AboutComponent } from './components/about/about.component';
 import { HeaderComponent } from './header/header.component';
-
+import { AuthGuard } from './components/login/auth.guard';
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 //import {MenuItem} from 'primeng/api';
@@ -90,7 +90,7 @@ import { HeaderComponent } from './header/header.component';
     RouterModule.forRoot([]),
     // MatSliderModule
   ],
-  providers: [
+  providers: [AuthGuard
     // myServer
   ],
   bootstrap: [AppComponent],
