@@ -29,6 +29,7 @@
                     <th>Email</th>
                     <th>Message before name</th>
                     <th>Message after name</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,8 +42,8 @@
                     <td>{{g.guest_message_befor}}</td>
                     <td>{{g.guest_message_after}}</td>
                     <td>
-                        <mat-icon (click)="deleteGuest(g)">close</mat-icon>
-                        <mat-icon (click)="editGuest(g)" style="margin-left: 10px;">edit</mat-icon>
+                        <mat-icon (click)="deleteGuest(g)" style="cursor: pointer;">close</mat-icon>
+                        <mat-icon (click)="editGuest(g)" style="cursor: pointer;margin-left: 10px;">edit</mat-icon>
                         <!-- <button class="btn" (click)="deleteGuest(g)"> Delete</button>
                     <button class="btn btn-success" (click)="editGuest(g)"> Edit</button></td> -->
                 </tr>
