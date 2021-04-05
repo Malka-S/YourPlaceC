@@ -78,11 +78,7 @@
         <h3>Loading ...</h3>
       </div>
     </div>
-      <button class="btn btn-info" style="width:100px;" (click)="sendInvitationToAll()">send invitation to all</button>
-      <button class="btn btn-info" style="width:100px;float:right" (click)="sendReminderToAll()">send reminder to all</button>
-      <button class="btn btn-info" style="width:100px;float:right" (click)="sendToConfirmed()">send to guests that Confirmed</button>
-      <button class="btn btn-info" style="width:100px;float:right" (click)="sendToNotConfirmed()">send to guests that didnt confirm</button>
-
+     
       <div class="form-group">
         <label for="body1">Enter body for your mail:</label>
         <input type="text" formControlName="body1"  name="body1" class="form-control" id="body1">
@@ -91,6 +87,11 @@
         <label for="subject">Enter subject for your mail:</label>
         <input type="text" formControlName="subject"  name="subject" class="form-control" id="subject">
       </div>
+      <button class="btn btn-info" style="width:100%;float:left;margin-left: 0%;margin-top: 2%;" (click)="sendInvitationToAll()">send invitation to all</button>
+      <button class="btn btn-info" style="width:100%;float:left;margin-left: 0%;margin-top: 2%" (click)="sendReminderToAll()">send reminder to all</button>
+      <button class="btn btn-info" style="width:100%;float:left;margin-right: 0%;margin-top: 2%" (click)="sendToConfirmed()">send to guests that Confirmed</button>
+      <button class="btn btn-info" style="width:100%;float:left;margin-right: 0%;margin-top: 2%" (click)="sendToNotConfirmed()">send to guests that didnt confirm</button>
+
     </form>
   </div>
 </body>

@@ -9,7 +9,7 @@ export class LogInService {
   constructor(private http: HttpClient) {}
   baseUrl = 'https://localhost:44390/api/UserLogin/';
 
-  AddUser(user: User): Observable<any> {
+  AddUser(user: User): Observable<number> {
 
     return this.http.put<any>(this.baseUrl+'PutUser/', user);
   }

@@ -15,15 +15,15 @@
 
 
 <div class="container-fluid">
-  <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">New
+  <h2 >New
     event</h2>
   <form [formGroup]="creatEvent" style="font-size: large;">
 
     <div class="form-group" name="event_des">
-      <label for="event_des">event name</label>
+      <label for="event_des">event name:</label>
       <input type="text" class="form-control" formControlName="event_des" id="event_des" autocomplete="off">
       <div class="error"
-        *ngIf="creatEvent.controls['event_des'].hasError('required') && creatEvent.controls['event_des'].touched">EventDes
+        *ngIf="creatEvent.controls['event_des'].hasError('required') && creatEvent.controls['event_des'].touched">event name
         is required</div>
     </div>
     <!-- <div class="form-group" name="EventType" >
@@ -113,8 +113,17 @@
         *ngIf="creatEvent.controls['num_places_around_a_table'].hasError('required') && creatEvent.controls['num_places_around_a_table'].touched">
         NumPlacesAroundATable is required</div>
     </div>
-    <button class="btn btn-success"  (click)="EditEvent(event)">Update Event</button>
-    <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="continue to upload guests" [disabled]="!creatEvent.valid">
+
+        <button mat-raised-button (click)="openDialog()">add category</button>
+        <ol>
+          <li *ngFor="let a of catagryList">
+            name: <i>{{a.des}}</i>
+          </li>
+        </ol>
+        <input type="button"   class="btn btn-primary pull-right" (click)="onUploudExel()"  value="continue to upload XL" [disabled]="!creatEvent.valid">
+        &nbsp;
+        <input type="button" class="btn btn-primary pull-right" (click)="onSubmit()" value="continue to upload guests" [disabled]="!creatEvent.valid">
+
   </form>
 </div>
 </body>

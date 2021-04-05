@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../service/authentication.server';
 import { AlertService } from '../../service/alert.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SharedService } from 'src/app/service/sharedServices';
 
 // import { ConfirmedValidator } from './confirmed.validator';
 //user_first_name: string,
@@ -18,21 +19,24 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.css'],
-  providers: [LogInService]
+  providers: [LogInService,SharedService],
+
 })
 export class NewUserComponent implements OnInit {
   user: User;
   newUserForm=new FormGroup({});
   loading: boolean;
   submitted = false;
-
+  userId :number;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
-    private loginService:LogInService
+    private loginService:LogInService,
+    private sharedService:SharedService,
+
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -56,11 +60,12 @@ export class NewUserComponent implements OnInit {
   }
 
   AddUser(user:User):void{
-    console.log('here2');
 
     this.loginService.AddUser(user).subscribe(
-    response=>{console.log(response);
-      this.user=response;
+    response=>{
+      console.log(response);
+      this.userId=response;
+      this.sharedService.currentUserId = response;
     },
     error=>{ console.log(error);
     })

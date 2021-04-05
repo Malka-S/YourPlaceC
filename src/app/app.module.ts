@@ -33,6 +33,8 @@ import { NewEventThreeComponent } from './components/new-event-three/new-event-t
 
 import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
 import { SeatingArrangementComponent } from './components/seating-arrangement/seating-arrangement.component';
+import { ViewEventComponent } from './components/view-event/view-event.component';
+import { AboutComponent } from './components/about/about.component';
 
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
@@ -54,6 +56,8 @@ import { SeatingArrangementComponent } from './components/seating-arrangement/se
     NewEventThreeComponent,
     UploadXlComponent,
     SeatingArrangementComponent,
+    ViewEventComponent,
+    AboutComponent,
 
   ],
   imports: [

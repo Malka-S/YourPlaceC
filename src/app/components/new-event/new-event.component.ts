@@ -9,13 +9,22 @@ import { AuthenticationService } from '../../service/authentication.server';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-// const { read, write, utils } = XLSX;
+import { SharedService } from 'src/app/service/sharedServices';
+import { NewEventThreeComponent } from '../new-event-three/new-event-three.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css'],
-  providers: [EventService],
+   // styleUrls: ['./app.component.css'],
+
+  providers: [EventService,SharedService],
+
 })
 export class NewEventComponent implements OnInit {
   // @Input()
@@ -27,7 +36,11 @@ export class NewEventComponent implements OnInit {
   loading: boolean = false; // Flag variable 
   file: File = null; // Variable to store file 
   event:Event;
-  // isLinear = false;
+  eventId:number;
+  animal: string[] = [];
+  public catagryList:BaseCode[]=[];
+  nameCatagroy: string;
+  idCatagory:number=8;
   private isUploadBtn: boolean = true;  
 
 
@@ -36,6 +49,9 @@ export class NewEventComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private sharedService:SharedService,
+    public dialog: MatDialog,
+
     public eventService:EventService //private alertService: AlertService
   ) {
     if (this.authenticationService.currentUserValue) {
@@ -67,6 +83,19 @@ get EventType() {
  
   return this.creatEvent.get('EventType');
 }
+openDialog(): void {
+  const dialogRef = this.dialog.open(NewEventThreeComponent, {
+    width: '250px',
+    data: {name: this.nameCatagroy}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    console.log(this.catagryList);
+   if(result)
+    this.catagryList.push( new BaseCode(this.idCatagory++, result));
+  });
+}
 // OnClick of button Upload 
 onUpload() { 
   this.loading = !this.loading; 
@@ -83,6 +112,12 @@ onUpload() {
       } 
   ); 
 } 
+
+onUploudExel() {
+  this.router.navigate(['upload-xl']);
+
+  
+}
   onSubmit() {
     // this.router.navigateByUrl('/new-event2');
     console.log("jkjkjk" ,this.creatEvent.value);
@@ -96,22 +131,13 @@ onUpload() {
   AddEvent(event:Event):void{
     this.eventService.createEvent(event).subscribe(
     response=>{console.log(response);
-      event = response;
+      this.eventId = response;
+      this.sharedService.currentEventId=response;
     },
     error=>{ console.log(error);
     }) 
   }
-  EditEvent(event:Event):void{
 
-      //כשלוחץ על הכפתור נשמי=רים השינויים
-      this.eventService.updateGuest(this.creatEvent.value).subscribe(
-      response=>{console.log(response);
-        this.event=response;
-      },
-      error=>{ console.log(error);
-      }) 
-
-    }
   // onSend({ value, valid }) {
   //   if (valid) {
   //     console.log(value);

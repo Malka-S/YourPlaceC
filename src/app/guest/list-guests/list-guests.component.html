@@ -12,10 +12,9 @@
 </head>
 <body class="bg">
 
-<div class="col-md-6 container-fluid">
     <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Guests Details</h2>
-    <button class="btn btn-success" style="width:100px" (click)="addGuest()"> Add User</button><br/>
-    <table style="width:100%;font-size: large;color: blue;" class="table table-striped">
+    <button class="btn btn-success" style="width:100px" (click)="addGuest()">Add Guest</button><br/>
+    <table style="width:100%;color: rgb(129, 12, 12);" class="table table-striped">
       <thead>
       <tr>
         <th class="hidden">Id</th>
@@ -42,5 +41,6 @@
      </tr>
       </tbody>
     </table>
-  </div>
+<p>Exportan excel file of type .xslx by clicking the below button</p>
+    <button class="btn btn-success" style="width:100px;margin-left: 50%;"(click)="exportAsXLSX()">Export</button>
 </body>

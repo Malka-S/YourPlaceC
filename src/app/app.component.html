@@ -24,20 +24,68 @@
     <li class="breadcrumb-item"><a routerLink="/list-guests"> Guest List</a></li>
     <li class="breadcrumb-item"><a routerLink="/new-user">New User</a></li>
     <li class="breadcrumb-item"><a routerLink="/login">Login</a></li>
-    <li class="breadcrumb-item"><a routerLink="/seating-arrangement">saeting arrangemant</a></li>
+    <li class="breadcrumb-item"><a routerLink="/about">About YourPlace</a></li>
 
-    
+    <li class="breadcrumb-item"><a routerLink="/seating-arrangement">saeting arrangemant</a></li>
+    <li class="breadcrumb-item"><a routerLink="/view-event">Edit Event</a></li>
+    <li class="logo"></li>
     <!-- <li class="breadcrumb-item active">Courses</li> -->
   </ol>
 
   <router-outlet></router-outlet>
 
 </div>
-
 <!--
-  ניסוי לטעינת XL <div class="col-md-8 form-group">        
-  <input type="file" class="form-control" (change)="addfile($event)" placeholder="Upload file" accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">        
-</div>      -->
+<mat-toolbar color="primary">
+     
+  <mat-toolbar-row>
+    <span class="row">
+      <span class="col-6">
+    <span class="example-fill-remaining-space"></span>
+<span class="align-center"></span>
+<span class="example-spacer"></span>
+
+
+  <mat-menu #menu_1="matMenu">
+    <button mat-menu-item>
+      <mat-icon>about</mat-icon>
+       <a [routerLink]="['/about']">about us</a>
+    </button>
+    <button mat-menu-item >
+      <mat-icon>particapin</mat-icon>
+      <a [routerLink]="['/confirm-participation']">confirm participation</a>
+    </button>
+  
+  </mat-menu>
+  <span class="align-center"></span>
+  <span class="example-spacer"></span>
+
+</span>
+<span class="col-6">
+  <button mat-icon-button [matMenuTriggerFor]="menu_2">
+user </button>
+ <mat-menu #menu_2="matMenu">
+   <button mat-menu-item>
+     <mat-icon>new event</mat-icon>
+     <a [routerLink]="['/new-event']"> new event</a>
+
+   </button>
+   <button mat-menu-item>
+     <mat-icon>upload</mat-icon>
+     <a [routerLink]="['/upload-xl']">upload xl</a>
+
+   </button>
+   
+ </mat-menu>
+
+</span>
+
+    </span>
+    
+    </mat-toolbar-row>
+</mat-toolbar>
+-->
+
 </body>
 
 </html> 

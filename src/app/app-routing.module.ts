@@ -13,6 +13,8 @@ import { ListGuestsComponent } from './guest/list-guests/list-guests.component';
 import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
 import { ReminderService } from 'src/app/service/reminders.service';
 import{SeatingArrangementComponent}from './components/seating-arrangement/seating-arrangement.component'
+import { ViewEventComponent } from './components/view-event/view-event.component';
+import { AboutComponent } from './components/about/about.component';
 
 //import { RegisterComponent } from './components/register/register.component';
 
@@ -32,6 +34,9 @@ const routes: Routes = [
       { path: 'edit-guest', component: EditGuestComponent },
       { path: 'list-guests', component: ListGuestsComponent },
       { path: 'seating-arrangement', component: SeatingArrangementComponent },
+      { path: 'view-event', component: ViewEventComponent },
+      { path: 'about', component: AboutComponent },
+
 
 
       

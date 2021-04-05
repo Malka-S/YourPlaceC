@@ -18,8 +18,14 @@ export class EventService {
   getEventType(): Observable<BaseCode[]> {
     return this.http.get<BaseCode[]>(`${this.baseApiUrl}GetEventType`);
   }
-  createEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>(this.baseApiUrl + 'postEvent', event);
+  createEvent(event: Event): Observable<number> {
+    return this.http.post<any>(this.baseApiUrl + 'postEvent', event);
+  }
+  // GetEventByCode(c: number): Observable<Event> {
+  //   return this.http.get<Event>(this.baseApiUrl + 'GetEventByCode', c);
+  // }
+  GetEventByUser(id: any): Observable<any> {
+    return this.http.get<Event>(this.baseApiUrl + 'GetEventByUID', id);
   }
   postCategoryiesList(catagoryList:BaseCode[]):Observable<BaseCode[]>{
     return this.http.post<BaseCode[]>(this.baseApiUrl+"PostCategoryiesList",catagoryList);

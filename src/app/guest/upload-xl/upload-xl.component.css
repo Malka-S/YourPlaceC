@@ -5,12 +5,11 @@ table {
 table tr td,
 table tr {
   border-collapse: collapse;
-  border: 1px solid #ccc;
+  border: 2% solid rgb(19, 0, 54);
   font-size: 14px;
 }
-.bg {
-  /* background-image: url("/assets/images/old-wooden-armchair.jpg");
-      background-repeat: round;
-      background-position: 100%; */
-  background-color: rgb(153, 203, 250);
+table th{
+  font-size: 100%;
+  text-shadow: darkred;
 }
+

@@ -9,6 +9,8 @@ import { GuestService } from '../../service/guest.service';
   selector: 'app-add-guest',
   templateUrl: './add-guest.component.html',
   styleUrls: ['./add-guest.component.css']
+    //styleUrls: ['./app.component.css'],
+
 })
 export class AddGuestComponent implements OnInit {
 

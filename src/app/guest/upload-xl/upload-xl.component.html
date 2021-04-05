@@ -13,15 +13,12 @@
 
 <body class="bg">
 <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Upload Excel file</h2>
-<div class="text-center">
-<input  style="color: blue;"type="file" (change)="uploadExcel($event)"> 
-</div>
+<input  style="color: rgb(5, 5, 100);"  type="file" (change)="uploadExcel($event)">
 <div class="text-center">
     לא עובד לטעון 2 גליונות
-    <input  style="color: rgb(207, 13, 110);"type="file" (change)="uploadExcelCat($event)"> 
+    <input  style="color: rgb(15, 6, 90);"type="file" (change)="uploadExcelCat($event)"> 
     </div>
-<button class="btn btn-success" style="width:100px;margin-left: 50%;" (click)="AddAllGuests(guests)">Add all</button>          
-<table style="width:100%;color: brown;" class="table table-striped">    
+<table style="width:100%;color: rgb(129, 12, 12);" class="table table-striped">    
     <thead>
         <tr>
             <th>#</th>
@@ -53,31 +50,7 @@
     <td>{{c}}</td>
 </tr>
 </table> 
-<p>Exporting an excel file of type .xslx !!!</p>
-<p>Export as XLSX by clicking the below button</p>
-<button class="btn btn-success" style="width:100px;margin-left: 50%;"(click)="exportAsXLSX()">Export</button>
-<table style="width:100%;color: brown;" class="table table-striped">    
- <tr>
-    <td>#</td>
-    <td>First name</td>
-    <td>Last name</td>
-    <td>Gender</td>
-    <td>Email</td>
-    <td>message before</td>
-    <td>message after</td>
-    <td>table id</td>
-    <td>category id</td>
- </tr>
- <tr *ngFor="let guest of data; let i = index">
-    <td>{{i+1}}</td>
-    <td>{{guest.guest_first_name}}</td>
-    <td>{{guest.guest_last_name}}</td>
-    <td>{{guest.gender}}</td>
-    <td>{{guest.guest_email}}</td>
-    <td>{{guest.guest_message_befor}}</td>
-    <td>{{guest.guest_message_after}}</td>
-    <td>{{guest.table_id}}</td>
-    <td>{{guest.guest_category_id}}</td>
- </tr>
-</table>
+<button class="btn btn-success" style="width:100px;margin-left: 50%;" (click)="AddAllGuests(guests)">Add all</button>          
+
+
 </body>

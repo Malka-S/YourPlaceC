@@ -4,21 +4,25 @@ import { Router } from "@angular/router";
 import { GuestService } from '../../service/guest.service';
 import { HttpClient, HttpHeaders, JsonpClientBackend } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {SharedService} from '../../service/sharedServices';
+
 
 @Component({
   selector: 'app-list-guests',
   templateUrl: './list-guests.component.html',
-  styleUrls: ['./list-guests.component.css']
+  styleUrls: ['./list-guests.component.css'],
+  providers: [SharedService],
+
 })
 export class ListGuestsComponent implements OnInit {
-
-  guests: Guest[];
+  guests: any;
   guest: Guest;
 
   constructor(
     private router: Router,
      private guestService: GuestService,
-     private http: HttpClient) { 
+     private http: HttpClient,
+     private SharedService:SharedService,) { 
     //פונקצית קריאה לרשימה של כל האורחים-שיטען מיד עם טעינת הקומפוננטה
     this.guestService.getAllGuests().subscribe(
       response=>{console.log(response);
@@ -32,6 +36,9 @@ export class ListGuestsComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+  exportAsXLSX():void {
+    this.SharedService.exportAsExcelFile(this.guests, 'sample');
   }
    //?
    deleteGuest(g: Guest): void {

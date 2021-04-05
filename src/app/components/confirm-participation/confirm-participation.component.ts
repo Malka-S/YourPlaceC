@@ -28,6 +28,8 @@ export interface Status {
   selector: 'app-confirm-participation',
   templateUrl: './confirm-participation.component.html',
   styleUrls: ['./confirm-participation.component.css'],
+ //styleUrls: ['./app.component.css'],
+
 })
 
 export class ConfirmParticipationComponent implements OnInit {

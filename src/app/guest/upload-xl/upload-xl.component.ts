@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Guest } from '../../model/guest.model';
 import { GuestService } from '../../service/guest.service';
 import *as XLSX from 'xlsx';
-import {ExcelService} from '../../service/sharedServices';
+import {SharedService} from '../../service/sharedServices';
 import { HttpClient, HttpHeaders, JsonpClientBackend } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-xl',
   templateUrl: './upload-xl.component.html',
   styleUrls: ['./upload-xl.component.css'],
-  providers: [ExcelService],
+  providers: [SharedService],
 
 })
 
@@ -25,18 +25,11 @@ export class UploadXlComponent implements OnInit {
 			'../xlsx.js': 'var _XLSX'
 		}
 	]
-  constructor(private guestService: GuestService ,private excelService:ExcelService,
+  constructor(private guestService: GuestService ,private SharedService:SharedService,
     private http: HttpClient) { 
-    this.guestService.getAllGuests().subscribe(
-      response=>{console.log(response);
-        this.data=response;
-      },
-      error=>{ console.log(error);
-      })
+ 
 }
-      exportAsXLSX():void {
-  this.excelService.exportAsExcelFile(this.data, 'sample');
-}
+
 
   uploadExcel(e) { 
     try{
