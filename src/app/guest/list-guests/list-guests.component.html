@@ -11,9 +11,10 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body class="bg">
-
     <h2  style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;size: 5px;color: brown;margin-left: 50%;">Guests Details</h2>
-    <button class="btn btn-success" style="width:100px" (click)="addGuest()">Add Guest</button><br/>
+    <button class="btn btn-success" style="width:100px" (click)="addGuest()">Add Guest</button>
+    <button class="btn btn-success" style="width:100px; margin-left: 10%;"(click)="exportAsXLSX()">Export</button>
+    <p>Exportan excel file of type .xslx by clicking the below button</p>
     <table style="width:100%;color: rgb(129, 12, 12);" class="table table-striped">
       <thead>
       <tr>
@@ -41,6 +42,5 @@
      </tr>
       </tbody>
     </table>
-<p>Exportan excel file of type .xslx by clicking the below button</p>
-    <button class="btn btn-success" style="width:100px;margin-left: 50%;"(click)="exportAsXLSX()">Export</button>
+
 </body>

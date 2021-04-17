@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
-<div [ngStyle]="{'backround': 'url(..//images/image.img)'}"class="backround" id="br"></div>
+<div [ngStyle]="{'backround': 'url(..//images/image.img)'}" class="backround" id="br"></div>
+
 <head class="container-fluid">
   <meta charset="utf-8">
   <title>Email Validation Tutorial</title>
@@ -8,34 +9,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-<div class="container">
-  <ol class="breadcrumb">
-   <li class="breadcrumb-item"><a routerLink="/confirm-participation">Confirn Participation</a></li>
-   <li class="breadcrumb-item"><a routerLink="/reminders">reminders</a></li>
-    <!-- <li class="breadcrumb-item"><a routerLink="/edit-guest">עריכת אורח </a></li> -->
-       <li class="breadcrumb-item"><a routerLink="/new-event">New Event</a></li>
-       <li class="breadcrumb-item"><a routerLink="/upload-xl">uplaod Excel file</a></li> 
-       <li class="breadcrumb-item"><a routerLink="/add-guest">Add Guest</a></li>
-       <li class="breadcrumb-item"><a routerLink="/new-event2">categories</a></li>
-    <li class="breadcrumb-item"><a routerLink="/list-guests"> Guest List</a></li>
-    <li class="breadcrumb-item"><a routerLink="/new-user">New User</a></li>
-    <li class="breadcrumb-item"><a routerLink="/login">Login</a></li>
-    <li class="breadcrumb-item"><a routerLink="/about">About YourPlace</a></li>
+  <div class="container">
+    <button mat-button routerLink="login">Login</button>
+    <button mat-button (click)="onLogout()">Logout</button>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/about">About YourPlace</a></li>
+      <li class="breadcrumb-item"><a routerLink="/login">Login</a></li>
+      <li class="breadcrumb-item"><a routerLink="/new-user">New User</a></li>
+      <li class="breadcrumb-item"><a routerLink="/new-event">New Event</a></li>
+      <li class="breadcrumb-item"><a routerLink="/view-event">Edit Event</a></li>
+      <li class="breadcrumb-item"><a routerLink="/add-guest">Add Guest</a></li>
+      <li class="breadcrumb-item"><a routerLink="/upload-xl">uplaod Excel file</a></li>
+      <li class="breadcrumb-item"><a routerLink="/list-guests"> Guest List</a></li>
+      <li class="breadcrumb-item"><a routerLink="/confirm-participation">Confirn Participation</a></li>
+      <li class="breadcrumb-item"><a routerLink="/seating-arrangement">saeting arrangemant</a></li>
+      <li class="breadcrumb-item"><a routerLink="/reminders">reminders</a></li>
+      <li class="logo"></li> -->
+      <!-- <li class="breadcrumb-item"><a routerLink="/edit-guest">עריכת אורח </a></li> -->
+      <!-- <li class="breadcrumb-item"><a routerLink="/new-event2">categories</a></li> -->
+      <!-- <li class="breadcrumb-item"><a routerLink="/about">About YourPlace</a></li> -->
+      <!-- <li class="breadcrumb-item active">Courses</li> -->
+    <!-- </ol>
 
-    <li class="breadcrumb-item"><a routerLink="/seating-arrangement">saeting arrangemant</a></li>
-    <li class="breadcrumb-item"><a routerLink="/view-event">Edit Event</a></li>
-    <li class="logo"></li>
-    <!-- <li class="breadcrumb-item active">Courses</li> -->
-  </ol>
+    <router-outlet></router-outlet>
 
-  <router-outlet></router-outlet>
-
-</div>
-<!--
+  </div> -->
+  <!--
 <mat-toolbar color="primary">
      
   <mat-toolbar-row>
@@ -85,10 +88,10 @@ user </button>
     </mat-toolbar-row>
 </mat-toolbar>
 -->
-
+<!-- 
 </body>
 
-</html> 
+</html> -->
 
 <!-- </main>  -->
 <!-- 

@@ -30,11 +30,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NewEventThreeComponent } from './components/new-event-three/new-event-three.component';
-
 import { UploadXlComponent } from './guest/upload-xl/upload-xl.component';
 import { SeatingArrangementComponent } from './components/seating-arrangement/seating-arrangement.component';
 import { ViewEventComponent } from './components/view-event/view-event.component';
 import { AboutComponent } from './components/about/about.component';
+import { HeaderComponent } from './header/header.component';
 
 //import { myServer } from './service';
 //import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
@@ -58,7 +58,7 @@ import { AboutComponent } from './components/about/about.component';
     SeatingArrangementComponent,
     ViewEventComponent,
     AboutComponent,
-
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +66,6 @@ import { AboutComponent } from './components/about/about.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
     MatSliderModule,
     MatSelectModule,
     MatDatepickerModule,

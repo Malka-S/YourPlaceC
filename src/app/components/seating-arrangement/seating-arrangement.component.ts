@@ -9,7 +9,7 @@ import { SeatingService } from '../../service/SeatingService';
 })
 export class SeatingArrangementComponent implements OnInit {
 
-  constructor(      private SeatingService: SeatingService,
+  constructor(private SeatingService: SeatingService,
     ) { }
   SeatingArrangemant:Table[];
 

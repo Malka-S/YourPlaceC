@@ -1,0 +1,28 @@
+<ol class="breadcrumb">
+<button mat-button routerLink="about">About Us</button>
+<button mat-button routerLink="login">Login</button>
+<button mat-button (click)="onLogout()">Logout</button>
+</ol>
+<ol *ngIf="isLoggedIn$ | async as isLoggedIn">
+    <ol class="breadcrumb">
+        <!-- <li class="breadcrumb-item"><a routerLink="/about">About YourPlace</a></li> -->
+        <!-- <li class="breadcrumb-item"><a routerLink="/login">Login</a></li> -->
+        <!-- <li class="breadcrumb-item"><a routerLink="/new-user">New User</a></li> -->
+        <li class="breadcrumb-item"><a routerLink="/new-event">New Event</a></li>
+        <li class="breadcrumb-item"><a routerLink="/view-event">Edit Event</a></li>
+        <li class="breadcrumb-item"><a routerLink="/add-guest">Add Guest</a></li>
+        <li class="breadcrumb-item"><a routerLink="/upload-xl">uplaod Excel file</a></li>
+        <li class="breadcrumb-item"><a routerLink="/list-guests"> Guest List</a></li>
+        <li class="breadcrumb-item"><a routerLink="/confirm-participation">Confirn Participation</a></li>
+        <li class="breadcrumb-item"><a routerLink="/seating-arrangement">saeting arrangemant</a></li>
+        <li class="breadcrumb-item"><a routerLink="/reminders">reminders</a></li>
+        <li class="logo"></li>
+        <!-- <button mat-button routerLink="login">Login</button>
+        <button mat-button (click)="onLogout()">Logout</button> -->
+        <!-- <li class="breadcrumb-item"><a routerLink="/edit-guest">עריכת אורח </a></li> -->
+        <!-- <li class="breadcrumb-item"><a routerLink="/new-event2">categories</a></li> -->
+        <!-- <li class="breadcrumb-item"><a routerLink="/about">About YourPlace</a></li> -->
+        <!-- <li class="breadcrumb-item active">Courses</li> -->
+    
+    </ol>
+   
