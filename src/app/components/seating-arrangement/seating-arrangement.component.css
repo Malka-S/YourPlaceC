@@ -1,7 +1,17 @@
-.bg {
-  background-image: url("/assets/images/white_flawers.jpg");
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+table {
+    width: 100%;
+    margin: 20px auto;
+}
+
+table tr td,
+table tr {
+    border-collapse: collapse;
+    border: 2% solid rgb(19, 0, 54);
+    font-size: 14px;
+}
+
+table th {
+    font-weight: 500;
+    color: #ffb100;
+    padding: .55rem;
 }

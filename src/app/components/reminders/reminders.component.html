@@ -4,7 +4,19 @@
     <form [formGroup]="addForm" novalidate #a="ngForm" (ngSubmit)="onSend(a)">
 
         <div class="row">
-            <input class="form-control text-center col-md-6" style="border: none;" type="file" (change)="onChange($event)" formControlName="Reminder" id="Reminder" autocomplete="off">
+            <div class="col-md-6 custom-file-upload-wrapper">
+                <label class="custom-file-upload" for="Reminder">
+                <mat-icon>insert_drive_file</mat-icon>
+                <input type="file"/>
+                Upload file
+            </label>
+                <div class="custom-file-upload-name-wrapper">
+                    <label class="custom-file-upload-name" *ngIf="file && file.name">{{file.name}}</label>
+                    <label class="custom-file-upload-name" *ngIf="!file">לא נבחר קובץ</label>
+                </div>
+            </div>
+
+            <input class="form-control text-center col-md-4" style="border: none;" type="file" (change)="onChange($event)" formControlName="Reminder" id="Reminder" autocomplete="off">
             <div class="text-center col-md-6">
 
                 <button (click)="onUploadReminder()" class="btn-gold btn-smaller"> 
@@ -43,3 +55,8 @@
 
     </form>
 </div>
+
+
+
+<!-- <div class="form-wrapper-sub container-fluid">
+    <div class="col-md-6"> -->

@@ -8,7 +8,7 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 html,
@@ -18,7 +18,7 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 html,
@@ -28,7 +28,7 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 html,
@@ -38,7 +38,7 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 .btn-color,
@@ -108,7 +108,7 @@ body {
     top: 0;
     left: 0;
     background-size: cover;
-    background-image: url("assets/images/bg.jpg");
+    background-image: url('assets/images/bg.jpg');
     opacity: 0.4;
     z-index: -1;
 }
@@ -175,7 +175,7 @@ body {
     outline: none;
 }
 
-.breadcrumb button.active_link span {
+.breadcrumb button.active_link span.mat-button-wrapper {
     color: #ffb100;
     border-bottom: #ffb100 2px solid;
     font-weight: 500;
@@ -206,7 +206,7 @@ body {
     text-align: left;
     margin: 0px auto;
     background-color: #fff;
-    opacity: 0.8;
+    opacity: 0.9;
     direction: ltr;
     color: #310166!important;
     position: relative;
@@ -215,6 +215,26 @@ body {
     margin-top: -20px;
     padding: 50px;
     max-width: 500px;
+    height: 100%;
+}
+
+.form-wrapper-sub {
+    text-align: left;
+    margin: 0px auto;
+    background-color: #fff;
+    opacity: 1;
+    direction: ltr;
+    color: #310166!important;
+    position: relative;
+    font-size: 16px;
+    line-height: 28px;
+    margin-top: -20px;
+    padding: 20px 50px!important;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    opacity: 0.9;
 }
 
 .form-wrapper-large {
@@ -226,7 +246,8 @@ body {
     border-color: #310166;
 }
 
-.form-wrapper-large .form-control {
+.form-wrapper-large .form-control,
+.form-wrapper-sub .form-control {
     height: calc(1.4em + .55rem + 2px);
 }
 
@@ -236,7 +257,8 @@ input:focus {
     outline: none!important;
 }
 
-.form-wrapper-large h1 {
+.form-wrapper-large h1,
+.form-wrapper-sub h1 {
     text-align: center;
     font-weight: 100;
     letter-spacing: 1px;
@@ -267,7 +289,8 @@ input:focus {
     margin-bottom: .3rem;
 }
 
-.form-wrapper-large label {
+.form-wrapper-large label,
+.form-wrapper-sub label {
     font-size: small;
     margin-bottom: 0;
     font-weight: 100;
@@ -331,4 +354,55 @@ small {
     padding: 4px 8px;
     font-size: 16px;
     margin-right: 10px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid;
+    display: inline-block;
+    padding: 4px 0px 0px 4px;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: small;
+    width: 100px;
+}
+
+.custom-file-upload .mat-icon {
+    vertical-align: middle;
+    font-size: 18px;
+    margin-top: 4px;
+    margin-right: -5px;
+}
+
+.custom-file-upload-name {
+    font-size: 10px!important;
+    padding: 0 0 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90px;
+    vertical-align: bottom;
+}
+
+.custom-file-upload-wrapper {
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.custom-file-upload-name-wrapper {
+    max-width: 100px;
+    display: inline-block;
 }

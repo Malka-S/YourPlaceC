@@ -44,14 +44,38 @@
             <div class="form-group col-md-6" name="invitation_file">
                 <label for="invitation_file">Upload file:
               </label>
+                <div class="row">
 
-                <div class="text-center row">
+
+                    <div class="col-md-8 custom-file-upload-wrapper">
+                        <label class="custom-file-upload" for="invitation_file">
+            <mat-icon>insert_drive_file</mat-icon>
+            <input type="file"/>
+            Upload file
+        </label>
+                        <div class="custom-file-upload-name-wrapper">
+                            <label class="custom-file-upload-name" *ngIf="file">{{file.name}}</label>
+                            <label class="custom-file-upload-name" *ngIf="!file">לא נבחר קובץ</label>
+                        </div>
+                    </div>
+
                     <input class="form-control col-md-8" type="file" (change)="onChange($event)" formControlName="invitation_file" id="invitation_file" autocomplete="off" style="border: none;">
+
+                    <button (click)="onUpload()" class="btn-gold btn-smaller col-md-4" style="display: inline-block;">
+                    Upload
+                  </button>
+                </div>
+
+
+
+                <!-- <div class="text-center row">
+                    <input class="form-control col-md-8" type="file" (change)="onChange($event)" 
+                    formControlName="invitation_file" id="invitation_file" autocomplete="off" style="border: none;">
 
                     <button (click)="onUpload()" class="btn-gold btn-smaller col-md-4" style="display: inline-block;">
             Upload
           </button>
-                </div>
+                </div> -->
 
                 <!-- Shareable short link of  uoloaded file -->
                 <div class="container text-center jumbotron" *ngIf="shortLink">

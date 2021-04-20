@@ -18,6 +18,8 @@ export class UploadXlComponent implements OnInit {
   guests : any;
   cat:any;
   g:Guest;
+  fileName1: string;
+  fileName2: string;
   //מנסה לפתור את הבעיה
   externals: [
 		{
@@ -33,7 +35,7 @@ export class UploadXlComponent implements OnInit {
 
   uploadExcel(e) { 
     try{
-       const fileName = e.target.files[0].name;
+      this.fileName1 = e.target.files[0].name;
         import('XLSX').then(XLSX => { let workBook = null; 
           let jsonData = null; const reader = new FileReader(); 
           // const file = ev.target.files[0];
@@ -52,7 +54,7 @@ export class UploadXlComponent implements OnInit {
   }
   uploadExcelCat(e) { 
     try{
-       const fileName = e.target.files[1].name;
+      this.fileName2 = e.target.files[1].name;
         import('XLSX').then(XLSX => { let workBook = null; 
           let jsonData = null; const reader = new FileReader(); 
           // const file = ev.target.files[0];

@@ -13,7 +13,7 @@ import { toNumber } from 'lodash';
 import { TmplAstVariable } from '@angular/compiler';
 import { SelectionModel } from '@angular/cdk/collections';
 import { element } from 'protractor'; 
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 export interface Status {
   table_members_id:number,
     tm_full_name:string,
@@ -177,7 +177,7 @@ this.guestService.getCategoryById(this.id).subscribe(
   @Input()
 
   seeInvitation() {
-    Swal.fire("Error","Not available yet","error");
+    //Swal.fire("Error","Not available yet","error");
 
    
     //אפשרות לצפות בהזמנה
@@ -209,7 +209,7 @@ this.guestService.getCategoryById(this.id).subscribe(
         
   }
   navigateToPlace() {
-   Swal.fire("Error","Places were not set yet-not available","error");
+ //  Swal.fire("Error","Places were not set yet-not available","error");
 
 
 

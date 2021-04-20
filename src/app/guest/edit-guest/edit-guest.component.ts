@@ -6,7 +6,7 @@ import {first} from "rxjs/operators";
 import { Guest } from 'src/app/model/guest.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class EditGuestComponent implements OnInit {
     // console.log('gueslasttname ' + eguest_last_name);
 
     if(!guestId) {
-      Swal.fire("Error","Invalid action.","error");
+     // Swal.fire("Error","Invalid action.","error");
 
       this.router.navigate(['list-guests']);
       return;
