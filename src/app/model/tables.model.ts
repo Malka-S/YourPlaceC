@@ -1,10 +1,9 @@
 export class Table {
-    public TableId: number;
-    public CategoryId: number;
-    public EventId: number;
-    public TableTitle: string;
-    public AmountOfPlaces: number;
-    public GuestsCode:[number];
+    public table_id: number;
+    public category_id: number;
+    public event_id: number;
+    public table_title: string;
+    public amount_of_places: number;
     constructor(
      id,
      category,
@@ -13,11 +12,12 @@ export class Table {
      amont_of_place,
      GuestsCode
     ) {
-     this.TableId=id;
-     this.CategoryId=category;
-     this.EventId=event_id;
-     this.TableTitle=title;
-     this.AmountOfPlaces=amont_of_place;
-     this.GuestsCode=GuestsCode;
+     this.table_id=id;
+     this.category_id=category;
+     this.event_id=event_id;
+     this.table_title=title;
+     this.amount_of_places=amont_of_place;
     }
   }
+
+  

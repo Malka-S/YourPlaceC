@@ -72,7 +72,15 @@ export class ConfirmParticipationComponent implements OnInit {
     friend_id:5,
     like_or_not:true,
     guestPriority:2 
-  }];
+  },
+  {
+    table_members_id:3,
+    tm_full_name:"Maykel Morchi",
+    guest_id:3,
+    friend_id:5,
+    like_or_not:true,
+    guestPriority:3 
+  },];
   checked: boolean = false;
   g3_toSend:TM[];
   guest_3TM:TM[];

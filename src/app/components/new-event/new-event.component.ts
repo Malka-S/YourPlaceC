@@ -115,19 +115,18 @@ onUpload() {
 
 onUploudExel() {
   this.router.navigate(['upload-xl']);
-
-  
 }
+
   onSubmit() {
     // this.router.navigateByUrl('/new-event2');
     console.log("jkjkjk" ,this.creatEvent.value);
     // this.router.navigate(['new-event2']);
-
     // this.eventService.createEvent(this.creatEvent.value) .subscribe( data => {
     // });
     this.AddEvent(this.creatEvent.value)
     // this.router.navigate(['new-event2']);
   }
+  
   AddEvent(event:Event):void{
     this.eventService.createEvent(event).subscribe(
     response=>{console.log(response);

@@ -1,3 +1,11 @@
+.block-top-2-new-event {
+  height: 140px;
+  background-color: #ffb100;
+  margin-top: 0px;
+  color: white;
+  padding: 20px 100px;
+}
+
 /* body,
 html {
   height: 90%;

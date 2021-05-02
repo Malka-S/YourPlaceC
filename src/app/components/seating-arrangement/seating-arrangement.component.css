@@ -1,6 +1,35 @@
+.ciclegraph {
+	position: relative;
+  width: 200px;
+  height: 200px;
+  margin: calc(100px / 2 + 0px);
+}
+
+.ciclegraph:before {
+	content: "";
+	position: absolute;
+	top: 0; left: 0;
+  /* border: 2px solid teal; */
+  width: calc( 100% - 2px * 2);
+  height: calc( 100% - 2px * 2 );
+  border-radius: 50%;
+}
+
+.ciclegraph .circle {
+	position: absolute;
+	top: 50%; left: 50%;
+  width: 50px;
+  height: 50px;
+  margin: calc( -100px / 2 );
+  /* background: teal; */
+  border: 2px solid teal;
+  border-radius: 50%;
+}
+
 table {
     width: 100%;
     margin: 20px auto;
+    display: block;
 }
 
 table tr td,
@@ -14,4 +43,4 @@ table th {
     font-weight: 500;
     color: #ffb100;
     padding: .55rem;
-}
+} 

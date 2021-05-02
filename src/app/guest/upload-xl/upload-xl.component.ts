@@ -32,7 +32,6 @@ export class UploadXlComponent implements OnInit {
  
 }
 
-
   uploadExcel(e) { 
     try{
       this.fileName1 = e.target.files[0].name;
