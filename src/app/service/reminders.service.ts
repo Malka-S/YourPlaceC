@@ -12,17 +12,20 @@ import { TM } from '../model/TM.model';
 export class ReminderService {
     constructor(private http: HttpClient) {}
   baseUrl: string = 'https://localhost:44390/api/Email/';
-
+  
   SentInvations(Reminder:Reminder): Observable<Guest> {
-    return this.http.get<any>(this.baseUrl +'SendEmailToAllGuest'+ Reminder);
+    return this.http.get<any>(this.baseUrl +'SentAllGuestInvitation'+ Reminder);
   }
   SentToAll(Reminder:Reminder): Observable<Guest> {
-    return this.http.get<any>(this.baseUrl +'SendEmailToAllGuest'+ Reminder);
+    return this.http.get<any>(this.baseUrl +'SentAllGuestC'+ Reminder);
   }
   SendToNotConfirmed(Reminder:Reminder): Observable<Guest> {
     return this.http.get<any>(this.baseUrl +'SentGuestNotConfirmedMail'+ Reminder);
   }
   SendToConfirmed(Reminder:Reminder): Observable<Guest> {
     return this.http.get<any>(this.baseUrl +'SentGuestConfirmedMail'+ Reminder);
+  }
+  SentInvations1(Reminder:Reminder): Observable<Guest> {
+    return this.http.get<any>(this.baseUrl +'SendInvitationTOne'+ Reminder);
   }
 }

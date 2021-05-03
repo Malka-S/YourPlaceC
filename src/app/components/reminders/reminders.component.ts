@@ -100,6 +100,21 @@ export class RemindersComponent implements OnInit {
         console.log(error);
       })
   }
+  sendToOne(){
+    console.log(this.addForm.value);
+    this.sendToOne1(this.addForm.value);
+  }
+  sendToOne1(reminder:Reminder){
+    this.reminderService.SentInvations1(reminder).subscribe(
+      response => {
+        console.log(response);
+       // reminder = response;
+        //this.router.navigate(['/list-guests']);
+      }, 
+      error => {
+        console.log(error);
+      })
+  }
   sendReminderToAll(): void { };
   sendToNotConfirmed():void{};
   sendToConfirmed():void{};

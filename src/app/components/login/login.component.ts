@@ -70,17 +70,14 @@ export class LoginComponent implements OnInit {
         console.log(response);
         console.log('res ' + response);
         if (response) {
-        //  Swal.fire("Success","You are logged in","success");
-
-
-       
+        //  Swal.fire("Success","You are logged in","success");       
           this.router.navigateByUrl('/new-event');
-
-
         }
         else
           //ניסיתי את הדיאלוג הזה
           this.openDialog();
+          this.router.navigateByUrl('/new-user');
+
         //  alert ("you need to register-can't log in.username or password are incorrect");
       },
       error => {
@@ -101,29 +98,6 @@ export class LoginComponent implements OnInit {
   templateUrl: 'dialog-elements-example-dialog.html',
 })
 export class DialogElementsExampleDialog { }
-
-
-  // export class DialogContentExampleDialog {
-  //   constructor(
-  //     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-  //     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
-
-  //   onNoClick(): void {
-  //     this.dialogRef.close('no');
-  //   }
-
-  //   yes() {
-  //     this.dialogRef.close('yes');
-  //   }
-
-  // }
-  // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-  //   width: '250px',
-  //   height: '250px',
-  //   data: { title: 'error', content: "no schools were entered", showNo: false, no: 'no', yes: 'ok' }
-  // });
-  // dialogRef.afterClosed().subscribe(result => {
-  // });
 
 
 
