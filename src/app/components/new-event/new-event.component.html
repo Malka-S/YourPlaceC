@@ -63,7 +63,7 @@
                             <label class="custom-file-upload" for="invitation_file">
             <mat-icon>insert_drive_file</mat-icon>
             <input type="file"/>
-            Upload file
+            Upload Invitation
         </label>
                             <div class="custom-file-upload-name-wrapper">
                                 <label class="custom-file-upload-name" *ngIf="file">{{file.name}}</label>
@@ -74,7 +74,7 @@
                         <input class="form-control col-md-8" type="file" (change)="onChange($event)" formControlName="invitation_file" id="invitation_file" autocomplete="off" style="border: none;">
 
                         <button (click)="onUpload()" class="btn-gold btn-smaller col-md-4" style="display: inline-block;">
-                    Upload
+                    Save 
                   </button>
                     </div>
 
@@ -104,13 +104,13 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-md-6" name="due_date">
+                <!-- <div class="form-group col-md-6" name="due_date">
                     <label for="due_date">last date to confirm-participation:
       </label>
                     <input type="date" class="form-control" formControlName="due_date" id="due_date" autocomplete="off">
                     <div class="error" *ngIf="creatEvent.controls['due_date'].hasError('required') && creatEvent.controls['due_date'].touched">
                         EventDueDate is required</div>
-                </div>
+                </div> -->
 
 
                 <div class="form-group col-md-6" name="num_tables">

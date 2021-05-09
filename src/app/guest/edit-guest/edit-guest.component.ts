@@ -26,7 +26,7 @@ export class EditGuestComponent implements OnInit {
     let eguest_last_name=window.localStorage.getItem("editguest_last_name");
     let egender=window.localStorage.getItem("editgender");
     let eguest_email=window.localStorage.getItem("editguest_email");
-    let eguest_message_before=window.localStorage.getItem("editguest_message_before");
+    let eguest_message_befor=window.localStorage.getItem("editguest_message_befor");
     let eguest_message_after=window.localStorage.getItem("editguest_message_after");
     // console.log('guestname ' + eguest_first_name);
     // console.log('gueslasttname ' + eguest_last_name);
@@ -45,7 +45,7 @@ export class EditGuestComponent implements OnInit {
       guest_last_name: eguest_last_name,
       guest_email: eguest_email,
       gender: egender,
-      guest_message_befor:eguest_message_before,
+      guest_message_befor:eguest_message_befor,
        guest_message_after: eguest_message_after
        
       //לא מכיר למלא את הערכים

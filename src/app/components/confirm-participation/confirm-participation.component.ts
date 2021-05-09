@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 // import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -41,7 +42,13 @@ export class ConfirmParticipationComponent implements OnInit {
     like_or_not:true,
     guestPriority:3,   
      completed: false,
+
+     
   }
+     checked1 = false;
+     indeterminate = false;
+     labelPosition: 'before' | 'after' = 'after';
+     disabled = false;
   // guests: Guest[]=[{  
   //   guest_id:2,
   //   guest_last_name:"chehen",   
@@ -216,6 +223,7 @@ this.guestService.getCategoryById(this.id).subscribe(
         
         
   }
+   
   navigateToPlace() {
  //  Swal.fire("Error","Places were not set yet-not available","error");
 

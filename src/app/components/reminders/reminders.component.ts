@@ -108,6 +108,7 @@ export class RemindersComponent implements OnInit {
     this.reminderService.SentInvations1(reminder).subscribe(
       response => {
         console.log(response);
+        console.log('here');
        // reminder = response;
         //this.router.navigate(['/list-guests']);
       }, 

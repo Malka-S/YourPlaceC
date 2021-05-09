@@ -11,20 +11,16 @@
                 <label class="custom-file-upload" for="exportTemplateAsXLSX">
                     <mat-icon>insert_drive_file</mat-icon>
                     <input type="file" />
-                    Download template-dosnt work
+                    Download template
                 </label>
                 <div class="custom-file-upload-name-wrapper">
                     <label class="custom-file-upload-name" *ngIf="fileName">{{fileName}}</label>
                 </div>
             </div>
-           <!-- <button class="btn-gold btn-smaller" style="margin-right: 60%;" (click)="exportTemplateAsXLSX()">Export template</button>-->
-
             <input style="color:#310166;" type="file" (click)="exportTemplateAsXLSX()" id="exportTemplateAsXLSX">
         </div>
         <br>
         <div class="row">
-
-
             <div class="col-md-6 custom-file-upload-wrapper">
                 <label class="custom-file-upload" for="uploadExcel">
                     <mat-icon>insert_drive_file</mat-icon>
@@ -50,11 +46,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Guest FirstName</th>
-                    <th>Guest LastName</th>
+                    <th>Guest first name</th>
+                    <th>Guest last name</th>
                     <th>Guest gender</th>
                     <th>Guest Email</th>
-                    <th>Guest essage Before</th>
+                    <th>Guest message Before</th>
                     <th>Guest message After</th>
                     <th>Guest category</th>
 

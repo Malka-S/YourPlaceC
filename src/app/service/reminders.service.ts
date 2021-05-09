@@ -25,7 +25,8 @@ export class ReminderService {
   SendToConfirmed(Reminder:Reminder): Observable<Guest> {
     return this.http.get<any>(this.baseUrl +'SentGuestConfirmedMail'+ Reminder);
   }
-  SentInvations1(Reminder:Reminder): Observable<Guest> {
-    return this.http.get<any>(this.baseUrl +'SendInvitationTOne'+ Reminder);
+  SentInvations1(Reminder:Reminder): Observable<Reminder> {
+    console.log(Reminder.body1);
+    return this.http.post<Reminder>(this.baseUrl +'SendInvitationTOne', Reminder);
   }
 }

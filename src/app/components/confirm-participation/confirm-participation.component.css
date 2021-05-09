@@ -1,17 +1,20 @@
 table {
-    width: 100%;
-    margin: 20px auto;
+  width: 100%;
+  margin: 20px auto;
 }
 
 table tr td,
 table tr {
-    border-collapse: collapse;
-    border: 2% solid rgb(19, 0, 54);
-    font-size: 14px;
+  border-collapse: collapse;
+  border: 2% solid rgb(19, 0, 54);
+  font-size: 14px;
 }
 
 table th {
-    font-weight: 500;
-    color: #ffb100;
-    padding: .55rem;
+  font-weight: 500;
+  color: #ffb100;
+  padding: 0.55rem;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
 }

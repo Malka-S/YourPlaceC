@@ -15,15 +15,32 @@ import {SharedService} from '../../service/sharedServices';
 
 })
 export class ListGuestsComponent implements OnInit {
-  guests: any;
-  guest: Guest;
+ guests: any;
+ guest: Guest;
+  // guests: Guest[] = [{
+  //  guest_first_name:"Malka",
+  //   guest_last_name:"Svei",
+  //   guest_email:"bknhg@gmail.com",
+  //   guest_message_befor:"lny",
+  //   guest_message_after:"jkhniku",
 
+
+
+  //   guest_id: 4,
+ 
+  //   guest_tz: "435",
+  //   event_id:5,
+  //   gender:"rtegrg",
+  //   table_id:5,
+  //   guest_category_id:4,
+  // }]
   constructor(
     private router: Router,
      private guestService: GuestService,
      private http: HttpClient,
      private SharedService:SharedService,) { 
     //פונקצית קריאה לרשימה של כל האורחים-שיטען מיד עם טעינת הקומפוננטה
+    //שמתי בהארה רק כי אין לי SQL אבל צריכה להוציא
     this.guestService.getAllGuests().subscribe(
       response=>{console.log(response);
         this.guests=response;
@@ -65,7 +82,7 @@ export class ListGuestsComponent implements OnInit {
     window.localStorage.setItem('editguest_last_name', g.guest_last_name);
     window.localStorage.setItem('editguest_gender', g.guest_gender);
     window.localStorage.setItem('editguest_email', g.guest_email);
-    window.localStorage.setItem('editguest_message_before', g.guest_message_befor);
+    window.localStorage.setItem('editguest_message_befor', g.guest_message_befor);
     window.localStorage.setItem('editguest_message_after', g.guest_message_after);
 
 

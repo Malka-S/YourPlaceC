@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     user_email: new FormControl('', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     user_password: new FormControl('', [Validators.required])
   });
-
+  
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
   register(): void {
     this.router.navigateByUrl('/new-user');
   };
+ 
   onSubmit() {
     
     let dataToSave = this.loginForm.value;
