@@ -8,14 +8,13 @@
     <div class="col-md-10" style="max-width: 1000px;">
         <div class="row">
             <div class="col-md-6 custom-file-upload-wrapper">
-                <label class="custom-file-upload" for="uploadExcel">
+                <label class="custom-file-upload" for="exportTemplateAsXLSX">
                     <mat-icon>insert_drive_file</mat-icon>
                     <input type="file" />
-                    Download template
+                    Download template-dosnt work
                 </label>
                 <div class="custom-file-upload-name-wrapper">
-                    <label class="custom-file-upload-name" *ngIf="fileName1">{{fileName1}}</label>
-                    <!-- <label class="custom-file-upload-name" *ngIf="!fileName1">No file selected</label> -->
+                    <label class="custom-file-upload-name" *ngIf="fileName">{{fileName}}</label>
                 </div>
 
                 <label class="custom-file-upload" for="uploadExcelCat">
@@ -29,15 +28,16 @@
                         file selected</label> -->
                 </div>
             </div>
+           <!-- <button class="btn-gold btn-smaller" style="margin-right: 60%;" (click)="exportTemplateAsXLSX()">Export template</button>-->
 
-            <input style="color:#310166;" type="file" (change)="uploadExcel($event)" id="uploadExcel">
+            <input style="color:#310166;" type="file" (click)="exportTemplateAsXLSX()" id="exportTemplateAsXLSX">
         </div>
         <br>
         <div class="row">
 
 
-            <!-- <div class="col-md-6 custom-file-upload-wrapper">
-                <label class="custom-file-upload" for="uploadExcelCat">
+            <div class="col-md-6 custom-file-upload-wrapper">
+                <label class="custom-file-upload" for="uploadExcel">
                     <mat-icon>insert_drive_file</mat-icon>
                     <input type="file" />
                     Upload file
@@ -49,7 +49,7 @@
                 </div>
             </div> -->
 
-            <input style="color:#310166;" type="file" (change)="uploadExcelCat($event)" id="uploadExcelCat">
+            <input style="color:#310166;" type="file" (change)="uploadExcel($event)" id="uploadExcel">
         </div>
 
 
@@ -57,7 +57,7 @@
         לא עובד לטעון 2 גליונות
         <input style="color: #310166;" type="file" (change)="uploadExcelCat($event)">
     </div> -->
-        <table style="width:100%;color: #310166;" class="table table-striped">
+        <table style="width:100%;color: #310166;" class="table table-striped"id="excel-template">
             <thead>
                 <tr>
                     <th>#</th>
