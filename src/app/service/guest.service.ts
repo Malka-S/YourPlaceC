@@ -44,8 +44,8 @@ export class GuestService {
   getAllGuests(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl+'GetGuestList');
   }
-  getGuestsListByTableId(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl+'GetGuestsTableId');
+  getGuestsListByTableId(id:number): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl+'GetGuestsTableId?id='+ id);
   }
      //  מהשרת אמור לקבל את האורח ולמחוק אותו
   deleteGuest(id: number): Observable<Guest> {

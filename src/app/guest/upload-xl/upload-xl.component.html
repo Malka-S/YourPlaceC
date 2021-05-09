@@ -16,6 +16,17 @@
                 <div class="custom-file-upload-name-wrapper">
                     <label class="custom-file-upload-name" *ngIf="fileName">{{fileName}}</label>
                 </div>
+
+                <label class="custom-file-upload" for="uploadExcelCat">
+                    <mat-icon>insert_drive_file</mat-icon>
+                    <input type="file" />
+                    Upload file
+                </label>
+                <div class="custom-file-upload-name-wrapper">
+                    <label class="custom-file-upload-name" *ngIf="fileName2">{{fileName2}}</label>
+                    <!-- <label class="custom-file-upload-name" style="max-width: 200px;" *ngIf="!fileName2"> No Categories
+                        file selected</label> -->
+                </div>
             </div>
             <input style="color:#310166;" type="file" (click)="exportTemplateAsXLSX()" id="exportTemplateAsXLSX">
         </div>
@@ -29,10 +40,10 @@
                 </label>
                 <div class="custom-file-upload-name-wrapper">
                     <label class="custom-file-upload-name" *ngIf="fileName2">{{fileName2}}</label>
-                    <!-- <label class="custom-file-upload-name" style="max-width: 200px;" *ngIf="!fileName2"> No Categories
-                        file selected</label> -->
+                     <label class="custom-file-upload-name" style="max-width: 200px;" *ngIf="!fileName2"> No Categories
+                        file selected</label> 
                 </div>
-            </div>
+            </div> -->
 
             <input style="color:#310166;" type="file" (change)="uploadExcel($event)" id="uploadExcel">
         </div>

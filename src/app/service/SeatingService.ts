@@ -16,7 +16,7 @@ export class SeatingService {
   listTables:Table[]
 
   getTablesList(): Observable<Table[]> {
-    return this.http.get<Table[]>(`${this.baseUrl}GetEventType`);
+    return this.http.get<Table[]>(`${this.baseUrl}GetTableList`);
   }
 
   getSeatingArrangemant() : Observable<Table[]> {
