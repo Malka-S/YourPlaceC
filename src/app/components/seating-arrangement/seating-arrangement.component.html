@@ -10,26 +10,25 @@
 <!-- <button  class="btn-color" > 
     Upload 
 </button> -->
-<!-- <div *ngIf="GetSeatings()">
+ <div *ngIf="GetSeatings()">
     <div *ngFor="let tables of seatingArrangement; let i = index" [value]="tables.Id">
-        <div>{{tables.GuestsList}}</div> 
-
-        <div class="ciclegraph circleposition{{i}}" *ngFor="let guest of tables.GuestsList; let j=index">
-            <div class="circle" id="circle{{j}}">{{guest.guest_first_name+ " "+ guest.guest_last_name}} </div>
-              <div class="circle" id="circle1">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div> -->
-            <!-- <div class="circle" id="circle2">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div>
+                <div class="ciclegraph circleposition{{i}}" *ngFor="let guest of tables.GuestsList; let j=index">
+            <div class="circle" id="circle0">{{guest.guest_first_name+ " "+ guest.guest_last_name}} </div>
+              <div class="circle" id="circle1">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div> 
+            <div class="circle" id="circle2">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div>
             <div class="circle" id="circle3">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div>
             <div class="circle" id="circle4">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div>
             <div class="circle" id="circle5">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div>
             <div class="circle" id="circle6">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div>
             <div class="circle" id="circle7">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div> 
+            <div class="circle" id="circle8">{{guest.guest_first_name+ " "+ guest.guest_last_name}}</div>
         </div>
     </div>
-</div> -->
+</div> 
 
-<div *ngFor="let tables of seatingArrangement; let i = index" [value]="tables.Id">{{ seatingArrangement.length }}
+<div *ngFor="let tables of seatingArrangement; let i = index" [value]="tables.Id">{{ i }}
     <div class="ciclegraph circleposition{{i}}" *ngFor="let guest of tables.GuestsList; let j=index">
-        <div class="circle" id="circle{{j}}">{{guest.guest_first_name+ " "+ guest.guest_last_name}} </div>
+        <div class="circle" id="circle{{j}}">{{guest.guest_first_name+ " "+ guest.guest_last_name+""+ i+" "+j}} </div>
     </div>
 </div>
 

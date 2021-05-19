@@ -58,7 +58,7 @@ export class SeatingArrangementComponent implements OnInit {
   }
 
   GetSeatings() {
-    console.log(this.seatingArrangement.length, 'aaaa');
+    // console.log(this.seatingArrangement.length, 'aaaa');
     console.log(this.seatingArrangement,"ghjk");
     
     return this.seatingArrangement !=null && this.seatingArrangement.length > 0;

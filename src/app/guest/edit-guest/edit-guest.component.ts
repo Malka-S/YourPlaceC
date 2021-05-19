@@ -28,6 +28,7 @@ export class EditGuestComponent implements OnInit {
     let eguest_email=window.localStorage.getItem("editguest_email");
     let eguest_message_befor=window.localStorage.getItem("editguest_message_befor");
     let eguest_message_after=window.localStorage.getItem("editguest_message_after");
+    //let guest_category_id=window.localStorage.getItem("editguest_category_id");
     // console.log('guestname ' + eguest_first_name);
     // console.log('gueslasttname ' + eguest_last_name);
 
